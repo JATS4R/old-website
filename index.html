@@ -24,14 +24,14 @@
   <div class="wrap content">
 
     <aside>
-      <p class="intro">Making regulations easily readable, accessible and understandable.</p>
+      <p class="intro"><em>TBD:  insert tagline here.</em>  Making the world better by ...</p>
       <nav>
         <ul>
           <li><a href="#repositories">Repositories</a></li>
-          <li><a href="#features">Features</a></li>
-          <li><a href="#architecture">Architecture</a></li>
-          <li><a href="#technology">Technology</a></li>
-          <li><a href="#open-source">Open Source Contributing</a></li>
+          <li><a href="#tag-recs">Tagging recommendations</a></li>
+          <li><a href="#samples-articles">Samples articles</a></li>
+          <li><a href="#validation">Validation</a></li>
+          <li><a href="#getting-involved">Getting involved</a></li>
         </ul>
       </nav>
     </aside>
@@ -64,116 +64,116 @@
             <p class="image-wrap"><img src="static/img/octocat.png" width="25px" title="Github"></p>
           </li>
           <li>
-            <a href="https://github.com/cfpb/regulations-parser">
-              <h4>regulations-parser</h4>
-              <p>Parse regulations</p>
+            <a href="https://github.com/jats4r/jats4r.github.com">
+              <h4>jats4r.github.com</h4>
+              <p>This site</p>
             </a>
           </li>
 
           <li>
-            <a href="https://github.com/cfpb/regulations-core">
-              <h4>regulations-core</h4>
-              <p>Regulations API</p>
+            <a href="https://github.com/jats4r/elements">
+              <h4>elements</h4>
+              <p>Examples and draft recommendations</p>
             </a>
           </li>
 
           <li>
-            <a href="https://github.com/cfpb/regulations-site">
-              <h4>regulations-site</h4>
+            <a href="https://github.com/jats4r/validation">
+              <h4>validation</h4>
               <p>Display the regulations</p>
             </a>
           </li>
         </ul>
       </section>
 
-    <section id="features">
-    <h2>Features</h2>
+      <section id="tag-recs">
+        <h2>Tagging recommendations</h2>
 
-    <p>Some of the main features of the tool are:</p>
+        <p>Some of the main features of the tool are:</p>
 
-    <ul>
+        <ul>
 
-      <li>
-        <h4>Navigability.</h4>
-        <p>While regulations are traditionally represented as
-        monolithic blocks of text, they contain a great deal of embedded structure.
-        eRegulations teases out that structure and uses it to present the text in a clean,
-        readable form.</p>
-      </li>
+          <li>
+            <h4>Navigability.</h4>
+            <p>While regulations are traditionally represented as
+            monolithic blocks of text, they contain a great deal of embedded structure.
+            eRegulations teases out that structure and uses it to present the text in a clean,
+            readable form.</p>
+          </li>
 
-      <li>
-        <h4> Inline Interpretations.</h4>
-        <p>Many regulation paragraphs have official
-        interpretations that have traditionally been displayed at the end of the
-        regulation, forcing readers to swap back and forth between the regulation
-        content and interpretation at the end. eRegulations parses the
-        interpretations for each paragraph, and displays them right under the
-        paragraph/section being interpreted.</p>
-      </li>
+          <li>
+            <h4> Inline Interpretations.</h4>
+            <p>Many regulation paragraphs have official
+            interpretations that have traditionally been displayed at the end of the
+            regulation, forcing readers to swap back and forth between the regulation
+            content and interpretation at the end. eRegulations parses the
+            interpretations for each paragraph, and displays them right under the
+            paragraph/section being interpreted.</p>
+          </li>
 
-      <li>
-        <h4>Definitions.</h4>
-        <p>We highlight words that have been defined in the regulation,
-        and the user can click on the word and see it's definition without
-        scrolling to the part of the regulation that defines that word.</p>
-      </li>
+          <li>
+            <h4>Definitions.</h4>
+            <p>We highlight words that have been defined in the regulation,
+            and the user can click on the word and see it's definition without
+            scrolling to the part of the regulation that defines that word.</p>
+          </li>
 
-      <li>
-        <h4>Internal citations.</h4>
-        <p>The parser parses out
-        all internal citations in the regulation, and we display
-        them as clickable links allowing easy navigation within a regulation.
-        </p>
-      </li>
+          <li>
+            <h4>Internal citations.</h4>
+            <p>The parser parses out
+            all internal citations in the regulation, and we display
+            them as clickable links allowing easy navigation within a regulation.
+            </p>
+          </li>
 
-      <li>
-        <h4>Search.</h4>
-        <p>We provide the ability to search for phrases across various versions of
-        a regulation. </p>
-      </li>
+          <li>
+            <h4>Search.</h4>
+            <p>We provide the ability to search for phrases across various versions of
+            a regulation. </p>
+          </li>
 
-      <li>
-        <h4>Alternate versions of the regulations.</h4>
-        <p>Regulations are evolving documents and are often displayed as changes
-        to the base text. We present whole versions of regulations for each set
-        of changes (We combine Final Rules that have a common effective date
-        into a version). </p>
-      </li>
-      <li>
-        <h4>Comparing versions.</h4>
+          <li>
+            <h4>Alternate versions of the regulations.</h4>
+            <p>Regulations are evolving documents and are often displayed as changes
+            to the base text. We present whole versions of regulations for each set
+            of changes (We combine Final Rules that have a common effective date
+            into a version). </p>
+          </li>
+          <li>
+            <h4>Comparing versions.</h4>
 
-        <p>
-        We show the difference between whole versions of regulations in a
-        "redline" or word-by-word comparison view. All changes are expressed as
-        additions (shown in green) or deletions (struck-through, lighter gray).
-        This view clearly shows how a regulation changes.
-        </p>
-      </li>
+            <p>
+            We show the difference between whole versions of regulations in a
+            "redline" or word-by-word comparison view. All changes are expressed as
+            additions (shown in green) or deletions (struck-through, lighter gray).
+            This view clearly shows how a regulation changes.
+            </p>
+          </li>
 
-      <li>
-        <h4>Retrieve by effective date.</h4>
-        <p>A user can also enter in a date,
-        and retrieve the version of the regulation effective at that point in time. </p>
-      </li>
+          <li>
+            <h4>Retrieve by effective date.</h4>
+            <p>A user can also enter in a date,
+            and retrieve the version of the regulation effective at that point in time. </p>
+          </li>
 
-      <li>
-        <h4>Section-by-section analysis.</h4>
-        <p>The notices that compose a
-        version of the regulation contain relevant analyses of the altered sections.
-        We automatically pull that information out and make it accessible while
-        reading the regulation text.</p>
-      </li>
+          <li>
+            <h4>Section-by-section analysis.</h4>
+            <p>The notices that compose a
+            version of the regulation contain relevant analyses of the altered sections.
+            We automatically pull that information out and make it accessible while
+            reading the regulation text.</p>
+          </li>
 
-      <li>
-        <h4>Responsive Design.</h4> <p>The application design is
-        responsive, adjusting to the device and screen size of the user.</p>
-      </li>
+          <li>
+            <h4>Responsive Design.</h4> <p>The application design is
+            responsive, adjusting to the device and screen size of the user.</p>
+          </li>
 
-    </ul>
-  </section> <!-- /#features -->
+        </ul>
+      </section>
 
-  <section id="architecture">
-  <h2>Architecture</h2>
+      <section id="samples-articles">
+  <h2>Sample articles</h2>
 
     <p>
       There are three parts to the eRegulations application: a parser that
@@ -209,7 +209,7 @@
 
 
 
-      <section id="open-source">
+      <section id="getting-involved">
         <h2>Getting involved</h2>
 
         <p>Your feedback is welcome. If you want to get involved, you can check out our
