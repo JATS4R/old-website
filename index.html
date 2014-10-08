@@ -15,7 +15,7 @@
   <body>
     <header>
       <div class="wrap">
-        <a href="http://consumerfinance.gov"><img class="logo" 
+        <a href="http://consumerfinance.gov"><img class="logo"
           src="static/img/logo.png" alt="JATS4R"></a>
         <h1><span class="e">JATS for Reuse</h1>
       </div>
@@ -39,42 +39,52 @@
     <section class="main-content" role="main">
 
 
-    <p class="alert">Hey there! Our project documentation has moved to <a href="https://cfpb.github.io/eRegulations/">https://cfpb.github.io/eRegulations/</a></p>
+      <!-- If we ever need any alerts:
+        <p class="alert"></p>
+      -->
 
-      <p>eRegulations is a <a href="http://www.consumerfinance.gov/eregulations">web-based
-      application</a> that makes regulations easy to
-      find, read and understand. It is a work in progress by the <a
-      href="http://consumerfinance.gov">Consumer Financial Protection Bureau</a>,
-      and is a public domain work of the United States Government.</p>
+
+      <p>JATS4R aims to help standardisation of XML used in scientific publishing workflows. We
+        take specific areas of interest (such as licenses, equations or author contributions) and
+        <a href="https://github.com/JATS4R/elements/wiki/Workflow">work</a> to define best practice
+        tagging guidelines, along with tools that can help publishers identify whether their content
+        is compliant with those best practices.</p>
+
+      <p>By doing this, we hope to make the research literature more accessible for data miners, and
+        to lower costs when content needs to be exchanged or moved at scale, by bringing more
+        consistency to the way the literature is tagged. You can see examples of best practice
+        tagging as they <a
+        href="https://github.com/JATS4R/elements/wiki/Draft-recommendations">emerge</a>.</p>
+
 
       <section id="repositories">
-      <h2>Repositories</h2>
-      <ul class="repo-list group">
-        <li class="list-icon">
-          <p class="image-wrap"><img src="static/img/octocat.png" width="25px" title="Github"></p>
-        </li>
-        <li>
-          <a href="https://github.com/cfpb/regulations-parser">
-            <h4>regulations-parser</h4>
-            <p>Parse regulations</p>
-          </a>
-        </li>
+        <h2>Repositories</h2>
+        <ul class="repo-list group">
+          <li class="list-icon">
+            <p class="image-wrap"><img src="static/img/octocat.png" width="25px" title="Github"></p>
+          </li>
+          <li>
+            <a href="https://github.com/cfpb/regulations-parser">
+              <h4>regulations-parser</h4>
+              <p>Parse regulations</p>
+            </a>
+          </li>
 
-        <li>
-          <a href="https://github.com/cfpb/regulations-core">
-            <h4>regulations-core</h4>
-            <p>Regulations API</p>
-          </a>
-        </li>
+          <li>
+            <a href="https://github.com/cfpb/regulations-core">
+              <h4>regulations-core</h4>
+              <p>Regulations API</p>
+            </a>
+          </li>
 
-        <li>
-          <a href="https://github.com/cfpb/regulations-site">
-            <h4>regulations-site</h4>
-            <p>Display the regulations</p>
-          </a>
-        </li>
-      </ul>
-    </section>
+          <li>
+            <a href="https://github.com/cfpb/regulations-site">
+              <h4>regulations-site</h4>
+              <p>Display the regulations</p>
+            </a>
+          </li>
+        </ul>
+      </section>
 
     <section id="features">
     <h2>Features</h2>
@@ -181,6 +191,7 @@
     would then use regulations-core to as necessary to display regulations.  </p>
   </section> <!-- /#architecture-->
 
+
   <section id="technology">
     <h2>Technology</h2>
 
@@ -195,35 +206,41 @@
     </p>
   </section> <!--/#technology-->
 
-  <section id="open-source">
-    <h2>Open Source and Contributing</h2>
 
-    <p>We invite contributions to any part of the application. The project is in the
-    public domain, and all contributions to it will be released as such. By
-    submitting a pull request, you are agreeing to waive all rights to your contribution under the terms of the <a href="http://creativecommons.org/publicdomain/zero/1.0/">CC0 Public Domain Dedication</a>.</p>
 
-    <p>If you contribute the open source work of others, please mark it clearly in your pull request.</p>
 
-  </section> <!--/#open-source-->
+      <section id="open-source">
+        <h2>Getting involved</h2>
 
-  </section> <!-- /#main-content-->
+        <p>Your feedback is welcome. If you want to get involved, you can check out our
+          <a href="https://groups.google.com/forum/#!forum/jats4r">mailing list</a>, our
+          <a href="https://github.com/JATS4R/elements/issues">open issues</a> or our documents on
+          <a href="https://drive.google.com/#folders/0B8n-nWqCI5WmdExlY1Zmd2N0QW8">Google drive</a>.</p>
+      </section>
 
-  <footer>
-    <p>This project is maintained by the<br /> <a href="https://github.com/jats4r">JAT4R organization</a>, and hosted on Github Pages</p>
-  </footer>
+    </section> <!-- /#main-content-->
 
-  </div> <!--./wrap-->
 
-  <script src="static/js/jquery-1.10.2.min.js"></script>
-  <script src="static/js/script.js"></script>
-  <!-- Google Analytics -->
-  <script>
+
+
+    <footer>
+      <p>This project is maintained by the<br />
+        <a href="https://github.com/jats4r">JAT4R organization</a>, and hosted on Github Pages.</p>
+    </footer>
+
+  </div>
+
+
+    <script src="static/js/jquery-1.10.2.min.js"></script>
+    <script src="static/js/script.js"></script>
+    <!-- Google Analytics -->
+    <script>
       (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
       function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
       e=o.createElement(i);r=o.getElementsByTagName(i)[0];
       e.src='//www.google-analytics.com/analytics.js';
       r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
       ga('create','UA-40159858-3');ga('send','pageview');
-  </script>
+    </script>
   </body>
 </html>
