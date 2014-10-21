@@ -22,4 +22,10 @@ The tests can also be with jats4r-topic-0.sch (which calls in all of the modules
 When you run the jats4r-topic-0.sch with the phase=math, you will run the math tests.There is no default phase. If you run it with phase=#ALL or no phase, it should run all of htests. When run this way, it will give the same result as  jats4r-errlevel-0.sch run with phase=info or #ALL.
 
 
+generated-xsl/
+----------------------
+This directory contains XSL2 files that have been generated from the Schematrons in this "validation" directory. These XSL files must not be edited directly. If a change is made to a Schematron, a new XSL should be created. 
 
+When run against an instance, they will generate a report in Schematron Validation Report Language XML (svrl; http://www.schematron.com/validators.html)
+
+These were created for users who may have trouble applying Schematron directly in their system. They were created using iso-svrl.xsl.
