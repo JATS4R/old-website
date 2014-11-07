@@ -1,6 +1,7 @@
-eregulations
-============
+JATS for Reuse
+==============
 
-This is the documentation repository for the eRegulations effort.
+This repository holds the source files for the [JATS for Reuse](http://jats4r.github.io/) home
+page.
 
-**This project has been moved to <https://github.com/cfpb/eRegulations>**
+It was forked and modified from <https://github.com/cfpb/eRegulations>
