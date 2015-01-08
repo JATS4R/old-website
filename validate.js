@@ -17,7 +17,11 @@ var onSaxonLoad = function() {
 
     var input = document.createElement('input');
     input.setAttribute('type', 'file');
-    document.body.appendChild(input);
+
+    var form = document.createElement('form');
+    form.appendChild(input);
+
+    document.body.insertBefore(form, document.body.firstChild);
 
     // listen for selected file
     input.addEventListener('change', function() {
@@ -29,11 +33,29 @@ var onSaxonLoad = function() {
       reader.onload = function(e) {
         var text = reader.result.replace(/^\s*<\?xml.+/, ''); // remove the XML declaration
 
+        // run Schematron tests
         var doc = parser.parseFromString(text, 'application/xml');
-        var fragment = processor.transformToDocument(doc);
-        var output = serializer.serializeToString(fragment);
+        var result = processor.transformToDocument(doc);
+        outputNode.textContent = 'Converted';
 
-        outputNode.textContent = output;
+        // load the output stylesheet
+        var xhr = new XMLHttpRequest;
+        xhr.open('GET', 'output.xsl');
+        xhr.responseType = 'document';
+
+        xhr.onload = function() {
+            outputNode.textContent = 'Converting…';
+
+            // convert the output XML to HTML
+            Saxon.run({
+                stylesheet: this.response,
+                source: result
+            });
+
+            outputNode.textContent = 'Finished';
+        }
+
+        xhr.send();
       }
 
       reader.readAsText(this.files[0]);
