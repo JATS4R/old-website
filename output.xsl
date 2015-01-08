@@ -15,20 +15,27 @@
                <xsl:apply-templates select="svrl:active-pattern"/>
            </ul>
 
-           <h2>Failed assertions</h2>
+           <xsl:choose>
+               <xsl:when test="svrl:failed-assert">
+                   <h2>Failed assertions</h2>
 
-           <table>
-               <thead>
-                   <tr>
-                       <th>Location</th>
-                       <th>Error</th>
-                   </tr>
-               </thead>
+                   <table>
+                       <thead>
+                           <tr>
+                               <th>Location</th>
+                               <th>Error</th>
+                           </tr>
+                       </thead>
 
-               <tbody>
-                   <xsl:apply-templates select="svrl:failed-assert"/>
-               </tbody>
-           </table>
+                       <tbody>
+                           <xsl:apply-templates select="svrl:failed-assert"/>
+                       </tbody>
+                   </table>
+               </xsl:when>
+               <xsl:otherwise>
+                   <p>No errors were detected.</p>
+               </xsl:otherwise>
+           </xsl:choose>
        </xsl:result-document>
    </xsl:template>
 
