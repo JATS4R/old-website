@@ -13,7 +13,7 @@ var onSaxonLoad = function() {
   xhr.onload = function() {
     processor = Saxon.newXSLT20Processor(this.response);
 
-    outputNode.textContent = '';
+    outputNode.textContent = 'Choose a JATS XML file to validate.';
 
     var input = document.createElement('input');
     input.setAttribute('type', 'file');
