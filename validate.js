@@ -1,4 +1,4 @@
-// SAXON API: http://www.saxonica.com/ce/user-doc/1.1/html/api/xslt20processor/
+// SAXON API: http://www.saxonica.com/ce/user-doc/1.1/html/api/
 
 // onSaxonLoad is called when Saxon has finished loading
 var onSaxonLoad = function() {
