@@ -19,13 +19,12 @@ var onSaxonLoad = function() {
         outputNode.textContent = 'Processing…';
 
         var reader = new FileReader;
-        reader.responseType = 'document';
 
         reader.onload = function() {
             // run the Schematron tests
             Saxon.run({
                 stylesheet: 'generated-xsl/jats4r-errlevel-0.xsl',
-                source: Saxon.parseXML(reader.result),
+                source: Saxon.parseXML(this.result),
                 method: 'transformToDocument',
                 success: function(processor) {
                     outputNode.textContent = 'Converting…';
