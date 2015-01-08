@@ -1,20 +1,11 @@
+// SAXON API: http://www.saxonica.com/ce/user-doc/1.1/html/api/xslt20processor/
+
 // onSaxonLoad is called when Saxon has finished loading
 var onSaxonLoad = function() {
-  var processor;
-  var parser = new DOMParser;
-  var serializer = new XMLSerializer();
-  var outputNode = document.getElementById('output');
-
-  // load XSL
-  var xhr = new XMLHttpRequest;
-  xhr.open('GET', 'generated-xsl/jats4r-errlevel-0.xsl');
-  xhr.responseType = 'document';
-
-  xhr.onload = function() {
-    processor = Saxon.newXSLT20Processor(this.response);
-
+    var outputNode = document.getElementById('output');
     outputNode.textContent = 'Choose a JATS XML file to validate.';
 
+    // insert the file selection form
     var input = document.createElement('input');
     input.setAttribute('type', 'file');
 
@@ -25,42 +16,33 @@ var onSaxonLoad = function() {
 
     // listen for selected file
     input.addEventListener('change', function() {
-      outputNode.textContent = 'Processing…';
+        outputNode.textContent = 'Processing…';
 
-      var reader = new FileReader;
-      reader.responseType = 'document';
+        var reader = new FileReader;
+        reader.responseType = 'document';
 
-      reader.onload = function(e) {
-        var text = reader.result.replace(/^\s*<\?xml.+/, ''); // remove the XML declaration
-
-        // run Schematron tests
-        var doc = parser.parseFromString(text, 'application/xml');
-        var result = processor.transformToDocument(doc);
-        outputNode.textContent = 'Converted';
-
-        // load the output stylesheet
-        var xhr = new XMLHttpRequest;
-        xhr.open('GET', 'output.xsl');
-        xhr.responseType = 'document';
-
-        xhr.onload = function() {
-            outputNode.textContent = 'Converting…';
-
-            // convert the output XML to HTML
+        reader.onload = function() {
+            // run the Schematron tests
             Saxon.run({
-                stylesheet: this.response,
-                source: result
-            });
+                stylesheet: 'generated-xsl/jats4r-errlevel-0.xsl',
+                source: Saxon.parseXML(reader.result),
+                method: 'transformToDocument',
+                success: function(processor) {
+                    outputNode.textContent = 'Converting…';
 
-            outputNode.textContent = 'Finished';
+                    // convert the output XML to HTML
+                    Saxon.run({
+                        stylesheet: 'output.xsl',
+                        source: processor.getResultDocument(),
+                        method: 'updateHTMLDocument'
+                    });
+
+                    outputNode.textContent = 'Finished';
+                }
+            });
         }
 
-        xhr.send();
-      }
-
-      reader.readAsText(this.files[0]);
+        reader.readAsText(this.files[0]);
     });
-  }
 
-  xhr.send();
 }
