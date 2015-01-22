@@ -4,4 +4,9 @@
         <rule context="license">
             <assert test="normalize-space(@xlink:href)">ERROR: &lt;license&gt; must have an @xlink:href that refers to a publicly available license.</assert>
         </rule>
+		  
+		  <rule context="copyright-year">
+		  		<assert test="number() and number() &gt; 999 and number() &lt; 10000">ERROR: &lt;copyright-year&gt; must be a 4-digit year, not "<value-of select="."/>".</assert>
+		  </rule>
+		  
     </pattern>
