@@ -76,7 +76,7 @@
    <!--SCHEMA METADATA-->
 <xsl:template match="/">
       <svrl:schematron-output xmlns:svrl="http://purl.oclc.org/dsdl/svrl" title="" schemaVersion="">
-         <xsl:attribute name="phase">errors</xsl:attribute>
+         <xsl:attribute name="phase">info</xsl:attribute>
          <svrl:ns-prefix-in-attribute-values uri="http://www.w3.org/1998/Math/MathML" prefix="mml"/>
          <svrl:ns-prefix-in-attribute-values uri="http://www.w3.org/2001/XMLSchema-instance" prefix="xsi"/>
          <svrl:ns-prefix-in-attribute-values uri="http://www.w3.org/1999/xlink" prefix="xlink"/>
@@ -87,11 +87,35 @@
          </svrl:active-pattern>
          <xsl:apply-templates select="/" mode="M6"/>
          <svrl:active-pattern>
+            <xsl:attribute name="id">permissions-warnings</xsl:attribute>
+            <xsl:attribute name="name">permissions-warnings</xsl:attribute>
+            <xsl:apply-templates/>
+         </svrl:active-pattern>
+         <xsl:apply-templates select="/" mode="M7"/>
+         <svrl:active-pattern>
+            <xsl:attribute name="id">permissions-info</xsl:attribute>
+            <xsl:attribute name="name">permissions-info</xsl:attribute>
+            <xsl:apply-templates/>
+         </svrl:active-pattern>
+         <xsl:apply-templates select="/" mode="M8"/>
+         <svrl:active-pattern>
             <xsl:attribute name="id">math-errors</xsl:attribute>
             <xsl:attribute name="name">math-errors</xsl:attribute>
             <xsl:apply-templates/>
          </svrl:active-pattern>
          <xsl:apply-templates select="/" mode="M9"/>
+         <svrl:active-pattern>
+            <xsl:attribute name="id">math-warnings</xsl:attribute>
+            <xsl:attribute name="name">math-warnings</xsl:attribute>
+            <xsl:apply-templates/>
+         </svrl:active-pattern>
+         <xsl:apply-templates select="/" mode="M10"/>
+         <svrl:active-pattern>
+            <xsl:attribute name="id">math-info</xsl:attribute>
+            <xsl:attribute name="name">math-info</xsl:attribute>
+            <xsl:apply-templates/>
+         </svrl:active-pattern>
+         <xsl:apply-templates select="/" mode="M11"/>
       </svrl:schematron-output>
    </xsl:template>
 
@@ -166,6 +190,57 @@
       <xsl:apply-templates select="@*|node()" mode="M6"/>
    </xsl:template>
 
+   <!--PATTERN permissions-warnings-->
+
+
+	<!--RULE -->
+<xsl:template match="copyright-statement" priority="4000" mode="M7">
+      <svrl:fired-rule xmlns:svrl="http://purl.oclc.org/dsdl/svrl" context="copyright-statement"/>
+
+		    <!--ASSERT -->
+<xsl:choose>
+         <xsl:when test="following-sibling::copyright-holder"/>
+         <xsl:otherwise>
+            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
+                                test="following-sibling::copyright-holder">
+               <xsl:attribute name="location">
+                  <xsl:apply-templates select="." mode="schematron-get-full-path"/>
+               </xsl:attribute>
+               <svrl:text>WARNING: If a &lt;copyright-statement&gt; is provided,  &lt;copyright-holder&gt; should also be provided for machine-readability.</svrl:text>
+            </svrl:failed-assert>
+         </xsl:otherwise>
+      </xsl:choose>
+      <xsl:apply-templates select="@*|*|comment()|processing-instruction()" mode="M7"/>
+   </xsl:template>
+   <xsl:template match="text()" priority="-1" mode="M7"/>
+   <xsl:template match="@*|node()" priority="-2" mode="M7">
+      <xsl:apply-templates select="@*|node()" mode="M7"/>
+   </xsl:template>
+
+   <!--PATTERN permissions-info-->
+
+
+	<!--RULE -->
+<xsl:template match="license/p | license/license-p" priority="4000" mode="M8">
+      <svrl:fired-rule xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
+                       context="license/p | license/license-p"/>
+
+		    <!--REPORT -->
+<xsl:if test="ext-link">
+         <svrl:successful-report xmlns:svrl="http://purl.oclc.org/dsdl/svrl" test="ext-link">
+            <xsl:attribute name="location">
+               <xsl:apply-templates select="." mode="schematron-get-full-path"/>
+            </xsl:attribute>
+            <svrl:text>INFORMATION: Any link in the text of a license should be to a human-readable license that does not contradict the machine-readable lincense referenced at license/@xlink:href.</svrl:text>
+         </svrl:successful-report>
+      </xsl:if>
+      <xsl:apply-templates select="@*|*|comment()|processing-instruction()" mode="M8"/>
+   </xsl:template>
+   <xsl:template match="text()" priority="-1" mode="M8"/>
+   <xsl:template match="@*|node()" priority="-2" mode="M8">
+      <xsl:apply-templates select="@*|node()" mode="M8"/>
+   </xsl:template>
+
    <!--PATTERN math-errors-->
 
 
@@ -227,5 +302,17 @@
    <xsl:template match="text()" priority="-1" mode="M9"/>
    <xsl:template match="@*|node()" priority="-2" mode="M9">
       <xsl:apply-templates select="@*|node()" mode="M9"/>
+   </xsl:template>
+
+   <!--PATTERN math-warnings-->
+<xsl:template match="text()" priority="-1" mode="M10"/>
+   <xsl:template match="@*|node()" priority="-2" mode="M10">
+      <xsl:apply-templates select="@*|node()" mode="M10"/>
+   </xsl:template>
+
+   <!--PATTERN math-info-->
+<xsl:template match="text()" priority="-1" mode="M11"/>
+   <xsl:template match="@*|node()" priority="-2" mode="M11">
+      <xsl:apply-templates select="@*|node()" mode="M11"/>
    </xsl:template>
 </xsl:stylesheet>
