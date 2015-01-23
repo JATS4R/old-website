@@ -16,6 +16,9 @@ var onSaxonLoad = function() {
 
     // listen for selected file
     input.addEventListener('change', function() {
+        // clear any previous results
+        document.querySelector('#results').textContent = '';
+
         outputNode.textContent = 'Processing…';
 
         var reader = new FileReader;
