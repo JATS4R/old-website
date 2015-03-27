@@ -117,23 +117,33 @@
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
+
+		    <!--REPORT -->
+<xsl:if test="@license-type">
+         <svrl:successful-report xmlns:svrl="http://purl.oclc.org/dsdl/svrl" test="@license-type">
+            <xsl:attribute name="location">
+               <xsl:apply-templates select="." mode="schematron-get-full-path"/>
+            </xsl:attribute>
+            <svrl:text>ERROR: @license-type is not machine readable and therefore should not be used. License type information should be derived instead from the URI given in the @xlink:href attribute.</svrl:text>
+         </svrl:successful-report>
+      </xsl:if>
       <xsl:apply-templates select="@*|*|comment()|processing-instruction()" mode="M6"/>
    </xsl:template>
 
 	  <!--RULE -->
-<xsl:template match="copyright-statement" priority="3999" mode="M6">
-      <svrl:fired-rule xmlns:svrl="http://purl.oclc.org/dsdl/svrl" context="copyright-statement"/>
+<xsl:template match="copyright-holder" priority="3999" mode="M6">
+      <svrl:fired-rule xmlns:svrl="http://purl.oclc.org/dsdl/svrl" context="copyright-holder"/>
 
 		    <!--ASSERT -->
 <xsl:choose>
-         <xsl:when test="following-sibling::copyright-year"/>
+         <xsl:when test="preceding-sibling::copyright-year"/>
          <xsl:otherwise>
             <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
-                                test="following-sibling::copyright-year">
+                                test="preceding-sibling::copyright-year">
                <xsl:attribute name="location">
                   <xsl:apply-templates select="." mode="schematron-get-full-path"/>
                </xsl:attribute>
-               <svrl:text>ERROR: If a &lt;copyright-statement&gt; is provided,  &lt;copyright-year&gt; must also be provided for machine-readability.</svrl:text>
+               <svrl:text>ERROR: The &lt;copyright-year&gt; and &lt;copyright-holder&gt; elements are intended for machine-readability. Therefore, when there is a copyright (i.e. the article is not in the public domain) we recommend that both of these elements be used. </svrl:text>
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
@@ -142,6 +152,26 @@
 
 	  <!--RULE -->
 <xsl:template match="copyright-year" priority="3998" mode="M6">
+      <svrl:fired-rule xmlns:svrl="http://purl.oclc.org/dsdl/svrl" context="copyright-year"/>
+
+		    <!--ASSERT -->
+<xsl:choose>
+         <xsl:when test="following-sibling::copyright-holder"/>
+         <xsl:otherwise>
+            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
+                                test="following-sibling::copyright-holder">
+               <xsl:attribute name="location">
+                  <xsl:apply-templates select="." mode="schematron-get-full-path"/>
+               </xsl:attribute>
+               <svrl:text>ERROR: The &lt;copyright-year&gt; and &lt;copyright-holder&gt; elements are intended for machine-readability. Therefore, when there is a copyright (i.e. the article is not in the public domain) we recommend that both of these elements be used. </svrl:text>
+            </svrl:failed-assert>
+         </xsl:otherwise>
+      </xsl:choose>
+      <xsl:apply-templates select="@*|*|comment()|processing-instruction()" mode="M6"/>
+   </xsl:template>
+
+	  <!--RULE -->
+<xsl:template match="copyright-year" priority="3997" mode="M6">
       <svrl:fired-rule xmlns:svrl="http://purl.oclc.org/dsdl/svrl" context="copyright-year"/>
 
 		    <!--ASSERT -->
@@ -159,6 +189,17 @@
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
+
+		    <!--REPORT -->
+<xsl:if test="normalize-space(string(.))!=string(.)">
+         <svrl:successful-report xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
+                                 test="normalize-space(string(.))!=string(.)">
+            <xsl:attribute name="location">
+               <xsl:apply-templates select="." mode="schematron-get-full-path"/>
+            </xsl:attribute>
+            <svrl:text>ERROR: &lt;copyright-year&gt; should not contain whitespace.</svrl:text>
+         </svrl:successful-report>
+      </xsl:if>
       <xsl:apply-templates select="@*|*|comment()|processing-instruction()" mode="M6"/>
    </xsl:template>
    <xsl:template match="text()" priority="-1" mode="M6"/>
@@ -211,17 +252,6 @@
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
-
-		    <!--REPORT -->
-<xsl:if test="(graphic or inline-graphic) and not(mml:math or tex-math)">
-         <svrl:successful-report xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
-                                 test="(graphic or inline-graphic) and not(mml:math or tex-math)">
-            <xsl:attribute name="location">
-               <xsl:apply-templates select="." mode="schematron-get-full-path"/>
-            </xsl:attribute>
-            <svrl:text>ERROR: All mathematical expressions should be provided in markup using either &lt;mml:math&gt; or &lt;tex-math&gt;. Do not supply math simply as graphics.</svrl:text>
-         </svrl:successful-report>
-      </xsl:if>
       <xsl:apply-templates select="@*|*|comment()|processing-instruction()" mode="M9"/>
    </xsl:template>
    <xsl:template match="text()" priority="-1" mode="M9"/>
