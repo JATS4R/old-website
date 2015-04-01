@@ -1,4 +1,3 @@
- 
     <!-- tests for permissions, JATS4R GitHub issues #2, #11, #13 -->
 <pattern id="permissions-errors"  xmlns="http://purl.oclc.org/dsdl/schematron">
 
