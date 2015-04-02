@@ -15,11 +15,13 @@ if ! [ -e $SAXON_JAR ]
     cd lib
     unzip -d saxon9he SaxonHE9-5-1-5J.zip
     unzip jing-20081028.zip
+    unzip -d iso-schematron-xslt2 iso-schematron-xslt2.zip
     cd ..
 fi
 
 export JING_HOME=`pwd`/lib/jing-20081028
 export JING_BIN=$JING_HOME/bin
+export SCHEMATRON=`pwd`/lib/iso-schematron-xslt2
 
 CLASSPATH=$SAXON_JAR
 CLASSPATH=$CLASSPATH:$JING_BIN/isorelax.jar

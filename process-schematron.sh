@@ -19,9 +19,6 @@ to run against an XML instance."
    exit 2
 fi
 
-
-
-
 echo Build single schematron from multiple files
 
 java -jar $SAXON_JAR -xsl:combine-schematron.xsl -s:$1 -o:combined.sch
@@ -47,18 +44,10 @@ if [ $? -eq 0 ]
     exit 2
 fi
 
-
-if [ -z "$2" ]
-    then 
-        p=""
-    else
-        p="phase=$2"
-fi
-
 echo Generate the stylesheet from $1
 
-java -jar $SAXON_JAR -s:combined.sch -xsl:iso_svrl.xsl -o:$1.xsl \
-     generate-paths=yes $p
+java -jar $SAXON_JAR -s:combined.sch -xsl:$SCHEMATRON/iso_svrl_for_xslt2.xsl \
+     -o:$1.xsl generate-paths=yes
 
 if [ $? -ne 0 ]
   then
