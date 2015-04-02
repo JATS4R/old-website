@@ -52,7 +52,16 @@ Release from 10/28/2008, downloaded from
 [here](http://jing-trang.googlecode.com/files/jing-20081028.zip) on 4/2/2015,
 and included as lib/jing-20081028.zip.
 
+***ISO Schematron XSLT***
 
+Downloaded from http://www.schematron.com/tmp/iso-schematron-xslt2.zip on 4/2/2015,
+and included as lib/iso-schematron-xslt2.zip.
+
+***Apache Commons OASIS catalog resolver***
+
+Downloaded from 
+http://apache.mirrors.pair.com//xerces/xml-commons/xml-commons-resolver-1.2.zip
+on 4/2/2015, and included as lib/xml-commons-resolver-1.2.zip.
 
 
 ## Getting Saxon
