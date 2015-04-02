@@ -31,9 +31,19 @@ When run against an instance, they will generate a report in Schematron Validati
 These were created for users who may have trouble applying Schematron directly in their system. They were created using iso-svrl.xsl.
 
 
-## Dependencies (lib)
+## Dependencies (libraries)
 
-Several open-source software tools are used in this project.
+Several open-source software tools are used in this project, and, for convenience,
+have been included in this repository.
+
+The *setup.sh* script extracts these, and sets various environment variables
+so that they can be easily used. In any terminal window, change to the respository
+directory, and source this setup script before doing any work. For example,
+
+```
+cd *repo dir*
+. setup.sh
+```
 
 ***Saxon Home Edition***
 
