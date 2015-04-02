@@ -1,3 +1,25 @@
+# Usage
+
+if [ "$1" = "-h" ] || [ "$1" = "-?" ] || [ "$1" = "--help" ]
+  then
+    echo "Usage: ./process-schematron.sh [ <input-type> [ <phase> ] ]"
+    echo " "
+    echo "This tool will build a combined Schematron file from a multiple-
+file Schematron, validate it, and output an XSLT2 stylesheet
+to run against an XML instance.
+
+Arguments:
+  <input-type> - either 'level' or 'topic'
+  <phase> - one of the phases as defined in the original schematron file.
+    For 'level', this can be one of 'errors', 'warnings', or 'info'.
+    For 'topic', this can be either 'permissions' or 'math'.
+
+If neither <input-type> nor <phase> is given, this will produce several
+preset combinations of output files (but not all of the possibilities)."
+    exit 0
+fi
+
+
 
 # Sanity check
 
@@ -7,23 +29,17 @@ if [ "x$SAXON_JAR" = "x" ] || ! [ -e $SAXON_JAR ]
     exit 2
 fi
 
-## Check usage
-#
-#if [ $# -ne 1 ]
-#   then
-#   echo "Usage: ./process-schematron.sh <schematron>"
-#    echo " "
-#    echo "This tool will build a combined Schematron file from a multiple-
-#file Schematron, validate it, and output an XSLT2 stylesheet
-#to run against an XML instance."
-#   exit 2
-#fi
-
 OUTPUT_DIR=generated-xsl
 
 
-for IN in jats4r-errlevel-0 jats4r-topic-0
-do
+# This shell subroutine does the actual work.
+# Usage: process <input-type> [<phase>]
+process()
+{
+  INPUT_TYPE=$1
+  IN=jats4r-$INPUT_TYPE-0
+  PHASE=$2
+
   IN_SCH=$IN.sch
 
   echo Build single schematron from multiple files
@@ -54,9 +70,18 @@ do
 
   echo Generate the stylesheet
 
-  OUT_XSL=$OUTPUT_DIR/$IN.xsl
+  if [ -z "$PHASE" ]
+    then 
+      P=""
+      OUT_XSL=$OUTPUT_DIR/$IN.xsl
+    else
+      P="phase=$PHASE"
+      OUT_XSL=$OUTPUT_DIR/jats4r-$INPUT_TYPE-$PHASE-0.xsl
+  fi
+
+
   java -jar $SAXON_JAR -s:$COMBINED_SCH -xsl:$SCHEMATRON/iso_svrl_for_xslt2.xsl \
-       -o:$OUT_XSL generate-paths=yes
+       -o:$OUT_XSL generate-paths=yes $P
 
   if [ $? -ne 0 ]
     then
@@ -69,4 +94,17 @@ do
 
   rm $COMBINED_SCH
 
-done
+}
+
+# Finally, generate the outputs:
+
+if [ $# -ge 1 ]
+  then
+    process $1 $2
+  else
+    process level errors
+    process level warnings
+    process level info
+    process topic
+fi
+

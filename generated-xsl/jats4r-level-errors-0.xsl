@@ -167,6 +167,7 @@
    <!--SCHEMA SETUP-->
    <xsl:template match="/">
       <svrl:schematron-output xmlns:svrl="http://purl.oclc.org/dsdl/svrl" title="" schemaVersion="">
+         <xsl:attribute name="phase">errors</xsl:attribute>
          <xsl:comment>
             <xsl:value-of select="$archiveDirParameter"/>   
 		 <xsl:value-of select="$archiveNameParameter"/>  
@@ -184,25 +185,7 @@
             <xsl:attribute name="name">permissions-errors</xsl:attribute>
             <xsl:apply-templates/>
          </svrl:active-pattern>
-         <xsl:apply-templates select="/" mode="M5"/>
-         <svrl:active-pattern>
-            <xsl:attribute name="document">
-               <xsl:value-of select="document-uri(/)"/>
-            </xsl:attribute>
-            <xsl:attribute name="id">permissions-warnings</xsl:attribute>
-            <xsl:attribute name="name">permissions-warnings</xsl:attribute>
-            <xsl:apply-templates/>
-         </svrl:active-pattern>
          <xsl:apply-templates select="/" mode="M6"/>
-         <svrl:active-pattern>
-            <xsl:attribute name="document">
-               <xsl:value-of select="document-uri(/)"/>
-            </xsl:attribute>
-            <xsl:attribute name="id">permissions-info</xsl:attribute>
-            <xsl:attribute name="name">permissions-info</xsl:attribute>
-            <xsl:apply-templates/>
-         </svrl:active-pattern>
-         <xsl:apply-templates select="/" mode="M7"/>
          <svrl:active-pattern>
             <xsl:attribute name="document">
                <xsl:value-of select="document-uri(/)"/>
@@ -211,25 +194,7 @@
             <xsl:attribute name="name">math-errors</xsl:attribute>
             <xsl:apply-templates/>
          </svrl:active-pattern>
-         <xsl:apply-templates select="/" mode="M8"/>
-         <svrl:active-pattern>
-            <xsl:attribute name="document">
-               <xsl:value-of select="document-uri(/)"/>
-            </xsl:attribute>
-            <xsl:attribute name="id">math-warnings</xsl:attribute>
-            <xsl:attribute name="name">math-warnings</xsl:attribute>
-            <xsl:apply-templates/>
-         </svrl:active-pattern>
          <xsl:apply-templates select="/" mode="M9"/>
-         <svrl:active-pattern>
-            <xsl:attribute name="document">
-               <xsl:value-of select="document-uri(/)"/>
-            </xsl:attribute>
-            <xsl:attribute name="id">math-info</xsl:attribute>
-            <xsl:attribute name="name">math-info</xsl:attribute>
-            <xsl:apply-templates/>
-         </svrl:active-pattern>
-         <xsl:apply-templates select="/" mode="M10"/>
       </svrl:schematron-output>
    </xsl:template>
 
@@ -240,7 +205,7 @@
 
 
 	  <!--RULE -->
-   <xsl:template match="license" priority="1003" mode="M5">
+   <xsl:template match="license" priority="1003" mode="M6">
       <svrl:fired-rule xmlns:svrl="http://purl.oclc.org/dsdl/svrl" context="license"/>
 
 		    <!--ASSERT -->
@@ -273,11 +238,11 @@
         </svrl:text>
          </svrl:successful-report>
       </xsl:if>
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M5"/>
+      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M6"/>
    </xsl:template>
 
 	  <!--RULE -->
-   <xsl:template match="copyright-holder" priority="1002" mode="M5">
+   <xsl:template match="copyright-holder" priority="1002" mode="M6">
       <svrl:fired-rule xmlns:svrl="http://purl.oclc.org/dsdl/svrl" context="copyright-holder"/>
 
 		    <!--ASSERT -->
@@ -298,11 +263,11 @@
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M5"/>
+      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M6"/>
    </xsl:template>
 
 	  <!--RULE -->
-   <xsl:template match="copyright-year" priority="1001" mode="M5">
+   <xsl:template match="copyright-year" priority="1001" mode="M6">
       <svrl:fired-rule xmlns:svrl="http://purl.oclc.org/dsdl/svrl" context="copyright-year"/>
 
 		    <!--ASSERT -->
@@ -323,11 +288,11 @@
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M5"/>
+      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M6"/>
    </xsl:template>
 
 	  <!--RULE -->
-   <xsl:template match="copyright-year" priority="1000" mode="M5">
+   <xsl:template match="copyright-year" priority="1000" mode="M6">
       <svrl:fired-rule xmlns:svrl="http://purl.oclc.org/dsdl/svrl" context="copyright-year"/>
 
 		    <!--ASSERT -->
@@ -361,37 +326,6 @@
         </svrl:text>
          </svrl:successful-report>
       </xsl:if>
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M5"/>
-   </xsl:template>
-   <xsl:template match="text()" priority="-1" mode="M5"/>
-   <xsl:template match="@*|node()" priority="-2" mode="M5">
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M5"/>
-   </xsl:template>
-
-   <!--PATTERN permissions-warnings-->
-
-
-	  <!--RULE -->
-   <xsl:template match="copyright-statement" priority="1000" mode="M6">
-      <svrl:fired-rule xmlns:svrl="http://purl.oclc.org/dsdl/svrl" context="copyright-statement"/>
-
-		    <!--ASSERT -->
-      <xsl:choose>
-         <xsl:when test="following-sibling::copyright-holder"/>
-         <xsl:otherwise>
-            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
-                                test="following-sibling::copyright-holder">
-               <xsl:attribute name="location">
-                  <xsl:apply-templates select="." mode="schematron-select-full-path"/>
-               </xsl:attribute>
-               <svrl:text>
-            WARNING: If a &lt;copyright-statement&gt;
-            is provided, &lt;copyright-holder&gt; should also be provided for
-            machine-readability.
-        </svrl:text>
-            </svrl:failed-assert>
-         </xsl:otherwise>
-      </xsl:choose>
       <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M6"/>
    </xsl:template>
    <xsl:template match="text()" priority="-1" mode="M6"/>
@@ -399,120 +333,11 @@
       <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M6"/>
    </xsl:template>
 
-   <!--PATTERN permissions-info-->
-
-
-	  <!--RULE -->
-   <xsl:template match="license" priority="1003" mode="M7">
-      <svrl:fired-rule xmlns:svrl="http://purl.oclc.org/dsdl/svrl" context="license"/>
-
-		    <!--REPORT -->
-      <xsl:if test="license-p[1]">
-         <svrl:successful-report xmlns:svrl="http://purl.oclc.org/dsdl/svrl" test="license-p[1]">
-            <xsl:attribute name="location">
-               <xsl:apply-templates select="." mode="schematron-select-full-path"/>
-            </xsl:attribute>
-            <svrl:text>
-            INFO: The &lt;license-p&gt; element is intended to be
-            human-readable documentation, and any content is allowed, including, for example,
-            &lt;ext-link&gt; elements with URIs. Such URIs within the &lt;license-p&gt; element will be
-            ignored. (It is the responsibility of the content producer to ensure that the
-            human-readable version of the license statement matches the (machine-readable) license
-            URI.)
-        </svrl:text>
-         </svrl:successful-report>
-      </xsl:if>
-
-		    <!--REPORT -->
-      <xsl:if test="p[1]">
-         <svrl:successful-report xmlns:svrl="http://purl.oclc.org/dsdl/svrl" test="p[1]">
-            <xsl:attribute name="location">
-               <xsl:apply-templates select="." mode="schematron-select-full-path"/>
-            </xsl:attribute>
-            <svrl:text>
-            INFO: The &lt;p&gt; element in &lt;license&gt; is intended to be
-            human-readable documentation, and any content is allowed, including, for example,
-            &lt;ext-link&gt; elements with URIs. Such URIs within the &lt;license-p&gt; element will be
-            ignored. (It is the responsibility of the content producer to ensure that the
-            human-readable version of the license statement matches the (machine-readable) license
-            URI.)
-        </svrl:text>
-         </svrl:successful-report>
-      </xsl:if>
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M7"/>
-   </xsl:template>
-
-	  <!--RULE -->
-   <xsl:template match="license/p | license/license-p" priority="1002" mode="M7">
-      <svrl:fired-rule xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
-                       context="license/p | license/license-p"/>
-
-		    <!--REPORT -->
-      <xsl:if test="ext-link">
-         <svrl:successful-report xmlns:svrl="http://purl.oclc.org/dsdl/svrl" test="ext-link">
-            <xsl:attribute name="location">
-               <xsl:apply-templates select="." mode="schematron-select-full-path"/>
-            </xsl:attribute>
-            <svrl:text>
-            INFO: Any link in the text of a license should be to a
-            human-readable license that does not contradict the machine-readable lincense referenced
-            at license/@xlink:href.
-        </svrl:text>
-         </svrl:successful-report>
-      </xsl:if>
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M7"/>
-   </xsl:template>
-
-	  <!--RULE -->
-   <xsl:template match="copyright-statement" priority="1001" mode="M7">
-      <svrl:fired-rule xmlns:svrl="http://purl.oclc.org/dsdl/svrl" context="copyright-statement"/>
-
-		    <!--REPORT -->
-      <xsl:if test="self::node()">
-         <svrl:successful-report xmlns:svrl="http://purl.oclc.org/dsdl/svrl" test="self::node()">
-            <xsl:attribute name="location">
-               <xsl:apply-templates select="." mode="schematron-select-full-path"/>
-            </xsl:attribute>
-            <svrl:text>
-            INFO: The content of the &lt;copyright-statement&gt; is intended
-            for display; i.e. human consumption. Therefore, the contents of this element aren't
-            addressed by these recommendations.
-        </svrl:text>
-         </svrl:successful-report>
-      </xsl:if>
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M7"/>
-   </xsl:template>
-
-	  <!--RULE -->
-   <xsl:template match="copyright-holder" priority="1000" mode="M7">
-      <svrl:fired-rule xmlns:svrl="http://purl.oclc.org/dsdl/svrl" context="copyright-holder"/>
-
-		    <!--REPORT -->
-      <xsl:if test="self::node()">
-         <svrl:successful-report xmlns:svrl="http://purl.oclc.org/dsdl/svrl" test="self::node()">
-            <xsl:attribute name="location">
-               <xsl:apply-templates select="." mode="schematron-select-full-path"/>
-            </xsl:attribute>
-            <svrl:text>
-            INFO: The &lt;copyright-holder&gt; element should identify the
-            person or institution that holds the copyright. As yet, we have no recommendations
-            regarding the manner in which that person or institution is identified (i.e. no
-            recommendations for using any particular authority).
-        </svrl:text>
-         </svrl:successful-report>
-      </xsl:if>
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M7"/>
-   </xsl:template>
-   <xsl:template match="text()" priority="-1" mode="M7"/>
-   <xsl:template match="@*|node()" priority="-2" mode="M7">
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M7"/>
-   </xsl:template>
-
    <!--PATTERN math-errors-->
 
 
 	  <!--RULE -->
-   <xsl:template match="mml:math | tex-math" priority="1001" mode="M8">
+   <xsl:template match="mml:math | tex-math" priority="1001" mode="M9">
       <svrl:fired-rule xmlns:svrl="http://purl.oclc.org/dsdl/svrl" context="mml:math | tex-math"/>
 
 		    <!--ASSERT -->
@@ -534,11 +359,11 @@
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M8"/>
+      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M9"/>
    </xsl:template>
 
 	  <!--RULE -->
-   <xsl:template match="disp-formula | inline-formula" priority="1000" mode="M8">
+   <xsl:template match="disp-formula | inline-formula" priority="1000" mode="M9">
       <svrl:fired-rule xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
                        context="disp-formula | inline-formula"/>
 
@@ -561,86 +386,10 @@
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M8"/>
-   </xsl:template>
-   <xsl:template match="text()" priority="-1" mode="M8"/>
-   <xsl:template match="@*|node()" priority="-2" mode="M8">
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M8"/>
-   </xsl:template>
-
-   <!--PATTERN math-warnings-->
-
-
-	  <!--RULE -->
-   <xsl:template match="disp-formula | inline-formula" priority="1000" mode="M9">
-      <svrl:fired-rule xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
-                       context="disp-formula | inline-formula"/>
-
-		    <!--REPORT -->
-      <xsl:if test="(graphic or inline-graphic) and not(mml:math or tex-math)">
-         <svrl:successful-report xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
-                                 test="(graphic or inline-graphic) and not(mml:math or tex-math)">
-            <xsl:attribute name="location">
-               <xsl:apply-templates select="." mode="schematron-select-full-path"/>
-            </xsl:attribute>
-            <svrl:text>
-            WARNING: All
-            mathematical expressions should be provided in markup using either &lt;mml:math&gt; or
-            &lt;tex-math&gt;. The only instance in which the graphic representation of a
-            mathematical expression should be used outside of &lt;alternatives&gt; and without the
-            equivalent markup is where that expression is so complicated that it cannot be
-            represented in markup at all.
-        </svrl:text>
-         </svrl:successful-report>
-      </xsl:if>
       <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M9"/>
    </xsl:template>
    <xsl:template match="text()" priority="-1" mode="M9"/>
    <xsl:template match="@*|node()" priority="-2" mode="M9">
       <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M9"/>
-   </xsl:template>
-
-   <!--PATTERN math-info-->
-
-
-	  <!--RULE -->
-   <xsl:template match="disp-formula | inline-formula" priority="1000" mode="M10">
-      <svrl:fired-rule xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
-                       context="disp-formula | inline-formula"/>
-
-		    <!--REPORT -->
-      <xsl:if test="alternatives">
-         <svrl:successful-report xmlns:svrl="http://purl.oclc.org/dsdl/svrl" test="alternatives">
-            <xsl:attribute name="location">
-               <xsl:apply-templates select="." mode="schematron-select-full-path"/>
-            </xsl:attribute>
-            <svrl:text>
-            INFO: &lt;alternatives&gt; may contain any combination of
-            representations (&lt;graphic&gt;, &lt;mml:math&gt;, &lt;tex-math&gt;) but where it is used, each
-            representation should be correct, complete and logically equivalent with every other
-            representation present. There is no explicit or implied preferred representation within
-            &lt;alternatives&gt;.
-        </svrl:text>
-         </svrl:successful-report>
-      </xsl:if>
-
-		    <!--REPORT -->
-      <xsl:if test="tex-math">
-         <svrl:successful-report xmlns:svrl="http://purl.oclc.org/dsdl/svrl" test="tex-math">
-            <xsl:attribute name="location">
-               <xsl:apply-templates select="." mode="schematron-select-full-path"/>
-            </xsl:attribute>
-            <svrl:text>
-            INFO: The content of the &lt;tex-math&gt; element should be math-mode
-            LaTeX, without the delimiters that are normally used to switch into / out of math mode
-            (\\[...\\], \\(...\\), $$...$$, etc.).
-        </svrl:text>
-         </svrl:successful-report>
-      </xsl:if>
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M10"/>
-   </xsl:template>
-   <xsl:template match="text()" priority="-1" mode="M10"/>
-   <xsl:template match="@*|node()" priority="-2" mode="M10">
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M10"/>
    </xsl:template>
 </xsl:stylesheet>

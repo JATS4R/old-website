@@ -167,6 +167,7 @@
    <!--SCHEMA SETUP-->
    <xsl:template match="/">
       <svrl:schematron-output xmlns:svrl="http://purl.oclc.org/dsdl/svrl" title="" schemaVersion="">
+         <xsl:attribute name="phase">info</xsl:attribute>
          <xsl:comment>
             <xsl:value-of select="$archiveDirParameter"/>   
 		 <xsl:value-of select="$archiveNameParameter"/>  
@@ -184,7 +185,7 @@
             <xsl:attribute name="name">permissions-errors</xsl:attribute>
             <xsl:apply-templates/>
          </svrl:active-pattern>
-         <xsl:apply-templates select="/" mode="M5"/>
+         <xsl:apply-templates select="/" mode="M6"/>
          <svrl:active-pattern>
             <xsl:attribute name="document">
                <xsl:value-of select="document-uri(/)"/>
@@ -193,7 +194,7 @@
             <xsl:attribute name="name">permissions-warnings</xsl:attribute>
             <xsl:apply-templates/>
          </svrl:active-pattern>
-         <xsl:apply-templates select="/" mode="M6"/>
+         <xsl:apply-templates select="/" mode="M7"/>
          <svrl:active-pattern>
             <xsl:attribute name="document">
                <xsl:value-of select="document-uri(/)"/>
@@ -202,7 +203,7 @@
             <xsl:attribute name="name">permissions-info</xsl:attribute>
             <xsl:apply-templates/>
          </svrl:active-pattern>
-         <xsl:apply-templates select="/" mode="M7"/>
+         <xsl:apply-templates select="/" mode="M8"/>
          <svrl:active-pattern>
             <xsl:attribute name="document">
                <xsl:value-of select="document-uri(/)"/>
@@ -211,7 +212,7 @@
             <xsl:attribute name="name">math-errors</xsl:attribute>
             <xsl:apply-templates/>
          </svrl:active-pattern>
-         <xsl:apply-templates select="/" mode="M8"/>
+         <xsl:apply-templates select="/" mode="M9"/>
          <svrl:active-pattern>
             <xsl:attribute name="document">
                <xsl:value-of select="document-uri(/)"/>
@@ -220,7 +221,7 @@
             <xsl:attribute name="name">math-warnings</xsl:attribute>
             <xsl:apply-templates/>
          </svrl:active-pattern>
-         <xsl:apply-templates select="/" mode="M9"/>
+         <xsl:apply-templates select="/" mode="M10"/>
          <svrl:active-pattern>
             <xsl:attribute name="document">
                <xsl:value-of select="document-uri(/)"/>
@@ -229,7 +230,7 @@
             <xsl:attribute name="name">math-info</xsl:attribute>
             <xsl:apply-templates/>
          </svrl:active-pattern>
-         <xsl:apply-templates select="/" mode="M10"/>
+         <xsl:apply-templates select="/" mode="M11"/>
       </svrl:schematron-output>
    </xsl:template>
 
@@ -240,7 +241,7 @@
 
 
 	  <!--RULE -->
-   <xsl:template match="license" priority="1003" mode="M5">
+   <xsl:template match="license" priority="1003" mode="M6">
       <svrl:fired-rule xmlns:svrl="http://purl.oclc.org/dsdl/svrl" context="license"/>
 
 		    <!--ASSERT -->
@@ -273,11 +274,11 @@
         </svrl:text>
          </svrl:successful-report>
       </xsl:if>
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M5"/>
+      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M6"/>
    </xsl:template>
 
 	  <!--RULE -->
-   <xsl:template match="copyright-holder" priority="1002" mode="M5">
+   <xsl:template match="copyright-holder" priority="1002" mode="M6">
       <svrl:fired-rule xmlns:svrl="http://purl.oclc.org/dsdl/svrl" context="copyright-holder"/>
 
 		    <!--ASSERT -->
@@ -298,11 +299,11 @@
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M5"/>
+      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M6"/>
    </xsl:template>
 
 	  <!--RULE -->
-   <xsl:template match="copyright-year" priority="1001" mode="M5">
+   <xsl:template match="copyright-year" priority="1001" mode="M6">
       <svrl:fired-rule xmlns:svrl="http://purl.oclc.org/dsdl/svrl" context="copyright-year"/>
 
 		    <!--ASSERT -->
@@ -323,11 +324,11 @@
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M5"/>
+      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M6"/>
    </xsl:template>
 
 	  <!--RULE -->
-   <xsl:template match="copyright-year" priority="1000" mode="M5">
+   <xsl:template match="copyright-year" priority="1000" mode="M6">
       <svrl:fired-rule xmlns:svrl="http://purl.oclc.org/dsdl/svrl" context="copyright-year"/>
 
 		    <!--ASSERT -->
@@ -361,18 +362,18 @@
         </svrl:text>
          </svrl:successful-report>
       </xsl:if>
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M5"/>
+      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M6"/>
    </xsl:template>
-   <xsl:template match="text()" priority="-1" mode="M5"/>
-   <xsl:template match="@*|node()" priority="-2" mode="M5">
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M5"/>
+   <xsl:template match="text()" priority="-1" mode="M6"/>
+   <xsl:template match="@*|node()" priority="-2" mode="M6">
+      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M6"/>
    </xsl:template>
 
    <!--PATTERN permissions-warnings-->
 
 
 	  <!--RULE -->
-   <xsl:template match="copyright-statement" priority="1000" mode="M6">
+   <xsl:template match="copyright-statement" priority="1000" mode="M7">
       <svrl:fired-rule xmlns:svrl="http://purl.oclc.org/dsdl/svrl" context="copyright-statement"/>
 
 		    <!--ASSERT -->
@@ -392,18 +393,18 @@
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M6"/>
+      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M7"/>
    </xsl:template>
-   <xsl:template match="text()" priority="-1" mode="M6"/>
-   <xsl:template match="@*|node()" priority="-2" mode="M6">
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M6"/>
+   <xsl:template match="text()" priority="-1" mode="M7"/>
+   <xsl:template match="@*|node()" priority="-2" mode="M7">
+      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M7"/>
    </xsl:template>
 
    <!--PATTERN permissions-info-->
 
 
 	  <!--RULE -->
-   <xsl:template match="license" priority="1003" mode="M7">
+   <xsl:template match="license" priority="1003" mode="M8">
       <svrl:fired-rule xmlns:svrl="http://purl.oclc.org/dsdl/svrl" context="license"/>
 
 		    <!--REPORT -->
@@ -439,11 +440,11 @@
         </svrl:text>
          </svrl:successful-report>
       </xsl:if>
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M7"/>
+      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M8"/>
    </xsl:template>
 
 	  <!--RULE -->
-   <xsl:template match="license/p | license/license-p" priority="1002" mode="M7">
+   <xsl:template match="license/p | license/license-p" priority="1002" mode="M8">
       <svrl:fired-rule xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
                        context="license/p | license/license-p"/>
 
@@ -460,11 +461,11 @@
         </svrl:text>
          </svrl:successful-report>
       </xsl:if>
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M7"/>
+      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M8"/>
    </xsl:template>
 
 	  <!--RULE -->
-   <xsl:template match="copyright-statement" priority="1001" mode="M7">
+   <xsl:template match="copyright-statement" priority="1001" mode="M8">
       <svrl:fired-rule xmlns:svrl="http://purl.oclc.org/dsdl/svrl" context="copyright-statement"/>
 
 		    <!--REPORT -->
@@ -480,11 +481,11 @@
         </svrl:text>
          </svrl:successful-report>
       </xsl:if>
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M7"/>
+      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M8"/>
    </xsl:template>
 
 	  <!--RULE -->
-   <xsl:template match="copyright-holder" priority="1000" mode="M7">
+   <xsl:template match="copyright-holder" priority="1000" mode="M8">
       <svrl:fired-rule xmlns:svrl="http://purl.oclc.org/dsdl/svrl" context="copyright-holder"/>
 
 		    <!--REPORT -->
@@ -501,18 +502,18 @@
         </svrl:text>
          </svrl:successful-report>
       </xsl:if>
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M7"/>
+      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M8"/>
    </xsl:template>
-   <xsl:template match="text()" priority="-1" mode="M7"/>
-   <xsl:template match="@*|node()" priority="-2" mode="M7">
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M7"/>
+   <xsl:template match="text()" priority="-1" mode="M8"/>
+   <xsl:template match="@*|node()" priority="-2" mode="M8">
+      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M8"/>
    </xsl:template>
 
    <!--PATTERN math-errors-->
 
 
 	  <!--RULE -->
-   <xsl:template match="mml:math | tex-math" priority="1001" mode="M8">
+   <xsl:template match="mml:math | tex-math" priority="1001" mode="M9">
       <svrl:fired-rule xmlns:svrl="http://purl.oclc.org/dsdl/svrl" context="mml:math | tex-math"/>
 
 		    <!--ASSERT -->
@@ -534,11 +535,11 @@
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M8"/>
+      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M9"/>
    </xsl:template>
 
 	  <!--RULE -->
-   <xsl:template match="disp-formula | inline-formula" priority="1000" mode="M8">
+   <xsl:template match="disp-formula | inline-formula" priority="1000" mode="M9">
       <svrl:fired-rule xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
                        context="disp-formula | inline-formula"/>
 
@@ -561,18 +562,18 @@
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M8"/>
+      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M9"/>
    </xsl:template>
-   <xsl:template match="text()" priority="-1" mode="M8"/>
-   <xsl:template match="@*|node()" priority="-2" mode="M8">
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M8"/>
+   <xsl:template match="text()" priority="-1" mode="M9"/>
+   <xsl:template match="@*|node()" priority="-2" mode="M9">
+      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M9"/>
    </xsl:template>
 
    <!--PATTERN math-warnings-->
 
 
 	  <!--RULE -->
-   <xsl:template match="disp-formula | inline-formula" priority="1000" mode="M9">
+   <xsl:template match="disp-formula | inline-formula" priority="1000" mode="M10">
       <svrl:fired-rule xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
                        context="disp-formula | inline-formula"/>
 
@@ -593,18 +594,18 @@
         </svrl:text>
          </svrl:successful-report>
       </xsl:if>
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M9"/>
+      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M10"/>
    </xsl:template>
-   <xsl:template match="text()" priority="-1" mode="M9"/>
-   <xsl:template match="@*|node()" priority="-2" mode="M9">
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M9"/>
+   <xsl:template match="text()" priority="-1" mode="M10"/>
+   <xsl:template match="@*|node()" priority="-2" mode="M10">
+      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M10"/>
    </xsl:template>
 
    <!--PATTERN math-info-->
 
 
 	  <!--RULE -->
-   <xsl:template match="disp-formula | inline-formula" priority="1000" mode="M10">
+   <xsl:template match="disp-formula | inline-formula" priority="1000" mode="M11">
       <svrl:fired-rule xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
                        context="disp-formula | inline-formula"/>
 
@@ -637,10 +638,10 @@
         </svrl:text>
          </svrl:successful-report>
       </xsl:if>
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M10"/>
+      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M11"/>
    </xsl:template>
-   <xsl:template match="text()" priority="-1" mode="M10"/>
-   <xsl:template match="@*|node()" priority="-2" mode="M10">
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M10"/>
+   <xsl:template match="text()" priority="-1" mode="M11"/>
+   <xsl:template match="@*|node()" priority="-2" mode="M11">
+      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M11"/>
    </xsl:template>
 </xsl:stylesheet>
