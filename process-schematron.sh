@@ -1,4 +1,14 @@
 
+# Sanity check
+
+if [ "x$SAXON_JAR" = "x" ] || ! [ -e $SAXON_JAR ]
+  then
+    echo "Error: SAXON_JAR doesn't point to anything. Did you remember to run '. setup.sh'?"
+    exit 2
+fi
+
+# Check usage
+
 if [ $# -ne 1 ]
    then
    echo "Usage: ./process-schematron.sh <schematron>"
