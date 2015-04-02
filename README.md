@@ -30,6 +30,31 @@ When run against an instance, they will generate a report in Schematron Validati
 
 These were created for users who may have trouble applying Schematron directly in their system. They were created using iso-svrl.xsl.
 
+
+## Dependencies (lib)
+
+Several open-source software tools are used in this project.
+
+***Saxon Home Edition***
+
+Downloaded from 
+http://sourceforge.net/projects/saxon/files/Saxon-HE/9.5/SaxonHE9-5-1-5J.zip
+on 4/2/2015, and included in this repository as lib/SaxonHE9-5-1-5J.zip.
+
+***ISO Schematron schema***
+
+This is the schema that defines what is a valid Schematron file. This 
+version is from 2005, and is included here as lib/isoSchematron.rng. 
+
+***Jing***
+
+Release from 10/28/2008, downloaded from 
+[here](http://jing-trang.googlecode.com/files/jing-20081028.zip) on 4/2/2015,
+and included as lib/jing-20081028.zip.
+
+
+
+
 ## Getting Saxon
 
 Download and extract the open-source Saxon Home Edition, which is written in Java, and will work on most platforms. You can download it from [here](http://sourceforge.net/projects/saxon/files/Saxon-HE/). Navigate to the latest version, and follow the instructions (which appear after the list of files). As a shortcut, you can download version 9.5 (which is known to work with these XSLTs) from the command line directly:

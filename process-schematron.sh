@@ -24,28 +24,26 @@ fi
 
 echo Build single schematron from multiple files
 
-  java -jar $SAXON_JAR -xsl:combine-schematron.xsl \
-    -s:$1 -o:combined.sch
+java -jar $SAXON_JAR -xsl:combine-schematron.xsl -s:$1 -o:combined.sch
 
 if [ $? -eq 0 ]
   then
-    echo $1 successfully combined into combined.sch
+    echo $1 Successfully combined into combined.sch
   else
-    echo $1 failed to combine schematron
+    echo $1 Error: failed to combine schematron
     exit 2
 fi
 
 
 echo Validate the schema
 
-  java com.thaiopensource.relaxng.util.Driver \
-    isoSchematron.rng combined.sch
+java com.thaiopensource.relaxng.util.Driver lib/isoSchematron.rng combined.sch
 
 if [ $? -eq 0 ]
   then
     echo $1 is valid
   else
-    echo $1 is an Invalid Schematron file 
+    echo Error: $1 is an Invalid Schematron file 
     exit 2
 fi
 
@@ -59,8 +57,14 @@ fi
 
 echo Generate the stylesheet from $1
 
-  java -jar $SAXON_JAR -s:combined.sch -xsl:iso_svrl.xsl -o:$1.xsl \
-    generate-paths=yes $p
+java -jar $SAXON_JAR -s:combined.sch -xsl:iso_svrl.xsl -o:$1.xsl \
+     generate-paths=yes $p
+
+if [ $? -ne 0 ]
+  then
+    echo Error: Failed to translate Schematron into XSLT
+    exit 2
+fi
 
 #rm combined.sch
 
