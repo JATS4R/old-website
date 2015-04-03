@@ -1,3 +1,5 @@
+# process-schematron.sh
+
 # Usage
 
 if [ "$1" = "-h" ] || [ "$1" = "-?" ] || [ "$1" = "--help" ]
@@ -14,8 +16,8 @@ Arguments:
     For 'level', this can be one of 'errors', 'warnings', or 'info'.
     For 'topic', this can be either 'permissions' or 'math'.
 
-If neither <input-type> nor <phase> is given, this will produce several
-preset combinations of output files (but not all of the possibilities)."
+If neither <input-type> nor <phase> is given, this will produce all of
+the valid combinations of output files."
     exit 0
 fi
 
@@ -105,6 +107,7 @@ if [ $# -ge 1 ]
     process level errors
     process level warnings
     process level info
-    process topic
+    process topic permissions
+    process topic math
 fi
 
