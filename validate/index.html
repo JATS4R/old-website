@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>JATS4R Validation</title>
+    <style>
+      body { font-family: sans-serif; }
+      form { margin: 20px 0; }
+      th { text-align: left; }
+      tr td:first-of-type { white-space: nowrap; vertical-align: top; }
+    </style>
+  </head>
+  <body>
+    <h1>JATS for Reuse Validation</h1>
+    <form>
+      <input id='input' type='file' />
+    </form>
+    <pre><code id="status">Loading…</code></pre>
+    <div id="results"></div>
+
+    <script src="validate.js"></script>
+    <script src="lib/Saxon-CE/Saxonce/Saxonce.nocache.js"></script>
+  </body>
+</html>
