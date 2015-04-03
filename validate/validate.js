@@ -2,24 +2,36 @@
 
 // onSaxonLoad is called when Saxon has finished loading
 var onSaxonLoad = function() {
+    var xslt = {
+        errors:   'jats4r-level-errors-0.xsl',
+        warnings: 'jats4r-level-warnings-0.xsl',
+        info:     'jats4r-level-info-0.xsl'
+    };
+
     var statusNode = document.getElementById('status');
     statusNode.textContent = 'Choose a JATS XML file to validate.';
 
     var input = document.getElementById('input');
+    var phaseNode = document.getElementById('phase');
+    var revalidate = document.getElementById('revalidate');
+    var results = document.getElementById('results');
 
-    // listen for selected file
-    input.addEventListener('change', function() {
+    function validateFile() {
         // clear any previous results
-        document.querySelector('#results').textContent = '';
-
+        results.textContent = '';
+        if (input.files.length == 0) {
+            statusNode.textContent = "Please select a file first!";
+            return;
+        }
         statusNode.textContent = 'Processing…';
 
         var reader = new FileReader;
+        var phase = phaseNode.value;
 
         reader.onload = function() {
             // run the Schematron tests
             Saxon.run({
-                stylesheet: 'generated-xsl/jats4r-level-info-0.xsl',
+                stylesheet: 'generated-xsl/' + xslt[phase],
                 source: Saxon.parseXML(this.result),
                 method: 'transformToDocument',
                 success: function(processor) {
@@ -37,7 +49,10 @@ var onSaxonLoad = function() {
             });
         }
 
-        reader.readAsText(this.files[0]);
-    });
+        reader.readAsText(input.files[0]);
+    }
 
+    // listen for file selection, or for a press on the "revalidate" button
+    input.addEventListener('change', validateFile);
+    revalidate.addEventListener('click', validateFile);
 }

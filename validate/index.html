@@ -9,14 +9,39 @@
       form { margin: 20px 0; }
       th { text-align: left; }
       tr td:first-of-type { white-space: nowrap; vertical-align: top; }
+      #form th { 
+        text-align: right;
+        padding: 0.5em 0.5em;
+      }
     </style>
   </head>
   <body>
     <h1>JATS for Reuse Validation</h1>
-    <form>
-      <input id='input' type='file' />
+    <form id='form'>
+      <table>
+        <tr>
+          <th><label for='phase'>Level:</label></th>
+          <td>
+            <select id='phase' name='phase'>
+              <option value="errors" selected='selected'>Errors</option> 
+              <option value="warnings">Warnings</option>
+              <option value="info">Tagging information</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <th><label for='input'>Input JATS file:</label></th>
+          <td><input id='input' type='file'/></td>
+        </tr>
+        <tr>
+          <th />
+          <td><input id='revalidate' type='button' value='Revalidate' /></td>
+        </tr>
+      </table>
     </form>
-    <pre><code id="status">Loading…</code></pre>
+    <div id='status'>
+      Loading…
+    </div>
     <div id="results"></div>
 
     <script src="validate.js"></script>
