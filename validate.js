@@ -2,44 +2,37 @@
 
 // onSaxonLoad is called when Saxon has finished loading
 var onSaxonLoad = function() {
-    var outputNode = document.getElementById('output');
-    outputNode.textContent = 'Choose a JATS XML file to validate.';
+    var statusNode = document.getElementById('status');
+    statusNode.textContent = 'Choose a JATS XML file to validate.';
 
-    // insert the file selection form
-    var input = document.createElement('input');
-    input.setAttribute('type', 'file');
-
-    var form = document.createElement('form');
-    form.appendChild(input);
-
-    document.body.insertBefore(form, document.body.firstChild);
+    var input = document.getElementById('input');
 
     // listen for selected file
     input.addEventListener('change', function() {
         // clear any previous results
         document.querySelector('#results').textContent = '';
 
-        outputNode.textContent = 'Processing…';
+        statusNode.textContent = 'Processing…';
 
         var reader = new FileReader;
 
         reader.onload = function() {
             // run the Schematron tests
             Saxon.run({
-                stylesheet: 'generated-xsl/jats4r-infolevel-0.xsl',
+                stylesheet: 'generated-xsl/jats4r-level-info-0.xsl',
                 source: Saxon.parseXML(this.result),
                 method: 'transformToDocument',
                 success: function(processor) {
-                    outputNode.textContent = 'Converting…';
+                    statusNode.textContent = 'Converting…';
 
                     // convert the output XML to HTML
                     Saxon.run({
-                        stylesheet: 'output.xsl',
+                        stylesheet: 'svrl-to-html.xsl',
                         source: processor.getResultDocument(),
                         method: 'updateHTMLDocument'
                     });
 
-                    outputNode.textContent = 'Finished';
+                    statusNode.textContent = 'Finished';
                 }
             });
         }
