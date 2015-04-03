@@ -1,0 +1,113 @@
+# process-schematron.sh
+
+# Usage
+
+if [ "$1" = "-h" ] || [ "$1" = "-?" ] || [ "$1" = "--help" ]
+  then
+    echo "Usage: ./process-schematron.sh [ <input-type> [ <phase> ] ]"
+    echo " "
+    echo "This tool will build a combined Schematron file from a multiple-
+file Schematron, validate it, and output an XSLT2 stylesheet
+to run against an XML instance.
+
+Arguments:
+  <input-type> - either 'level' or 'topic'
+  <phase> - one of the phases as defined in the original schematron file.
+    For 'level', this can be one of 'errors', 'warnings', or 'info'.
+    For 'topic', this can be either 'permissions' or 'math'.
+
+If neither <input-type> nor <phase> is given, this will produce all of
+the valid combinations of output files."
+    exit 0
+fi
+
+
+
+# Sanity check
+
+if [ "x$SAXON_JAR" = "x" ] || ! [ -e $SAXON_JAR ]
+  then
+    echo "Error: SAXON_JAR doesn't point to anything. Did you remember to run '. setup.sh'?"
+    exit 2
+fi
+
+OUTPUT_DIR=generated-xsl
+
+
+# This shell subroutine does the actual work.
+# Usage: process <input-type> [<phase>]
+process()
+{
+  INPUT_TYPE=$1
+  IN=jats4r-$INPUT_TYPE-0
+  PHASE=$2
+
+  IN_SCH=$IN.sch
+
+  echo Build single schematron from multiple files
+
+  COMBINED_SCH=$IN-combined.sch
+  java -jar $SAXON_JAR -xsl:combine-schematron.xsl -s:$IN_SCH -o:$COMBINED_SCH
+
+  if [ $? -eq 0 ]
+    then
+      echo $1 Successfully combined $IN_SCH into $COMBINED_SCH
+    else
+      echo $1 Error: failed to combine $IN_SCH
+      exit 2
+  fi
+
+
+  echo Validate the schema
+
+  java com.thaiopensource.relaxng.util.Driver lib/isoSchematron.rng $COMBINED_SCH
+
+  if [ $? -eq 0 ]
+    then
+      echo $IN_SCH is valid
+    else
+      echo Error: $IN_SCH is an invalid Schematron file 
+      exit 2
+  fi
+
+  echo Generate the stylesheet
+
+  if [ -z "$PHASE" ]
+    then 
+      P=""
+      OUT_XSL=$OUTPUT_DIR/$IN.xsl
+    else
+      P="phase=$PHASE"
+      OUT_XSL=$OUTPUT_DIR/jats4r-$INPUT_TYPE-$PHASE-0.xsl
+  fi
+
+
+  java -jar $SAXON_JAR -s:$COMBINED_SCH -xsl:$SCHEMATRON/iso_svrl_for_xslt2.xsl \
+       -o:$OUT_XSL generate-paths=yes $P
+
+  if [ $? -ne 0 ]
+    then
+      echo Error: Failed to translate Schematron $IN_SCH into XSLT $OUT_XSL
+      exit 2
+    else
+      echo Successfully generated $OUT_XSL
+  fi
+
+
+  rm $COMBINED_SCH
+
+}
+
+# Finally, generate the outputs:
+
+if [ $# -ge 1 ]
+  then
+    process $1 $2
+  else
+    process level errors
+    process level warnings
+    process level info
+    process topic permissions
+    process topic math
+fi
+
