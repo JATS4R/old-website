@@ -8,15 +8,34 @@ The rest of this README describes the validation tools, and how to use them and
 do development on them.
 
 
-Setup
------
+Web site development
+--------------------
+
+To make changes to this site, first fork the repository into your own account,
+and then clone it and make a gh-pages branch. Push that back up, and you should be able
+to see your own version of the site at http://username.github.io/jats4r.github.io.
+For example,
+
+```
+git clone git@github.com:username/jats4r.github.io.git
+cd jats4r.github.io
+git checkout -b gh-pages
+git push
+```
+
+When you are happy with the changes, submit them as a pull request from your gh-pages
+branch to the master branch of the main repo.
+
+
+Validation Setup
+----------------
 
 The instructions on this page assume you'll be working in a *bash* shell.
 Whenever you open a new shell, to configure your environment, you must first 
-source the *setup.sh* script, from this repository's main directory:
+source the *setup.sh* script, from this repository's *validate* directory:
 
 ```
-cd *repo dir*
+cd *repo dir*/validate
 source setup.sh
 ```
 
@@ -154,6 +173,9 @@ and included as lib/iso-schematron-xslt2.zip.
 Downloaded from 
 [here](http://apache.mirrors.pair.com//xerces/xml-commons/xml-commons-resolver-1.2.zip)
 on 2015-04-02, and included as lib/xml-commons-resolver-1.2.zip.
+
+
+
 
 
 Credits
