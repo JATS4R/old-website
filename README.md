@@ -24,7 +24,15 @@ git push
 ```
 
 When you are happy with the changes, submit them as a pull request from your gh-pages
-branch to the master branch of the main repo.
+branch to the master branch of the main repo. Or, if you have write access, and are
+sure the changes are okay, you can push them directly:
+
+```
+# Do this once, to set up `jats4r` as a remote:
+git remote add jats4r git@github.com:JATS4R/jats4r.github.io.git
+# Push changes directly from your gh-pages branch to the main repo's master branch:
+git push jats4r gh-pages:master
+```
 
 
 Validation Setup
