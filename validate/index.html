@@ -3,20 +3,30 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>JATS4R Validation</title>
+    <title>JATS4R Validator</title>
+
     <style>
       body { font-family: sans-serif; }
       form { margin: 20px 0; }
       th { text-align: left; }
-      tr td:first-of-type { white-space: nowrap; vertical-align: top; }
+      tr td:first-of-type { vertical-align: top; }
       #form th { 
         text-align: right;
         padding: 0.5em 0.5em;
       }
+      .errors {
+        color: red;
+      }
+      .warnings {
+        color: #A33;
+      }
+      .info {
+        color: black;
+      }
     </style>
   </head>
   <body>
-    <h1>JATS for Reuse Validation</h1>
+    <h1>JATS for Reuse Validator</h1>
     <form id='form'>
       <table>
         <tr>
