@@ -29,15 +29,34 @@ var onSaxonLoad = function() {
         var phase = phaseNode.value;
 
         reader.onload = function() {
+        	// Parse the input file
+        	var doc = Saxon.parseXML(this.result);
+        	var pe = doc.querySelector("parsererror div");
+        	if (pe) {
+        		var cls = document.createAttribute("class");
+        		cls.value = "error";
+        		pe.setAttributeNode(cls);
+        		pe.removeAttribute("style");
+        		results.insertBefore(pe, null);
+        		var h = document.createElement("h2");
+        		h.textContent = "Error parsing input file";
+        		results.insertBefore(h, pe);
+                statusNode.textContent = 'Finished';
+        		return;
+        	}
+  
             // run the Schematron tests
             Saxon.run({
                 stylesheet: 'generated-xsl/' + xslt[phase],
-                source: Saxon.parseXML(this.result),
+                source: doc,
                 method: 'transformToDocument',
                 success: function(processor) {
                     statusNode.textContent = 'Converting…';
 
-                    // convert the output XML to HTML
+                    // Convert the output XML to HTML. When done, this calls updateHTMLDocument,
+                    // which uses the @href attribute in the <xsl:result-document> element in the
+                    // stylesheet to update the #result element in the HTML page.
+
                     Saxon.run({
                         stylesheet: 'svrl-to-html.xsl',
                         source: processor.getResultDocument(),
