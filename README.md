@@ -27,8 +27,6 @@ they are for.
 Web site development
 --------------------
 
-## jats4r.org site
-
 Our web site is served from [jats4r.org](http://jats4r.org). The content is 
 hosted on GitHub pages, from the repository 
 [jats4r.github.io](https://github.com/JATS4R/jats4r.github.io).
