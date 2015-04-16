@@ -3,9 +3,9 @@
 // onSaxonLoad is called when Saxon has finished loading
 var onSaxonLoad = function() {
     var xslt = {
-        errors:   'jats4r-level-errors-0.xsl',
-        warnings: 'jats4r-level-warnings-0.xsl',
-        info:     'jats4r-level-info-0.xsl'
+        errors:   'jats4r-level-errors.xsl',
+        warnings: 'jats4r-level-warnings.xsl',
+        info:     'jats4r-level-info.xsl'
     };
 
     var statusNode = document.getElementById('status');
@@ -46,8 +46,9 @@ var onSaxonLoad = function() {
         	}
   
             // run the Schematron tests
+            // FIXME:  need to parameterize the version number
             Saxon.run({
-                stylesheet: 'generated-xsl/' + xslt[phase],
+                stylesheet: '../generated-xsl/0.1/' + xslt[phase],
                 source: doc,
                 method: 'transformToDocument',
                 success: function(processor) {

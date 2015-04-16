@@ -2,49 +2,68 @@ JATS for Reuse
 ==============
 
 This repository holds the source files for the [JATS for 
-Reuse](http://jats4r.github.io/) web site, including the validation tools.
+Reuse](http://jats4r.github.io/) home page, including the validation tools.
 
-The rest of this README describes the validation tools, and how to use them and
-do development on them.
+
+Directories and files
+---------------------
+
+The following are the main directories and files in this repository, and what
+they are for.
+
+* bin - Shell scripts and XSLT files that are used by them
+* generated-xsl - This contains XSLT versions of the Schematron files. The contents
+  here should not be edited directly.  See [Generating XSLTs from Schematron 
+  sources](#generating-xslts-from-schematron-sources), below
+* lib - Third party libraries and tools. See [Dependencies, 
+  libraries](#dependencies-libraries), below.
+* samples - Some sample XML files
+* schema - The Schematron source files. See [Schema sources](#schema-sources),
+  below.
+* static - Some static resources that are used by the website.
+* validate - The source code for the online client-side validator.
 
 
 Web site development
 --------------------
 
-To make changes to this site, first fork the repository into your own account,
-and then clone it and make a gh-pages branch. Push that back up, and you should be able
-to see your own version of the site at http://username.github.io/jats4r.github.io.
-For example,
+## jats4r.org site
 
-```
-git clone git@github.com:username/jats4r.github.io.git
-cd jats4r.github.io
-git checkout -b gh-pages
-git push
-```
+Our web site is served from [jats4r.org](http://jats4r.org). The content is 
+hosted on GitHub pages, from the repository 
+[jats4r.github.io](https://github.com/JATS4R/jats4r.github.io).
 
-When you are happy with the changes, submit them as a pull request from your gh-pages
-branch to the master branch of the main repo. Or, if you have write access, and are
-sure the changes are okay, you can push them directly:
+The [CNAME file](https://github.com/JATS4R/jats4r.github.io/blob/master/CNAME) in that 
+repository controls the domain that the pages will be served from, so if you try to access it 
+from jats4r.github.io, you will be redirected.
 
-```
-# Do this once, to set up `jats4r` as a remote:
-git remote add jats4r git@github.com:JATS4R/jats4r.github.io.git
-# Push changes directly from your gh-pages branch to the main repo's master branch:
-git push jats4r gh-pages:master
-```
+That repository also hosts all of the schematrons and the validation tools. To do development on 
+it, and see your results before you commit and push, the best way is to use 
+[Jekyll](http://jekyllrb.com/). Assuming you have that installed, start a local server with
+
+    jekyll serve
+
+and then access it from [http://localhost:4000](http://localhost:4000).
+
+Alternatively, if you don't need the Markdown preprocessing, and other features (for example, if 
+you're just working on the home page, the schematrons or the validator) you can serve 
+your local clone of that repo from a plain HTTP server, and access it through that. For example, 
+let's say you have an Apache instance running on port 8080. Clone the 
+repository under the *htdocs* folder of that server, and access it through
+[http://localhost:8080/jats4r.github.io](http://localhost:8080/jats4r.github.io).
 
 
 Validation Setup
 ----------------
 
-The instructions on this page assume you'll be working in a *bash* shell.
+*The instructions on this page assume you'll be working in a *bash* shell.*
+
 Whenever you open a new shell, to configure your environment, you must first 
-source the *setup.sh* script, from this repository's *validate* directory:
+source the *setup.sh* script, from this repository's root directory:
 
 ```
-cd *repo dir*/validate
-source setup.sh
+cd *repo dir*
+source bin/setup.sh
 ```
 
 The very first time you run the script, it will extract several third party
@@ -61,16 +80,16 @@ Validating a JATS file
 To validate a JATS file named sample.xml, use the script *validate.sh*. For example,
 
 ```
-./validate.sh sample.xml
+validate.sh samples/minimal.xml
 ```
 
 This will give a report for compliance of 
-the input file *sample.xml* with respect to all topics (*math* and *permissions*).
+the input file *minimal.xml* with respect to all topics (*math* and *permissions*).
 By default, it only reports *errors*. If you want a full report (*info*, *warnings*,
 and *errors*) then enter:
 
 ```
-./validate.sh sample.xml info
+validate.sh samples/minimal.xml info
 ```
 
 Use the `-h` switch to get a list of all the possible arguments.
@@ -91,28 +110,39 @@ export JATS_CATALOG=~/jatspacks/catalog.xml
 ```
 
 Now, when you run *validate.sh*, it will automatically use that catalog file to
-resolve any DTDs.
+resolve any DTDs.  For example:
+
+```
+validate.sh samples/sample.xml
+```
 
 
-Source code
------------
+Schema sources
+--------------
 
-There are two master Schematron files, which break down the tests in two different
+The master schema files are in Schematron format, in the *schema* subdirectory.
+
+The "master" Schematron file, which determines conformance or non-conformance,
+is *jats4r.sch*.  This includes all topics, but only the "error level" tests.
+
+There are two other "master" Schematron files, which break down the tests in two different
 ways: one by message severity (*info*, *warnings*, and *errors*) and one by 
 topic (*math* and *permissions*).
 
-The test files themselves are in the *modules* subdirectory. 
+The test files themselves are broken down into separate *modules*, by topic and
+by severity level.
 So, for example, *permissions-errors.sch*, *permissions-warnings.sch*, and 
 *permissions-info.sch* define the tests for the permissions topic. 
 All three run tests on permissions, but the permissions-errors reports only those 
 things that are errors. 
 
-The master Schematron files are:
+In summary, the master Schematron files are:
 
-* jats4r-level-0.sch - groups tests by message severity level. Using this with
+* jats4r.sch - all topics, error level only
+* jats4r-level.sch - groups tests by message severity level. Using this with
   `phase=info` (or `phase=#ALL`) will run all of the tests.
-* jats4r-topic-0.sch - groups tests by topic. So, for example, when you run the 
-  jats4r-topic-0.sch with the `phase=math`, you will run just the math tests. 
+* jats4r-topic.sch - groups tests by topic. So, for example, when you run this
+  with the `phase=math`, you will run just the math tests. 
 
 The *generated-xsl* subdirectory contains XSLT2 files that have been generated from 
 the Schematrons, using the *process-schematron.sh* script. 
@@ -127,9 +157,9 @@ Generating XSLTs from Schematron sources
 ----------------------------------------
 
 To generate new XSLT files in the generated-xsl directory, first, as described above,
-you must source the *setup.sh* script into your shell.
+you must source the *bin/setup.sh* script into your shell.
 
-Then, use the script ./process-schematron.sh to convert the Schematron files into XSLT:
+Then, use the script *process-schematron.sh* to convert the Schematron files into XSLT:
 
 ```
 ./process-schematron.sh
@@ -143,8 +173,8 @@ This writes the output files into the *generated-xsl* directory.
 
 
 
-Dependencies (libraries)
-------------------------
+Dependencies, libraries
+-----------------------
 
 Several open-source software tools are used in this project, and, for convenience,
 have been included in this repository.

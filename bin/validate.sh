@@ -23,6 +23,12 @@ if [ $# -lt 1 ]
     exit 2
 fi
 
+if [ x$JATS4R_XSLT = x ]
+  then
+    echo "Error: you need to run bin/setup.sh first. See the README.md file."
+    exit 2
+fi
+
 JATS_FILE=$1
 
 if [ "$2" = "" ]
@@ -32,7 +38,8 @@ if [ "$2" = "" ]
     PHASE=$2
 fi
 
-XSL=`ls generated-xsl/jats4r-*$PHASE-*.xsl`
+# FIXME: The version number needs to be parameterized
+XSLT=`ls $JATS4R_XSLT/0.1/jats4r-*$PHASE.xsl`
 
 if [ "$JATS_CATALOG" = "" ]
   then 
@@ -41,10 +48,10 @@ if [ "$JATS_CATALOG" = "" ]
     CATALOG_ARG="-catalog:$JATS_CATALOG"
 fi
 
-echo "Validating against $XSL"
+echo "Validating against $XSLT"
 
 REPORT=report.xml
-java net.sf.saxon.Transform $CATALOG_ARG -s:$JATS_FILE -xsl:$XSL -o:$REPORT 
+java net.sf.saxon.Transform $CATALOG_ARG -s:$JATS_FILE -xsl:$XSLT -o:$REPORT 
 
 echo "Done.  Output is in $REPORT"
 

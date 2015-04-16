@@ -4,7 +4,7 @@
 
 if [ "$1" = "-h" ] || [ "$1" = "-?" ] || [ "$1" = "--help" ]
   then
-    echo "Usage: ./process-schematron.sh [ <input-type> [ <phase> ] ]"
+    echo "Usage: process-schematron.sh [ <input-type> [ <phase> ] ]"
     echo " "
     echo "This tool will build a combined Schematron file from a multiple-
 file Schematron, validate it, and output an XSLT2 stylesheet
@@ -31,7 +31,9 @@ if [ "x$SAXON_JAR" = "x" ] || ! [ -e $SAXON_JAR ]
     exit 2
 fi
 
-OUTPUT_DIR=generated-xsl
+# FIXME: version number needs to be parameterized
+IN_DIR=$JATS4R_SCHEMA/0.1
+OUTPUT_DIR=$JATS4R_XSLT/0.1
 
 
 # This shell subroutine does the actual work.
@@ -39,15 +41,15 @@ OUTPUT_DIR=generated-xsl
 process()
 {
   INPUT_TYPE=$1
-  IN=jats4r-$INPUT_TYPE-0
+  IN=jats4r-$INPUT_TYPE
   PHASE=$2
 
-  IN_SCH=$IN.sch
+  IN_SCH=$IN_DIR/$IN.sch
 
   echo Build single schematron from multiple files
 
   COMBINED_SCH=$IN-combined.sch
-  java -jar $SAXON_JAR -xsl:combine-schematron.xsl -s:$IN_SCH -o:$COMBINED_SCH
+  java -jar $SAXON_JAR -xsl:$JATS4R_HOME/bin/combine-schematron.xsl -s:$IN_SCH -o:$COMBINED_SCH
 
   if [ $? -eq 0 ]
     then
@@ -78,7 +80,7 @@ process()
       OUT_XSL=$OUTPUT_DIR/$IN.xsl
     else
       P="phase=$PHASE"
-      OUT_XSL=$OUTPUT_DIR/jats4r-$INPUT_TYPE-$PHASE-0.xsl
+      OUT_XSL=$OUTPUT_DIR/jats4r-$INPUT_TYPE-$PHASE.xsl
   fi
 
 
