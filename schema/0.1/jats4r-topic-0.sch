@@ -17,12 +17,12 @@
         <active pattern="math-info"/>
     </phase>
 
-    <include href="modules/permissions-errors.sch"/>
-    <include href="modules/permissions-warnings.sch"/>
-    <include href="modules/permissions-info.sch"/>
+    <include href="permissions-errors.sch"/>
+    <include href="permissions-warnings.sch"/>
+    <include href="permissions-info.sch"/>
 
-    <include href="modules/math-errors.sch"/>
-    <include href="modules/math-warnings.sch"/>
-    <include href="modules/math-info.sch"/>
+    <include href="math-errors.sch"/>
+    <include href="math-warnings.sch"/>
+    <include href="math-info.sch"/>
 
 </schema>
