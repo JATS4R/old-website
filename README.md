@@ -11,17 +11,17 @@ Directories and files
 The following are the main directories and files in this repository, and what
 they are for.
 
-* bin - Shell scripts and XSLT files that are used by them
-* generated-xsl - This contains XSLT versions of the Schematron files. The contents
+* ***bin*** - Shell scripts and XSLT files that are used by them
+* ***generated-xsl*** - This contains XSLT versions of the Schematron files. The contents
   here should not be edited directly.  See [Generating XSLTs from Schematron 
   sources](#generating-xslts-from-schematron-sources), below
-* lib - Third party libraries and tools. See [Dependencies, 
+* ***lib*** - Third party libraries and tools. See [Dependencies, 
   libraries](#dependencies-libraries), below.
-* samples - Some sample XML files
-* schema - The Schematron source files. See [Schema sources](#schema-sources),
+* ***samples*** - Some sample XML files
+* ***schema*** - The Schematron source files. See [Schema sources](#schema-sources),
   below.
-* static - Some static resources that are used by the website.
-* validate - The source code for the online client-side validator.
+* ***static*** - Some static resources that are used by the website.
+* ***validate*** - The source code for the online client-side validator.
 
 
 Web site development
