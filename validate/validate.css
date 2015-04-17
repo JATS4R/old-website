@@ -1,5 +1,5 @@
-body { 
-  font-family: sans-serif; 
+body {
+  font-family: sans-serif;
   padding: 2em;
 }
 
@@ -7,17 +7,17 @@ th { text-align: left; }
 
 /* Controls at the top */
 form { margin: 20px 0; }
-tr td:first-of-type { 
-  vertical-align: top; 
+tr td:first-of-type {
+  vertical-align: top;
 }
-#form th { 
+#form th {
   text-align: right;
   padding: 0.5em 0.5em;
 }
 
 /* Results table */
 table.results {
-  border-collapse: collapse;  
+  border-collapse: collapse;
 }
 table.results th,
 table.results td {
@@ -35,3 +35,10 @@ table.results td {
   color: black;
 }
 
+#lint-container {
+    overflow-x: auto;
+}
+
+#lint {
+    color: red;
+}

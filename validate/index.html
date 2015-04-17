@@ -14,7 +14,7 @@
           <th><label for='phase'>Level:</label></th>
           <td>
             <select id='phase' name='phase'>
-              <option value="errors" selected='selected'>Errors</option> 
+              <option value="errors" selected='selected'>Errors</option>
               <option value="warnings">Warnings</option>
               <option value="info">Tagging information</option>
             </select>
@@ -33,9 +33,15 @@
     <div id='status'>
       Loading…
     </div>
+
+    <pre id="lint-container"><code id="lint"></code></pre>
+
     <div id="results"></div>
 
     <script src="validate.js"></script>
+    <script src="../lib/polyfill/fetch.js"></script>
+    <script src="../lib/polyfill/es6-promise.min.js"></script>
+    <script src="../lib/xmllint.js"></script>
     <script src="../lib/Saxon-CE/Saxonce/Saxonce.nocache.js"></script>
   </body>
 </html>
