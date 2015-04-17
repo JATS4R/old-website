@@ -29,10 +29,8 @@
             there is a copyright (i.e. the article is not in the public domain) we recommend that
             both of these elements be used. 
         </assert>
-    </rule>
 
-    <!-- <copyright-year> should be a 4-digit number -->
-    <rule context="copyright-year">
+        <!-- <copyright-year> should be a 4-digit number -->
         <assert test="number() and number() &gt; 999 and number() &lt; 10000">
             ERROR: &lt;copyright-year&gt; must be a 4-digit year, not "<value-of select="."/>".
         </assert>

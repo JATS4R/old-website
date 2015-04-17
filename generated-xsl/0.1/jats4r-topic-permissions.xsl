@@ -214,7 +214,7 @@
 
 
 	  <!--RULE -->
-   <xsl:template match="license" priority="1003" mode="M5">
+   <xsl:template match="license" priority="1002" mode="M5">
       <svrl:fired-rule xmlns:svrl="http://purl.oclc.org/dsdl/svrl" context="license"/>
 
 		    <!--REPORT -->
@@ -234,7 +234,7 @@
    </xsl:template>
 
 	  <!--RULE -->
-   <xsl:template match="copyright-holder" priority="1002" mode="M5">
+   <xsl:template match="copyright-holder" priority="1001" mode="M5">
       <svrl:fired-rule xmlns:svrl="http://purl.oclc.org/dsdl/svrl" context="copyright-holder"/>
 
 		    <!--ASSERT -->
@@ -259,7 +259,7 @@
    </xsl:template>
 
 	  <!--RULE -->
-   <xsl:template match="copyright-year" priority="1001" mode="M5">
+   <xsl:template match="copyright-year" priority="1000" mode="M5">
       <svrl:fired-rule xmlns:svrl="http://purl.oclc.org/dsdl/svrl" context="copyright-year"/>
 
 		    <!--ASSERT -->
@@ -280,12 +280,6 @@
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M5"/>
-   </xsl:template>
-
-	  <!--RULE -->
-   <xsl:template match="copyright-year" priority="1000" mode="M5">
-      <svrl:fired-rule xmlns:svrl="http://purl.oclc.org/dsdl/svrl" context="copyright-year"/>
 
 		    <!--ASSERT -->
       <xsl:choose>
