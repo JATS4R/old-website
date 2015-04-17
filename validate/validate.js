@@ -31,12 +31,8 @@ var onSaxonLoad = function() {
         reader.onload = function() {
         	// Parse the input file
         	var doc = Saxon.parseXML(this.result);
-        	var pe = doc.querySelector("parsererror div");
+        	var pe = doc.querySelector("parsererror");
         	if (pe) {
-        		var cls = document.createAttribute("class");
-        		cls.value = "error";
-        		pe.setAttributeNode(cls);
-        		pe.removeAttribute("style");
         		results.insertBefore(pe, null);
         		var h = document.createElement("h2");
         		h.textContent = "Error parsing input file";
