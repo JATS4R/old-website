@@ -19,7 +19,7 @@
         <xsl:when test="svrl:failed-assert">
           <h2>Problems / info</h2>
 
-          <table>
+          <table class='results'>
             <thead>
               <tr>
                 <th>Location</th>

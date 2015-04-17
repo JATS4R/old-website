@@ -1,0 +1,37 @@
+body { 
+  font-family: sans-serif; 
+  padding: 2em;
+}
+
+th { text-align: left; }
+
+/* Controls at the top */
+form { margin: 20px 0; }
+tr td:first-of-type { 
+  vertical-align: top; 
+}
+#form th { 
+  text-align: right;
+  padding: 0.5em 0.5em;
+}
+
+/* Results table */
+table.results {
+  border-collapse: collapse;  
+}
+table.results th,
+table.results td {
+  border: 1px solid black;
+  padding: .2em;
+}
+
+.errors, .error {
+  color: red;
+}
+.warnings {
+  color: #A33;
+}
+.info {
+  color: black;
+}
+
