@@ -19,27 +19,28 @@ var onSaxonLoad = function() {
     function validateFile() {
         // clear any previous results
         results.textContent = '';
-        if (input.files.length == 0) {
+        if (!input.files.length) {
             statusNode.textContent = "Please select a file first!";
             return;
         }
         statusNode.textContent = 'Processing…';
 
-        var reader = new FileReader;
+        var reader = new FileReader();
         var phase = phaseNode.value;
 
         reader.onload = function() {
         	// Parse the input file
-            var parse_error = false;
+            var doc, pe, parse_error = false;
+
             try {
-                var doc = Saxon.parseXML(this.result);
+                doc = Saxon.parseXML(this.result);
             }
             catch (e) {
                 parse_error = true;
             }
             if (!doc) { parse_error = true; }
             if (!parse_error) {
-                var pe = doc.querySelector("parsererror");
+                pe = doc.querySelector("parsererror");
             }
         	if (parse_error || pe) {
                 if (!pe) {
@@ -53,7 +54,7 @@ var onSaxonLoad = function() {
                 statusNode.textContent = 'Finished';
         		return;
         	}
-  
+
             // run the Schematron tests
             // FIXME:  need to parameterize the version number
             Saxon.run({
