@@ -208,23 +208,6 @@
    <xsl:template match="license" priority="1003" mode="M6">
       <svrl:fired-rule xmlns:svrl="http://purl.oclc.org/dsdl/svrl" context="license"/>
 
-		    <!--ASSERT -->
-      <xsl:choose>
-         <xsl:when test="normalize-space(@xlink:href)"/>
-         <xsl:otherwise>
-            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
-                                test="normalize-space(@xlink:href)">
-               <xsl:attribute name="location">
-                  <xsl:apply-templates select="." mode="schematron-select-full-path"/>
-               </xsl:attribute>
-               <svrl:text>
-            ERROR: &lt;license&gt; must have an @xlink:href
-            that refers to a publicly available license.
-        </svrl:text>
-            </svrl:failed-assert>
-         </xsl:otherwise>
-      </xsl:choose>
-
 		    <!--REPORT -->
       <xsl:if test="@license-type">
          <svrl:successful-report xmlns:svrl="http://purl.oclc.org/dsdl/svrl" test="@license-type">

@@ -3,12 +3,8 @@
 -->
 <pattern id="permissions-errors" xmlns="http://purl.oclc.org/dsdl/schematron">
 
-    <!-- <license> must have an @xlink:href to the license URI -->
+    <!-- <license> must not have a @license-type attribute -->
     <rule context="license">
-        <assert test="normalize-space(@xlink:href)">
-            ERROR: &lt;license&gt; must have an @xlink:href
-            that refers to a publicly available license.
-        </assert>
         <report test="@license-type">
             ERROR: @license-type is not machine readable and therefore
             should not be used. License type information should be derived instead from the URI
