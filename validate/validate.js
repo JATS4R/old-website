@@ -30,9 +30,22 @@ var onSaxonLoad = function() {
 
         reader.onload = function() {
         	// Parse the input file
-        	var doc = Saxon.parseXML(this.result);
-        	var pe = doc.querySelector("parsererror");
-        	if (pe) {
+            var parse_error = false;
+            try {
+                var doc = Saxon.parseXML(this.result);
+            }
+            catch (e) {
+                parse_error = true;
+            }
+            if (!doc) { parse_error = true; }
+            if (!parse_error) {
+                var pe = doc.querySelector("parsererror");
+            }
+        	if (parse_error || pe) {
+                if (!pe) {
+                    pe = document.createElement("div");
+                    pe.textContent = "Unable to parse the input XML file.";
+                }
         		results.insertBefore(pe, null);
         		var h = document.createElement("h2");
         		h.textContent = "Error parsing input file";
