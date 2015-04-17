@@ -223,25 +223,8 @@
 
 
 	  <!--RULE -->
-   <xsl:template match="license" priority="1003" mode="M6">
+   <xsl:template match="license" priority="1002" mode="M6">
       <svrl:fired-rule xmlns:svrl="http://purl.oclc.org/dsdl/svrl" context="license"/>
-
-		    <!--ASSERT -->
-      <xsl:choose>
-         <xsl:when test="normalize-space(@xlink:href)"/>
-         <xsl:otherwise>
-            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
-                                test="normalize-space(@xlink:href)">
-               <xsl:attribute name="location">
-                  <xsl:apply-templates select="." mode="schematron-select-full-path"/>
-               </xsl:attribute>
-               <svrl:text>
-            ERROR: &lt;license&gt; must have an @xlink:href
-            that refers to a publicly available license.
-        </svrl:text>
-            </svrl:failed-assert>
-         </xsl:otherwise>
-      </xsl:choose>
 
 		    <!--REPORT -->
       <xsl:if test="@license-type">
@@ -260,7 +243,7 @@
    </xsl:template>
 
 	  <!--RULE -->
-   <xsl:template match="copyright-holder" priority="1002" mode="M6">
+   <xsl:template match="copyright-holder" priority="1001" mode="M6">
       <svrl:fired-rule xmlns:svrl="http://purl.oclc.org/dsdl/svrl" context="copyright-holder"/>
 
 		    <!--ASSERT -->
@@ -285,7 +268,7 @@
    </xsl:template>
 
 	  <!--RULE -->
-   <xsl:template match="copyright-year" priority="1001" mode="M6">
+   <xsl:template match="copyright-year" priority="1000" mode="M6">
       <svrl:fired-rule xmlns:svrl="http://purl.oclc.org/dsdl/svrl" context="copyright-year"/>
 
 		    <!--ASSERT -->
@@ -306,12 +289,6 @@
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M6"/>
-   </xsl:template>
-
-	  <!--RULE -->
-   <xsl:template match="copyright-year" priority="1000" mode="M6">
-      <svrl:fired-rule xmlns:svrl="http://purl.oclc.org/dsdl/svrl" context="copyright-year"/>
 
 		    <!--ASSERT -->
       <xsl:choose>
@@ -353,6 +330,29 @@
 
    <!--PATTERN permissions-warnings-->
 
+
+	  <!--RULE -->
+   <xsl:template match="license" priority="1001" mode="M7">
+      <svrl:fired-rule xmlns:svrl="http://purl.oclc.org/dsdl/svrl" context="license"/>
+
+		    <!--ASSERT -->
+      <xsl:choose>
+         <xsl:when test="normalize-space(@xlink:href)"/>
+         <xsl:otherwise>
+            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
+                                test="normalize-space(@xlink:href)">
+               <xsl:attribute name="location">
+                  <xsl:apply-templates select="." mode="schematron-select-full-path"/>
+               </xsl:attribute>
+               <svrl:text>
+            WARNING: &lt;license&gt; should have an @xlink:href
+            that refers to a publicly available license.
+        </svrl:text>
+            </svrl:failed-assert>
+         </xsl:otherwise>
+      </xsl:choose>
+      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M7"/>
+   </xsl:template>
 
 	  <!--RULE -->
    <xsl:template match="copyright-statement" priority="1000" mode="M7">

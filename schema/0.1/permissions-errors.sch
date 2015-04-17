@@ -3,12 +3,8 @@
 -->
 <pattern id="permissions-errors" xmlns="http://purl.oclc.org/dsdl/schematron">
 
-    <!-- <license> must have an @xlink:href to the license URI -->
+    <!-- <license> must not have a @license-type attribute -->
     <rule context="license">
-        <assert test="normalize-space(@xlink:href)">
-            ERROR: &lt;license&gt; must have an @xlink:href
-            that refers to a publicly available license.
-        </assert>
         <report test="@license-type">
             ERROR: @license-type is not machine readable and therefore
             should not be used. License type information should be derived instead from the URI
@@ -33,10 +29,8 @@
             there is a copyright (i.e. the article is not in the public domain) we recommend that
             both of these elements be used. 
         </assert>
-    </rule>
 
-    <!-- <copyright-year> should be a 4-digit number -->
-    <rule context="copyright-year">
+        <!-- <copyright-year> should be a 4-digit number -->
         <assert test="number() and number() &gt; 999 and number() &lt; 10000">
             ERROR: &lt;copyright-year&gt; must be a 4-digit year, not "<value-of select="."/>".
         </assert>
