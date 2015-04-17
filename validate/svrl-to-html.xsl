@@ -15,8 +15,9 @@
         <xsl:apply-templates select="svrl:active-pattern"/>
       </ul>
 
+      <xsl:variable name='problems' select='svrl:failed-assert|svrl:successful-report'/>
       <xsl:choose>
-        <xsl:when test="svrl:failed-assert">
+        <xsl:when test="$problems">
           <h2>Problems / info</h2>
 
           <table class='results'>
@@ -27,7 +28,9 @@
               </tr>
             </thead>
             <tbody>
-              <xsl:apply-templates select="svrl:failed-assert|svrl:successful-report"/>
+              <xsl:for-each select="$problems">
+                <xsl:call-template name='problem-report'/>
+              </xsl:for-each>
             </tbody>
           </table>
         </xsl:when>
@@ -44,7 +47,7 @@
     </li>
   </xsl:template>
 
-  <xsl:template match="svrl:failed-assert|svrl:successful-report">
+  <xsl:template name='problem-report'>
     <xsl:variable name='active-pattern' select='preceding-sibling::svrl:active-pattern[1]/@name'/>
     <xsl:variable name='level'>
       <xsl:choose>

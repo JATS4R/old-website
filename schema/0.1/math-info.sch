@@ -12,7 +12,7 @@
             &lt;alternatives>.
         </report>
 
-        <report test="tex-math">
+        <report test="descendant::tex-math">
             INFO: The content of the &lt;tex-math> element should be math-mode
             LaTeX, without the delimiters that are normally used to switch into / out of math mode
             (\\[...\\], \\(...\\), $$...$$, etc.).

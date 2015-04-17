@@ -4,7 +4,7 @@
 
 <pattern id="math-warnings" xmlns="http://purl.oclc.org/dsdl/schematron">
 
-    <rule context="disp-formula | inline-formula">
+    <rule context="disp-formula | inline-formula">        
         <!--
           The use of images to represent mathematical expressions is strongly discouraged. Math 
           should be marked up within <inline-formula> and <disp-formula> using either <tex-math> 

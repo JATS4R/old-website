@@ -626,8 +626,8 @@
       </xsl:if>
 
 		    <!--REPORT -->
-      <xsl:if test="tex-math">
-         <svrl:successful-report xmlns:svrl="http://purl.oclc.org/dsdl/svrl" test="tex-math">
+      <xsl:if test="descendant::tex-math">
+         <svrl:successful-report xmlns:svrl="http://purl.oclc.org/dsdl/svrl" test="descendant::tex-math">
             <xsl:attribute name="location">
                <xsl:apply-templates select="." mode="schematron-select-full-path"/>
             </xsl:attribute>
