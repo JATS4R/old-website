@@ -14,7 +14,9 @@ The status of this page is: final recommendation.
 
 ## Context
 
-The \<permissions> element should be present within the \<article-meta> section of the \<front> matter. It is the container for all of the article's copyright and licensing information and can contain the following repeatable elements in this order:
+The \<permissions> element should be present 
+within 
+the \<article-meta> section of the \<front> matter. It is the container for all of the article's copyright and licensing information and can contain the following repeatable elements in this order:
 
 * \<copyright-statement>
 * \<copyright-year>
