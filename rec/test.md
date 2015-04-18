@@ -43,7 +43,7 @@ The \<license-p> element is intended to be human-readable documentation, and any
 
 
 
-```xml
+```markup
 <permissions>
   <copyright-statement>© 2014 Surname et al.</copyright-statement>
   <copyright-year>2014</copyright-year>
@@ -67,7 +67,7 @@ In some cases a document may consist of multiple components (such as a book spli
 
 Every other component of the document will be considered to inherit the permissions as set out in the \<article-meta> (or equivalent section). The separate \<permissions> provided for the figure must be complete, containing \<copyright-statement>, \<copyright-year>, \<copyright-holder> and \<license>. This is illustrated for a book and a journal, respectively, in the following examples.
 
-```xml
+```markup
 <book>
   <book-meta>
     ...
@@ -133,7 +133,7 @@ Every other component of the document will be considered to inherit the permissi
 
 The following examples illustrates a case where a single, composite figure is the subject of two separate copyrights. In this case, multiple \<permissions> elements are given for that figure. A machine attempting to parse this, to determine the re-usability of that figure, would have to pick the most restrictive of the licences (in this case, no licence, or "all rights reserved").
 
-```xml
+```markup
 <article>
   <front>
     ...

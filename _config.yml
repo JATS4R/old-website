@@ -1,7 +1,14 @@
 title: JATS4R web site
 baseurl: ""
 url: "http://jats4r.org"
+
 markdown: kramdown
+kramdown:
+  input: GFM
+
+# I couldn't get any server-side syntax highlighter to work
+#syntax_highlighter: rouge
+
 defaults:
   -
     scope:

@@ -6,6 +6,8 @@
     <title>JATS4R - JATS for Reuse</title>
     <link rel="stylesheet" href='{{ "/static/css/normalize.css" | prepend: site.baseurl }}' />
     <link rel="stylesheet" href='{{ "/static/css/style.css" | prepend: site.baseurl }}' />
+    <link rel="stylesheet" href='{{ "/static/prism/prism.css" | prepend: site.baseurl }}' />
+   
     <meta name="viewport" content="width=device-width, initial-scale=1" />
   </head>
   <body>
@@ -51,8 +53,9 @@
     </div>
 
 
-    <script src="static/js/jquery-1.10.2.min.js"></script>
-    <script src="static/js/script.js"></script>
+    <script src='{{ "/static/js/jquery-1.10.2.min.js" | prepend: site.baseurl }}'></script>
+    <script src='{{ "/static/js/script.js" | prepend: site.baseurl }}'></script>
+    <script src='{{ "/static/prism/prism.js" | prepend: site.baseurl }}'></script>
     <!-- Google Analytics -->
     <script>
       (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=

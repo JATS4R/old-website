@@ -286,6 +286,13 @@ ul.repo-list {
     text-transform: none;
 }
 
+/* pre
+*/
+
+pre {
+  font-size: 0.75em;
+}
+
 /*
 Helper Classes
 ==================================
