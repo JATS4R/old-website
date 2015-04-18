@@ -14,9 +14,7 @@ The status of this page is: final recommendation.
 
 ## Context
 
-The \<permissions> element should be present 
-within 
-the \<article-meta> section of the \<front> matter. It is the container for all of the article's copyright and licensing information and can contain the following repeatable elements in this order:
+The \<permissions> element should be present within the \<article-meta> section of the \<front> matter. It is the container for all of the article's copyright and licensing information and can contain the following repeatable elements in this order:
 
 * \<copyright-statement>
 * \<copyright-year>
@@ -33,9 +31,7 @@ The [\<copyright-year>]() and [\<copyright-holder>]() elements, on the other han
 
 If a license is defined by a URI (as are Creative Commons licenses), this URI must be put in the @xlink:href attribute of the \<license> element within \<permissions>. This should be the sole place that a machine (or anyone) should need to look for the license URI.
 
-If the license does not have a canonical, persistent, published URI that identifies it then the \<license>
-element *must not have* an @xlink:href attribute.  Links to human-readable license documents should *only*
-appear within the \<license-p> elements.
+If the license does not have a canonical, persistent, published URI that identifies it then the \<license> element *must not have* an @xlink:href attribute.  Links to human-readable license documents should *only* appear within the \<license-p> elements.
 
 Currently, the only license URIs that meet these requirements are those published by Creative Commons.
 
@@ -188,11 +184,9 @@ The following examples illustrates a case where a single, composite figure is th
 
 ## Applicability of permissions elements
 
-Per the [JATS schema](http://jatspan.org/niso/publishing-1.0/#p=elem-permissions),
-the \<permissions> element is allowed within many other elements.
+Per the [JATS schema](http://jatspan.org/niso/publishing-1.0/#p=elem-permissions), the \<permissions> element is allowed within many other elements.
 
-The following table specifies what content is covered by a \<permissions> element that
-appears in a given location.
+The following table specifies what content is covered by a \<permissions> element that appears in a given location.
 
 | `permissions` container  | Element to which permissions apply | Notes |
 |--------------------------|------------------------------------|-------|
