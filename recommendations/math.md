@@ -23,7 +23,7 @@ The number of reservoir holes for this pattern is
 <inline-formula id='M1'><tex-math>\frac{5}{4}</tex-math></inline-formula>.
 ```
 
-The use of images to represent mathematical expressions is strongly discouraged. Math should be marked up within &lt;inline-formula&gt; and &lt;disp-formula&gt; using either &lt;tex-math&gt; or &lt;mml:math&gt;. If a graphical version of a mathematical expression is needed due to display requirements, &lt;alternatives&gt; should be used. This should be placed within &lt;inline-formula&gt; or &lt;disp-formula&gt; and should contain the graphical version within &lt;inline-graphic&gt; (for and &lt;inline-formula&gt;) or &lt;graphic&gt; (for a &lt;disp-formula&lt;) alongside the equivalent &lt;mml:math&gt; or &lt;tex-math&gt; mark-up.
+The use of images to represent mathematical expressions is strongly discouraged. Math should be marked up within &lt;inline-formula&gt; and &lt;disp-formula&gt; using either &lt;tex-math&gt; or &lt;mml:math&gt;. If a graphical version of a mathematical expression is needed due to display requirements, &lt;alternatives&gt; should be used. This should be placed within &lt;inline-formula&gt; or &lt;disp-formula&gt; and should contain the graphical version within &lt;inline-graphic&gt; (for an &lt;inline-formula&gt;) or &lt;graphic&gt; (for a &lt;disp-formula&gt;) alongside the equivalent &lt;mml:math&gt; or &lt;tex-math&gt; mark-up.
 
 &lt;alternatives&gt; may contain any combination of representations (&lt;graphic&gt;, &lt;mml:math&gt;, &lt;tex-math&gt;), but at most one of each. And, where used, each representation should be correct, complete and logically equivalent with every other representation present. There is no explicit or implied preferred representation within &lt;alternatives&gt;.
 
@@ -110,8 +110,8 @@ TeX macros can be defined in a \<custom-meta> element, with the \<meta-name> ele
   <custom-meta>
     <meta-name>tex-math-definitions</meta-name>
     <meta-value>
-      \def\rmi{{\rm i}}
-      \def\rme{{\rm e}}
+      \def\rmi{\rm i}
+      \def\rme{\rm e}
     </meta-value>
   </custom-meta>
 </article-meta>
