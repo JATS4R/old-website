@@ -214,7 +214,7 @@
 
 
 	  <!--RULE -->
-   <xsl:template match="mml:math | tex-math" priority="1001" mode="M8">
+   <xsl:template match="mml:math | tex-math" priority="1002" mode="M8">
       <svrl:fired-rule xmlns:svrl="http://purl.oclc.org/dsdl/svrl" context="mml:math | tex-math"/>
 
 		    <!--ASSERT -->
@@ -240,7 +240,7 @@
    </xsl:template>
 
 	  <!--RULE -->
-   <xsl:template match="disp-formula | inline-formula" priority="1000" mode="M8">
+   <xsl:template match="disp-formula | inline-formula" priority="1001" mode="M8">
       <svrl:fired-rule xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
                        context="disp-formula | inline-formula"/>
 
@@ -259,6 +259,32 @@
             expressions, tag each in its own &lt;<xsl:text/>
                   <xsl:value-of select="name()"/>
                   <xsl:text/>&gt;.
+        </svrl:text>
+            </svrl:failed-assert>
+         </xsl:otherwise>
+      </xsl:choose>
+      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M8"/>
+   </xsl:template>
+
+	  <!--RULE -->
+   <xsl:template match="disp-formula/alternatives | inline-formula/alternatives"
+                 priority="1000"
+                 mode="M8">
+      <svrl:fired-rule xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
+                       context="disp-formula/alternatives | inline-formula/alternatives"/>
+
+		    <!--ASSERT -->
+      <xsl:choose>
+         <xsl:when test="count(child::graphic) + count(child::inline-graphic) &lt;= 1 and                        count(child::tex-math) &lt;= 1 and                       count(child::mml:math) &lt;= 1"/>
+         <xsl:otherwise>
+            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
+                                test="count(child::graphic) + count(child::inline-graphic) &lt;= 1 and count(child::tex-math) &lt;= 1 and count(child::mml:math) &lt;= 1">
+               <xsl:attribute name="location">
+                  <xsl:apply-templates select="." mode="schematron-select-full-path"/>
+               </xsl:attribute>
+               <svrl:text>
+            ERROR: For alternate representations of the same expression, there can be at most
+            one of each type of representation (graphic or inline-graphic, tex-math, and mml:math).
         </svrl:text>
             </svrl:failed-assert>
          </xsl:otherwise>
