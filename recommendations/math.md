@@ -19,7 +19,7 @@ All mathematical expressions should be enclosed in an &lt;inline-formula> elemen
 For example, an inline fraction might be tagged as follows
 
 ```markup
-The number of reservoir holes for this pattern is 
+The number of reservoir holes for this pattern is
 <inline-formula id='M1'><tex-math>\frac{5}{4}</tex-math></inline-formula>.
 ```
 
@@ -32,34 +32,17 @@ The only instance in which the graphic representation of a mathematical expressi
 The following example illustrates how a single equation can be provided in three alternate, equivalent forms.
 
 ```markup
-<p>This was calculated as follows: 
-  <inline-formula id="IEq1">
+<p>This was calculated as follows:
+  <inline-formula id="M1">
     <alternatives>
-      <tex-math id="M1">\mathrm{NSAF}=\mathrm{SAFi} /
-        {\displaystyle {\sum}_{i=1}^N SAFi}</tex-math>
-      <mml:math id="M2">
-        <mml:mi mathvariant="normal">NSAF</mml:mi>
+      <tex-math>a=b</tex-math>
+      <mml:math>
+        <mml:mi>a</mml:mi>
         <mml:mo>=</mml:mo>
-        <mml:mi mathvariant="normal">SAFi</mml:mi>
-        <mml:mo stretchy="true">/</mml:mo>
-        <mml:mstyle displaystyle="true">
-          <mml:msubsup>
-            <mml:mo>&#x02211;</mml:mo>
-            <mml:mrow>
-              <mml:mi>i</mml:mi>
-              <mml:mo>=</mml:mo>
-              <mml:mn>1</mml:mn>
-            </mml:mrow>
-            <mml:mi>N</mml:mi>
-          </mml:msubsup>
-          <mml:mrow>
-            <mml:mi mathvariant="italic">SAFi</mml:mi>
-          </mml:mrow>
-        </mml:mstyle>
-      </mml:math>
-      <inline-graphic xlink:href="12953_2014_44_Article_IEq1.gif"/>
+        <mml:mi>b</mml:mi>
+      <inline-graphic xlink:href="equation_M1.gif"/>
     </alternatives>
-  </inline-formula>, where subscript i ....</p>
+  </inline-formula> ....</p>
 ```
 
 ## TeX math

@@ -69,8 +69,8 @@ Every other component of the document will be considered to inherit the permissi
 <book>
   <book-meta>
     ...
-    <!-- 
-      The top-level permissions apply to the book as a whole, and any of its 
+    <!--
+      The top-level permissions apply to the book as a whole, and any of its
       parts, unless a part has its own permissions element.
     -->
     <permissions>
@@ -86,35 +86,35 @@ Every other component of the document will be considered to inherit the permissi
     <book-part id="ch1" book-part-type="chapter">
       <book-part-meta>
         ...
-        <!-- 
-          This book part is published under a different copyright, and so 
-          needs its own permissions element. 
+        <!--
+          This book part is published under a different copyright, and so
+          needs its own permissions element.
         -->
         <permissions>
           <copyright-statement>Warwick Gould, CC BY-NC-ND 4.0</copyright-statement>
           <copyright-year>2013</copyright-year>
-          <!-- 
-            Even though the license URI is the same as that for the book, it 
-            must be repeated,  otherwise this part would be considered to be 
-            "all rights reserved". 
+          <!--
+            Even though the license URI is the same as that for the book, it
+            must be repeated,  otherwise this part would be considered to be
+            "all rights reserved".
           -->
           <license xlink:href="http://creativecommons.org/licenses/by-nc-nd/4.0/"/>
             <license-p>This chapter is published under ...</license-p>
           </license>
         </permissions>
       </book-part-meta>
-      
+
       <body>
         ...
         <fig id="fig1">
           <label>Fig. 1</label>
           <caption>...</caption>
-          <!-- 
-            This particular image is also published under a different copyright, 
-            and is, in fact, all rights reserved. 
+          <!--
+            This particular image is also published under a different copyright,
+            and is, in fact, all rights reserved.
           -->
           <permissions>
-            <copyright-statement>The National Portrait Gallery, London. All rights 
+            <copyright-statement>The National Portrait Gallery, London. All rights
               reserved</copyright-statement>
             <copyright-year>2013</copyright-year>
             <!-- Note:  no license element here:  all rights reserved. -->
@@ -157,13 +157,13 @@ The following examples illustrates a case where a single, composite figure is th
       <caption> . . . </caption>
       <graphic xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="elife00013f002"/>
       <permissions>
-        <copyright-statement>© 1977 Thieme Medical Publishers. All Rights 
+        <copyright-statement>© 1977 Thieme Medical Publishers. All Rights
           Reserved.</copyright-statement>
         <copyright-year>1977</copyright-year>
         <copyright-holder>Thieme Medical Publishers</copyright-holder>
         <license>
-          <license-p>Figure 1, upper panel, is reproduced from 
-            <xref ref-type="bibr"  rid="bib45">Hughes and Sperandio, 2008</xref> 
+          <license-p>Figure 1, upper panel, is reproduced from
+            <xref ref-type="bibr"  rid="bib45">Hughes and Sperandio, 2008</xref>
             with permission.</license-p>
         </license>
       </permissions>
