@@ -23,18 +23,30 @@ $(function() {
         var t = topics[tname];
         var issue_href = "https://github.com/JATS4R/elements/labels/" + tname;
         var example_href = "https://github.com/JATS4R/elements/blob/master/" + tname + ".md";
-        var see_also = t["see-also"] ? t["see-also"].join(", ") : '&nbsp;';
+        var see_also = t["see-also"] 
+          ? t["see-also"].map(function(a){
+                            return "<span style='white-space: nowrap'>" + a + "</span>";
+                         })
+                         .join(", ")
+          : '&nbsp;';
+        var status_href = 
+          t.status == 'final' ? 'http://jats4r.org/recommendations/' + tname + '.html'
+                              : 'https://github.com/JATS4R/elements/wiki/' + tname;
+        var status_label = t.status == 'final' ? "✓ " + t.status : t.status 
         
         var tr = $('<tr class="row' + i % 2 + '">').append(
-          $('<td class="priority">').html(t.priority != null ? t.priority : ''),
-          $('<td>').html(tname),
-          $('<td class="links">').html(
-            '<a class="fa" href="' + issue_href + 
+          $('<td class="center">').html(t.priority != null ? t.priority : ''),
+          $('<td>').html("<strong><span style='white-space: nowrap'>" + tname + 
+            "</span></strong>"),
+          $('<td>').html(t.description),
+          $('<td class="center links">').html(
+            '<a href="' + issue_href + 
               '"><span class="fa fa-exclamation-circle"></span></a> ' +
-            '<a class="fa" href="' + example_href + 
+            '<a href="' + example_href + 
               '"><span class="fa fa-code"></span></a>'
           ),
-          $('<td>').html(t.description),
+          $('<td class="center">').html(
+            '<a href="' + status_href + '">' + status_label + '</a>'),
           $('<td>').html(see_also)
         );
         tbody.append(tr);

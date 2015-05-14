@@ -9,7 +9,7 @@ Begin with generic 'mobile first' styles
 .row0 {
     background-color: #EEE;
 }
-td.priority {
+td.center {
     text-align: center;
 }
 td.links {
@@ -21,8 +21,12 @@ span.fa {
     color: #0072ce;
     text-decoration: none;
 }
-a.fa {
+#topic-table a {
     border-bottom: none !important;
+}
+#topic-table th, #topic-table td {
+    padding: .3em .5em;
+    border-left: 1px solid #BBB;
 }
 
 

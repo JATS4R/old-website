@@ -1,87 +1,148 @@
 abstract:
   description: "Abstracts (different types, etc)"
   priority: 5
+  status: draft
+
 affiliations:
   description: "Affiliations"
   priority: 
+  status: draft
+
 appendices:
   description: "Appendices"
   priority: 
+  status: draft
+
 article-type:
   description: "Using NLM defined article types in article-type attribute and expanding the list"
   priority: 10
+  status: draft
+
 author-metadata:
   description: "Author metadata e.g present addresses, on behalf of, group authorship, equal"
   priority: 
+  status: draft
+
 boxes:
   description: "Boxes"
   priority: 
-  see-also: [ caption-description-label ]
-caption-description-label:
-  description: "Captions, descriptions, and labels for tables, figures, and boxes."
+  status: draft
+  see-also: [ caption-label-title ]
+
+caption-label-title:
+  description: "Captions, labels, and titles for tables, figures, and boxes."
+  status: draft
   see-also: [ tables, figures, boxes ]
+
 clinical-trials:
   description: "Clinical trials"
   priority: 6
+  status: draft
+
 contributions:
   description: "Contributions: roles; define list of contrib-types; other use cases of <contrib> (co-first author, etc.)"
   priority: 12
+  status: draft
+
 custom-metadata:
   description: "How to tag <custom-meta>"
   priority: 
+  status: draft
+
 dates:
   description: "Publication dates/article history dates"
   priority: 7
+  status: draft
+
 dois:
   description: "DOIs (sub-article, different versions)"
   priority: 
+  status: draft
+
 figures:
   description: "Marking up figures, including metadata of images - in binary of the image file (or elsewhere)"
   priority: 
-  see-also: [ caption-description-label ]
-figures:
-  description: "Figures"
-  priority: 
+  status: draft
+  see-also: [ caption-label-title ]
+
 filenaming:
   description: "File naming and packaging"
   priority: 
+  status: draft
+
+footnotes:
+  description: "Footnotes"
+  priority: 
+  status: draft
+
 funding:
   description: "Funding (linking to individual authors, FundRef etc)"
   priority: 9
+  status: draft
+
 journal-metadata:
   description: "Using journals' own IDs; ensure consistent abbreviation/capitalisation; consistent use of <journal-title-group>"
   priority: 
+  status: draft
+
 keywords:
   description: "Keywords/MESH terms versus subject-group(s); also keywords for sub article items eg figures, tables, videos"
   priority: 
+  status: draft
+
 math:
-  description: ""
+  description: "Math issues"
   priority: 2
+  status: final
+
+media-types:
+  description: "Issues related to media types (also known as MIME types)"
+  priority: 
+  status: final
+
 permissions:
   description: "Copyright and license statements (including instructions for how to attribute)"
   priority: 1
+  status: final
+
 references-citations:
   description: "References (citation of software/data/versions/law cases)"
   priority: 4
+  status: draft
+
 related-articles:
   description: "Related article tagging (within journal, without, example JATS list of types?)"
   priority: 11
+  status: draft
+
 sections:
   description: "Sections"
   priority: 
+  status: draft
+
 subarticles:
   description: "Peer review (subarticles?)"
   priority: 
+  status: draft
+
 suppl-material:
   description: "Supplementary material"
   priority: 
+  status: draft
+
 tables:
   description: "Tables"
   priority: 
-  see-also: [ caption-description-label ]
+  status: draft
+  see-also: [ caption-label-title ]
+
 taxonomy:
   description: "Taxonomy (ecology, palaeontology, etc)"
   priority: 8
+  status: draft
+
 versions-corrections:
   description: "Versioning + corrections"
   priority: 3
+  status: draft
+

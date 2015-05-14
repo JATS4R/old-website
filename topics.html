@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="chrome=1" />
-    <title>JATS4R - JATS for Reuse</title>
+    <title>JATS4R Topics</title>
     <link rel="stylesheet" href="static/css/normalize.css" />
     <link rel="stylesheet" href="static/css/style.css" />
     <link rel='stylesheet' 
@@ -30,34 +30,48 @@
           <p class="alert"></p>
         -->
 
-          <p>The following is the list of topics which our group is addressing.</p>
-          <p>
-            The number on the right indicates the current prioritization of the given
-            topic, with a lower number meaning a higher priority. The links will take
-            you to the list of issues (<span class="fa fa-exclamation-circle"></span>) 
-            and the page of examples (<span class="fa fa-code"></span>) 
-            on that topic.
-            
-          </p>
+        <p>The following is the list of topics which our group is addressing.</p>
+        <p>
+          The number on the right indicates the current prioritization of the given
+          topic, with a lower number meaning a higher priority. The links will take
+          you to the list of issues (<span class="fa fa-exclamation-circle"></span>) 
+          and the page of examples (<span class="fa fa-code"></span>) 
+          on that topic.
+        </p>
+        <p>The "status" field gives a link to either the final recommendations page,
+          or the draft recommendations page on the GitHub wiki.</p>
 
-          <div>
-            <table id='topic-table'>
-              <thead>
-                <th>Priority</th>
-                <th>Topic</th>
-                <th>Links</th>
-                <th>Description</th>
-                <th>See also</th>
-              </thead>
-              <tbody>
-              </tbody>
-            </table>
-          </div>
+        <div>
+          <table id='topic-table'>
+            <thead>
+              <th>Priority</th>
+              <th>Topic</th>
+              <th>Description</th>
+              <th>Links</th>
+              <th>Status</th>
+              <th>See also</th>
+            </thead>
+            <tbody>
+            </tbody>
+          </table>
+        </div>
 
-          <p><em>The data for this page comes from <a 
+        <section id="details">
+          <h2>Details</h2>
+          <p>The data for this page comes from <a 
             href='https://github.com/JATS4R/jats4r.github.io/blob/master/static/topics.yaml'>this 
             YAML file</a>. If you'd like to
-            suggest changes, please go there and click the "edit" button.</em></p>
+            suggest changes, please go there and click the "edit" button.</p>
+          <p>We use the following conventions:</p>
+            <ul>
+              <li>Topic names are lowercase, hyphen-delimited</li>
+              <li><a href='https://github.com/JATS4R/elements/labels'>GitHub issue labels</a> that 
+                correspond to topics match the topic names exactly, and therefore begin with
+                a lowercase letter. Those that don't (e.g. "Duplicate") begin with an uppercase
+                letter.</li>
+            </ul>
+        </section>
+
       </section>
 
 
