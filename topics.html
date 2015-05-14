@@ -1,0 +1,81 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <title>JATS4R - JATS for Reuse</title>
+    <link rel="stylesheet" href="static/css/normalize.css" />
+    <link rel="stylesheet" href="static/css/style.css" />
+    <link rel='stylesheet' 
+      href='//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css'/>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+
+  <body>
+    <header>
+      <div class="wrap">
+        <a href="http://jats4r.org/"><img class="logo"
+          src="static/img/JATS4R.png" height="28px" alt="JATS4R"></a>
+        <h1><span class="e">Topics</h1>
+      </div>
+    </header>
+
+    <div class="wrap content">
+
+
+      <section role="main">
+
+
+        <!-- If we ever need any alerts:
+          <p class="alert"></p>
+        -->
+
+          <p>The following is the list of topics which our group is addressing.</p>
+          <p>
+            The number on the right indicates the current prioritization of the given
+            topic, with a lower number meaning a higher priority. The links will take
+            you to the list of issues (<span class="fa fa-exclamation-circle"></span>) 
+            and the page of examples (<span class="fa fa-code"></span>) 
+            on that topic.
+            
+          </p>
+
+          <div>
+            <table id='topic-table'>
+              <thead>
+                <th>Priority</th>
+                <th>Topic</th>
+                <th>Links</th>
+                <th>Description</th>
+                <th>See also</th>
+              </thead>
+              <tbody>
+              </tbody>
+            </table>
+          </div>
+
+          <p><em>The data for this page comes from <a 
+            href='https://github.com/JATS4R/jats4r.github.io/blob/master/static/topics.yaml'>this 
+            YAML file</a>. If you'd like to
+            suggest changes, please go there and click the "edit" button.</em></p>
+      </section>
+
+
+    </div>
+
+
+    <script src="static/js/jquery-1.10.2.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/js-yaml/3.3.0/js-yaml.js"></script>
+    <script src="static/js/topics.js"></script>
+
+    <!-- Google Analytics -->
+    <script>
+      (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+      function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+      e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+      e.src='//www.google-analytics.com/analytics.js';
+      r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+      ga('create','UA-40159858-3');ga('send','pageview');
+    </script>
+  </body>
+</html>

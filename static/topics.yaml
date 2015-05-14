@@ -1,0 +1,87 @@
+abstract:
+  description: "Abstracts (different types, etc)"
+  priority: 5
+affiliations:
+  description: "Affiliations"
+  priority: 
+appendices:
+  description: "Appendices"
+  priority: 
+article-type:
+  description: "Using NLM defined article types in article-type attribute and expanding the list"
+  priority: 10
+author-metadata:
+  description: "Author metadata e.g present addresses, on behalf of, group authorship, equal"
+  priority: 
+boxes:
+  description: "Boxes"
+  priority: 
+  see-also: [ caption-description-label ]
+caption-description-label:
+  description: "Captions, descriptions, and labels for tables, figures, and boxes."
+  see-also: [ tables, figures, boxes ]
+clinical-trials:
+  description: "Clinical trials"
+  priority: 6
+contributions:
+  description: "Contributions: roles; define list of contrib-types; other use cases of <contrib> (co-first author, etc.)"
+  priority: 12
+custom-metadata:
+  description: "How to tag <custom-meta>"
+  priority: 
+dates:
+  description: "Publication dates/article history dates"
+  priority: 7
+dois:
+  description: "DOIs (sub-article, different versions)"
+  priority: 
+figures:
+  description: "Marking up figures, including metadata of images - in binary of the image file (or elsewhere)"
+  priority: 
+  see-also: [ caption-description-label ]
+figures:
+  description: "Figures"
+  priority: 
+filenaming:
+  description: "File naming and packaging"
+  priority: 
+funding:
+  description: "Funding (linking to individual authors, FundRef etc)"
+  priority: 9
+journal-metadata:
+  description: "Using journals' own IDs; ensure consistent abbreviation/capitalisation; consistent use of <journal-title-group>"
+  priority: 
+keywords:
+  description: "Keywords/MESH terms versus subject-group(s); also keywords for sub article items eg figures, tables, videos"
+  priority: 
+math:
+  description: ""
+  priority: 2
+permissions:
+  description: "Copyright and license statements (including instructions for how to attribute)"
+  priority: 1
+references-citations:
+  description: "References (citation of software/data/versions/law cases)"
+  priority: 4
+related-articles:
+  description: "Related article tagging (within journal, without, example JATS list of types?)"
+  priority: 11
+sections:
+  description: "Sections"
+  priority: 
+subarticles:
+  description: "Peer review (subarticles?)"
+  priority: 
+suppl-material:
+  description: "Supplementary material"
+  priority: 
+tables:
+  description: "Tables"
+  priority: 
+  see-also: [ caption-description-label ]
+taxonomy:
+  description: "Taxonomy (ecology, palaeontology, etc)"
+  priority: 8
+versions-corrections:
+  description: "Versioning + corrections"
+  priority: 3

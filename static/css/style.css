@@ -5,6 +5,28 @@ Begin with generic 'mobile first' styles
 */
 
 
+/* Topics page */
+.row0 {
+    background-color: #DDD;
+}
+td.priority {
+    text-align: center;
+}
+td.links {
+    white-space: nowrap;
+    padding-left: .5em;
+    padding-right: .5em;
+}
+span.fa {
+    color: #555;
+    text-decoration: none;
+}
+a.fa {
+    border-bottom: none !important;
+}
+
+
+
 /*
 @font-face
 ==================================
@@ -46,6 +68,7 @@ Normalize the box model
 *:after {
   -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
  }
+
 
 /*
 Typography
