@@ -37,9 +37,13 @@ from jats4r.github.io, you will be redirected.
 
 That repository also hosts all of the schematrons and the validation tools. To do development on 
 it, and see your results before you commit and push, the best way is to use 
-[Jekyll](http://jekyllrb.com/). Assuming you have that installed, start a local server with
+[Jekyll](http://jekyllrb.com/) and bundler. See the GitHub help page,
+[Using Jekyll with Pages](https://help.github.com/articles/using-jekyll-with-pages/), for
+more information about how to set this up.
 
-    jekyll serve
+Assuming you have everything installed, start a local server with
+
+    bundle exec jekyll serve
 
 and then access it from [http://localhost:4000](http://localhost:4000).
 
