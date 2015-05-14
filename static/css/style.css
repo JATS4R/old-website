@@ -7,7 +7,7 @@ Begin with generic 'mobile first' styles
 
 /* Topics page */
 .row0 {
-    background-color: #DDD;
+    background-color: #EEE;
 }
 td.priority {
     text-align: center;
@@ -18,7 +18,7 @@ td.links {
     padding-right: .5em;
 }
 span.fa {
-    color: #555;
+    color: #0072ce;
     text-decoration: none;
 }
 a.fa {
