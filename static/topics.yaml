@@ -1,6 +1,6 @@
 abstract:
   description: "Abstracts (different types, etc)"
-  priority: 5
+  priority: 6
   status: draft
 
 affiliations:
@@ -15,7 +15,7 @@ appendices:
 
 article-type:
   description: "Using NLM defined article types in article-type attribute and expanding the list"
-  priority: 10
+  priority: 11
   status: draft
 
 author-metadata:
@@ -36,12 +36,12 @@ caption-label-title:
 
 clinical-trials:
   description: "Clinical trials"
-  priority: 6
+  priority: 7
   status: draft
 
 contributions:
   description: "Contributions: roles; define list of contrib-types; other use cases of <contrib> (co-first author, etc.)"
-  priority: 12
+  priority: 13
   status: draft
 
 custom-metadata:
@@ -51,7 +51,7 @@ custom-metadata:
 
 dates:
   description: "Publication dates/article history dates"
-  priority: 7
+  priority: 8
   status: draft
 
 dois:
@@ -65,11 +65,6 @@ figures:
   status: draft
   see-also: [ caption-label-title ]
 
-filenaming:
-  description: "File naming and packaging"
-  priority: 
-  status: draft
-
 footnotes:
   description: "Footnotes"
   priority: 
@@ -77,7 +72,15 @@ footnotes:
 
 funding:
   description: "Funding (linking to individual authors, FundRef etc)"
-  priority: 9
+  priority: 10
+  status: draft
+
+general-recommendations:
+  description:
+    > 
+      General recommendations; including things like doctype declarations in XML files;
+      documents self-identifying that they conform to JATS4R; file naming and packaging.
+  priority: 1
   status: draft
 
 journal-metadata:
@@ -92,7 +95,7 @@ keywords:
 
 math:
   description: "Math issues"
-  priority: 2
+  priority: 3
   status: final
 
 media-types:
@@ -102,17 +105,17 @@ media-types:
 
 permissions:
   description: "Copyright and license statements (including instructions for how to attribute)"
-  priority: 1
+  priority: 2
   status: final
 
 references-citations:
   description: "References (citation of software/data/versions/law cases)"
-  priority: 4
+  priority: 5
   status: draft
 
 related-articles:
   description: "Related article tagging (within journal, without, example JATS list of types?)"
-  priority: 11
+  priority: 12
   status: draft
 
 sections:
@@ -138,11 +141,11 @@ tables:
 
 taxonomy:
   description: "Taxonomy (ecology, palaeontology, etc)"
-  priority: 8
+  priority: 9
   status: draft
 
 versions-corrections:
   description: "Versioning + corrections"
-  priority: 3
+  priority: 4
   status: draft
 
