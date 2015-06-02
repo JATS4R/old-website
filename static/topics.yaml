@@ -8,7 +8,7 @@ affiliations:
   priority: 
   status: draft
 
-appendices:
+appendices:me
   description: "Appendices"
   priority: 
   status: draft
@@ -101,7 +101,7 @@ math:
 media-types:
   description: "Issues related to media types (also known as MIME types)"
   priority: 
-  status: final
+  status: draft
 
 permissions:
   description: "Copyright and license statements (including instructions for how to attribute)"
