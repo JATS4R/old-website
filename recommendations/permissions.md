@@ -31,9 +31,7 @@ The [\<copyright-year>]() and [\<copyright-holder>]() elements, on the other han
 
 If a license is defined by a URI (as are Creative Commons licenses), this URI must be put in the @xlink:href attribute of the \<license> element within \<permissions>. This should be the sole place that a machine (or anyone) should need to look for the license URI.
 
-If the license does not have a canonical, persistent, published URI that identifies it then the \<license>
-element *must not have* an @xlink:href attribute.  Links to human-readable license documents should *only*
-appear within the \<license-p> elements.
+If the license does not have a canonical, persistent, published URI that identifies it then the \<license> element *must not have* an @xlink:href attribute.  Links to human-readable license documents should *only* appear within the \<license-p> elements.
 
 Currently, the only license URIs that meet these requirements are those published by Creative Commons.
 
@@ -43,7 +41,7 @@ The \<license-p> element is intended to be human-readable documentation, and any
 
 
 
-```xml
+```markup
 <permissions>
   <copyright-statement>© 2014 Surname et al.</copyright-statement>
   <copyright-year>2014</copyright-year>
@@ -67,12 +65,12 @@ In some cases a document may consist of multiple components (such as a book spli
 
 Every other component of the document will be considered to inherit the permissions as set out in the \<article-meta> (or equivalent section). The separate \<permissions> provided for the figure must be complete, containing \<copyright-statement>, \<copyright-year>, \<copyright-holder> and \<license>. This is illustrated for a book and a journal, respectively, in the following examples.
 
-```xml
+```markup
 <book>
   <book-meta>
     ...
-    <!-- 
-      The top-level permissions apply to the book as a whole, and any of its 
+    <!--
+      The top-level permissions apply to the book as a whole, and any of its
       parts, unless a part has its own permissions element.
     -->
     <permissions>
@@ -88,35 +86,35 @@ Every other component of the document will be considered to inherit the permissi
     <book-part id="ch1" book-part-type="chapter">
       <book-part-meta>
         ...
-        <!-- 
-          This book part is published under a different copyright, and so 
-          needs its own permissions element. 
+        <!--
+          This book part is published under a different copyright, and so
+          needs its own permissions element.
         -->
         <permissions>
           <copyright-statement>Warwick Gould, CC BY-NC-ND 4.0</copyright-statement>
           <copyright-year>2013</copyright-year>
-          <!-- 
-            Even though the license URI is the same as that for the book, it 
-            must be repeated,  otherwise this part would be considered to be 
-            "all rights reserved". 
+          <!--
+            Even though the license URI is the same as that for the book, it
+            must be repeated,  otherwise this part would be considered to be
+            "all rights reserved".
           -->
           <license xlink:href="http://creativecommons.org/licenses/by-nc-nd/4.0/"/>
             <license-p>This chapter is published under ...</license-p>
           </license>
         </permissions>
       </book-part-meta>
-      
+
       <body>
         ...
         <fig id="fig1">
           <label>Fig. 1</label>
           <caption>...</caption>
-          <!-- 
-            This particular image is also published under a different copyright, 
-            and is, in fact, all rights reserved. 
+          <!--
+            This particular image is also published under a different copyright,
+            and is, in fact, all rights reserved.
           -->
           <permissions>
-            <copyright-statement>The National Portrait Gallery, London. All rights 
+            <copyright-statement>The National Portrait Gallery, London. All rights
               reserved</copyright-statement>
             <copyright-year>2013</copyright-year>
             <!-- Note:  no license element here:  all rights reserved. -->
@@ -133,7 +131,7 @@ Every other component of the document will be considered to inherit the permissi
 
 The following examples illustrates a case where a single, composite figure is the subject of two separate copyrights. In this case, multiple \<permissions> elements are given for that figure. A machine attempting to parse this, to determine the re-usability of that figure, would have to pick the most restrictive of the licences (in this case, no licence, or "all rights reserved").
 
-```xml
+```markup
 <article>
   <front>
     ...
@@ -159,13 +157,13 @@ The following examples illustrates a case where a single, composite figure is th
       <caption> . . . </caption>
       <graphic xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="elife00013f002"/>
       <permissions>
-        <copyright-statement>© 1977 Thieme Medical Publishers. All Rights 
+        <copyright-statement>© 1977 Thieme Medical Publishers. All Rights
           Reserved.</copyright-statement>
         <copyright-year>1977</copyright-year>
         <copyright-holder>Thieme Medical Publishers</copyright-holder>
         <license>
-          <license-p>Figure 1, upper panel, is reproduced from 
-            <xref ref-type="bibr"  rid="bib45">Hughes and Sperandio, 2008</xref> 
+          <license-p>Figure 1, upper panel, is reproduced from
+            <xref ref-type="bibr"  rid="bib45">Hughes and Sperandio, 2008</xref>
             with permission.</license-p>
         </license>
       </permissions>
@@ -186,11 +184,9 @@ The following examples illustrates a case where a single, composite figure is th
 
 ## Applicability of permissions elements
 
-Per the [JATS schema](http://jatspan.org/niso/publishing-1.0/#p=elem-permissions),
-the \<permissions> element is allowed within many other elements.
+Per the [JATS schema](http://jatspan.org/niso/publishing-1.0/#p=elem-permissions), the \<permissions> element is allowed within many other elements.
 
-The following table specifies what content is covered by a \<permissions> element that
-appears in a given location.
+The following table specifies what content is covered by a \<permissions> element that appears in a given location.
 
 | `permissions` container  | Element to which permissions apply | Notes |
 |--------------------------|------------------------------------|-------|

@@ -5,6 +5,32 @@ Begin with generic 'mobile first' styles
 */
 
 
+/* Topics page */
+.row0 {
+    background-color: #EEE;
+}
+td.center {
+    text-align: center;
+}
+td.links {
+    white-space: nowrap;
+    padding-left: .5em;
+    padding-right: .5em;
+}
+span.fa {
+    color: #0072ce;
+    text-decoration: none;
+}
+#topic-table a {
+    border-bottom: none !important;
+}
+#topic-table th, #topic-table td {
+    padding: .3em .5em;
+    border-left: 1px solid #BBB;
+}
+
+
+
 /*
 @font-face
 ==================================
@@ -46,6 +72,7 @@ Normalize the box model
 *:after {
   -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
  }
+
 
 /*
 Typography
@@ -284,6 +311,13 @@ ul.repo-list {
 
 .repo-list h4 {
     text-transform: none;
+}
+
+/* pre
+*/
+
+pre {
+  font-size: 0.75em;
 }
 
 /*

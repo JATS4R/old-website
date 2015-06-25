@@ -6,6 +6,8 @@
     <title>JATS4R - JATS for Reuse</title>
     <link rel="stylesheet" href='{{ "/static/css/normalize.css" | prepend: site.baseurl }}' />
     <link rel="stylesheet" href='{{ "/static/css/style.css" | prepend: site.baseurl }}' />
+    <link rel="stylesheet" href='{{ "/static/prism/prism.css" | prepend: site.baseurl }}' />
+   
     <meta name="viewport" content="width=device-width, initial-scale=1" />
   </head>
   <body>
@@ -21,18 +23,8 @@
     <div class="wrap content">
 
       <aside>
-        <p class="intro"><em>Increase the reusability of the online literature by standardising the use of the Journal Article Tag Suite (JATS) for XML tagging</p>
-        <nav>
-          <ul>
-            <li><a href="#tag-recs">Tagging recommendations</a></li>
-            <li><a href="#samples-articles">Sample articles</a></li>
-            <li><a href="#validation">Validation</a></li>
-            <li><a href="#news">News</a></li>
-            <li><a href="#getting-involved">Getting involved</a></li>
-            <li><a href="#endorsements">Organisations currently endorsing JATS4R</a></li>
-            <li><a href="#repositories">GitHub repositories</a></li>
-          </ul>
-        </nav>
+        <p class="intro"><em>Increase the reusability of the online literature by 
+          standardising the use of the Journal Article Tag Suite (JATS) for XML tagging</p>
       </aside>
 
       <section class="main-content" role="main">
@@ -51,8 +43,9 @@
     </div>
 
 
-    <script src="static/js/jquery-1.10.2.min.js"></script>
-    <script src="static/js/script.js"></script>
+    <script src='{{ "/static/js/jquery-1.10.2.min.js" | prepend: site.baseurl }}'></script>
+    <script src='{{ "/static/js/script.js" | prepend: site.baseurl }}'></script>
+    <script src='{{ "/static/prism/prism.js" | prepend: site.baseurl }}'></script>
     <!-- Google Analytics -->
     <script>
       (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
