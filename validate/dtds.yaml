@@ -1,0 +1,682 @@
+dtds:
+
+- name: ""
+  fpi: "-//NLM//DTD JATS (Z39.96) Journal Archiving and Interchange DTD (OASIS Tables) v0.4 20110131//EN"
+  filename: JATS-archive-oasis-article0.dtd
+  path: niso-jats/articleauthoring/0.4/dtd/JATS-archive-oasis-article0.dtd
+  nlm_niso: niso
+  flavor:
+  version:
+  tables:
+  mml:
+
+- name: ""
+  fpi: "-//NLM//DTD JATS (Z39.96) Journal Archiving and Interchange DTD v0.4 20110131//EN"
+  filename: JATS-archivearticle0.dtd
+  path: niso-jats/articleauthoring/0.4/dtd/JATS-archivearticle0.dtd
+  nlm_niso: niso
+  flavor:
+  version:
+  tables:
+  mml:
+
+- name: ""
+  fpi: "-//NLM//DTD JATS (Z39.96) Article Authoring DTD v0.4 20110131//EN"
+  filename: JATS-articleauthoring0.dtd
+  path: niso-jats/articleauthoring/0.4/dtd/JATS-articleauthoring0.dtd
+  nlm_niso: niso
+  flavor:
+  version:
+  tables:
+  mml:
+
+- name: ""
+  fpi: "-//NLM//DTD JATS (Z39.96) Journal Publishing DTD v0.4 20110131//EN"
+  filename: JATS-journalpublishing0.dtd
+  path: niso-jats/articleauthoring/0.4/dtd/JATS-journalpublishing0.dtd
+  nlm_niso: niso
+  flavor:
+  version:
+  tables:
+  mml:
+
+- name: ""
+  fpi: "-//NLM//DTD BITS Book Interchange DTD v0.1 20120710//EN"
+  filename: BITS-book0.dtd
+  path: niso-jats/articleauthoring/1.0/dtd/BITS-book0.dtd
+  nlm_niso: niso
+  flavor:
+  version:
+  tables:
+  mml:
+
+- name: ""
+  fpi: "-//NLM//DTD JATS (Z39.96) Journal Archiving and Interchange DTD with OASIS Tables v1.0 20120330//EN"
+  filename: JATS-archive-oasis-article1.dtd
+  path: niso-jats/articleauthoring/1.0/dtd/JATS-archive-oasis-article1.dtd
+  nlm_niso: niso
+  flavor:
+  version:
+  tables:
+  mml:
+
+- name: ""
+  fpi: "-//NLM//DTD JATS (Z39.96) Journal Archiving and Interchange DTD v1.0 20120330//EN"
+  filename: JATS-archivearticle1.dtd
+  path: niso-jats/articleauthoring/1.0/dtd/JATS-archivearticle1.dtd
+  nlm_niso: niso
+  flavor:
+  version:
+  tables:
+  mml:
+
+- name: ""
+  fpi: "-//NLM//DTD JATS (Z39.96) Article Authoring DTD v1.0 20120330//EN"
+  filename: JATS-articleauthoring1.dtd
+  path: niso-jats/articleauthoring/1.0/dtd/JATS-articleauthoring1.dtd
+  nlm_niso: niso
+  flavor:
+  version:
+  tables:
+  mml:
+
+- name: ""
+  fpi: "-//NLM//DTD JATS (Z39.96) Journal Publishing DTD with OASIS Tables v1.0 20120330//EN"
+  filename: JATS-journalpublishing-oasis-article1.dtd
+  path: niso-jats/articleauthoring/1.0/dtd/JATS-journalpublishing-oasis-article1.dtd
+  nlm_niso: niso
+  flavor:
+  version:
+  tables:
+  mml:
+
+- name: ""
+  fpi: "-//NLM//DTD JATS (Z39.96) Journal Publishing DTD v1.0 20120330//EN"
+  filename: JATS-journalpublishing1.dtd
+  path: niso-jats/articleauthoring/1.0/dtd/JATS-journalpublishing1.dtd
+  nlm_niso: niso
+  flavor:
+  version:
+  tables:
+  mml:
+
+- name: ""
+  fpi: "-//NLM//DTD Book DTD v3.1 20110131//EN"
+  filename: book3.dtd
+  path: niso-jats/articleauthoring/1.0/dtd/book3.dtd
+  nlm_niso: niso
+  flavor:
+  version:
+  tables:
+  mml:
+
+- name: ""
+  fpi: "-//NLM//DTD NCBI Book Collection DTD v3.1 20110131//EN"
+  filename: bookcollection3.dtd
+  path: niso-jats/articleauthoring/1.0/dtd/bookcollection3.dtd
+  nlm_niso: niso
+  flavor:
+  version:
+  tables:
+  mml:
+
+- name: ""
+  fpi: "-//NLM//DTD JATS (Z39.96) Journal Archiving and Interchange DTD with OASIS Tables with MathML3 v1.1d1 20130915//EN"
+  filename: JATS-archive-oasis-article1-mathml3.dtd
+  path: niso-jats/articleauthoring/1.1d1/mml3/dtd/JATS-archive-oasis-article1-mathml3.dtd
+  nlm_niso: niso
+  flavor:
+  version:
+  tables:
+  mml:
+
+- name: ""
+  fpi: "-//NLM//DTD JATS (Z39.96) Journal Archiving and Interchange DTD with OASIS Tables v1.1d1 20130915//EN"
+  filename: JATS-archive-oasis-article1.dtd
+  path: niso-jats/articleauthoring/1.1d1/mml3/dtd/JATS-archive-oasis-article1.dtd
+  nlm_niso: niso
+  flavor:
+  version:
+  tables:
+  mml:
+
+- name: ""
+  fpi: "-//NLM//DTD JATS (Z39.96) Journal Archiving and Interchange DTD with MathML3 v1.1d1 20130915//EN"
+  filename: JATS-archivearticle1-mathml3.dtd
+  path: niso-jats/articleauthoring/1.1d1/mml3/dtd/JATS-archivearticle1-mathml3.dtd
+  nlm_niso: niso
+  flavor:
+  version:
+  tables:
+  mml:
+
+- name: ""
+  fpi: "-//NLM//DTD JATS (Z39.96) Journal Archiving and Interchange DTD v1.1d1 20130915//EN"
+  filename: JATS-archivearticle1.dtd
+  path: niso-jats/articleauthoring/1.1d1/mml3/dtd/JATS-archivearticle1.dtd
+  nlm_niso: niso
+  flavor:
+  version:
+  tables:
+  mml:
+
+- name: ""
+  fpi: "-//NLM//DTD JATS (Z39.96) Article Authoring DTD v1.1d1 20130915//EN"
+  filename: JATS-articleauthoring1.dtd
+  path: niso-jats/articleauthoring/1.1d1/mml3/dtd/JATS-articleauthoring1.dtd
+  nlm_niso: niso
+  flavor:
+  version:
+  tables:
+  mml:
+
+- name: ""
+  fpi: "-//NLM//DTD JATS (Z39.96) Journal Publishing DTD with OASIS Tables with MathML3 v1.1d1 20130915//EN"
+  filename: JATS-journalpublishing-oasis-article1-mathml3.dtd
+  path: niso-jats/articleauthoring/1.1d1/mml3/dtd/JATS-journalpublishing-oasis-article1-mathml3.dtd
+  nlm_niso: niso
+  flavor:
+  version:
+  tables:
+  mml:
+
+- name: ""
+  fpi: "-//NLM//DTD JATS (Z39.96) Journal Publishing DTD with OASIS Tables v1.1d1 20130915//EN"
+  filename: JATS-journalpublishing-oasis-article1.dtd
+  path: niso-jats/articleauthoring/1.1d1/mml3/dtd/JATS-journalpublishing-oasis-article1.dtd
+  nlm_niso: niso
+  flavor:
+  version:
+  tables:
+  mml:
+
+- name: ""
+  fpi: "-//NLM//DTD JATS (Z39.96) Journal Publishing DTD with MathML3 v1.1d1 20130915//EN"
+  filename: JATS-journalpublishing1-mathml3.dtd
+  path: niso-jats/articleauthoring/1.1d1/mml3/dtd/JATS-journalpublishing1-mathml3.dtd
+  nlm_niso: niso
+  flavor:
+  version:
+  tables:
+  mml:
+
+- name: ""
+  fpi: "-//NLM//DTD JATS (Z39.96) Journal Publishing DTD v1.1d1 20130915//EN"
+  filename: JATS-journalpublishing1.dtd
+  path: niso-jats/articleauthoring/1.1d1/mml3/dtd/JATS-journalpublishing1.dtd
+  nlm_niso: niso
+  flavor:
+  version:
+  tables:
+  mml:
+
+- name: ""
+  fpi: "-//NLM//DTD BITS Book Interchange DTD with OASIS and XHTML Tables v1.1 20140930//EN"
+  filename: BITS-book-oasis1.dtd
+  path: niso-jats/articleauthoring/1.1d2/mml3/dtd/BITS-book-oasis1.dtd
+  nlm_niso: niso
+  flavor:
+  version:
+  tables:
+  mml:
+
+- name: ""
+  fpi: "-//NLM//DTD BITS Book Interchange DTD v1.1 20140930//EN"
+  filename: BITS-book1.dtd
+  path: niso-jats/articleauthoring/1.1d2/mml3/dtd/BITS-book1.dtd
+  nlm_niso: niso
+  flavor:
+  version:
+  tables:
+  mml:
+
+- name: ""
+  fpi: "-//NLM//DTD JATS (Z39.96) Journal Archiving and Interchange DTD with OASIS Tables with MathML3 v1.1d2 20140930//EN"
+  filename: JATS-archive-oasis-article1-mathml3.dtd
+  path: niso-jats/articleauthoring/1.1d2/mml3/dtd/JATS-archive-oasis-article1-mathml3.dtd
+  nlm_niso: niso
+  flavor:
+  version:
+  tables:
+  mml:
+
+- name: ""
+  fpi: "-//NLM//DTD JATS (Z39.96) Journal Archiving and Interchange DTD with OASIS Tables v1.1d2 20140930//EN"
+  filename: JATS-archive-oasis-article1.dtd
+  path: niso-jats/articleauthoring/1.1d2/mml3/dtd/JATS-archive-oasis-article1.dtd
+  nlm_niso: niso
+  flavor:
+  version:
+  tables:
+  mml:
+
+- name: ""
+  fpi: "-//NLM//DTD JATS (Z39.96) Journal Archiving and Interchange DTD with MathML3 v1.1d2 20140930//EN"
+  filename: JATS-archivearticle1-mathml3.dtd
+  path: niso-jats/articleauthoring/1.1d2/mml3/dtd/JATS-archivearticle1-mathml3.dtd
+  nlm_niso: niso
+  flavor:
+  version:
+  tables:
+  mml:
+
+- name: ""
+  fpi: "-//NLM//DTD JATS (Z39.96) Journal Archiving and Interchange DTD v1.1d2 20140930//EN"
+  filename: JATS-archivearticle1.dtd
+  path: niso-jats/articleauthoring/1.1d2/mml3/dtd/JATS-archivearticle1.dtd
+  nlm_niso: niso
+  flavor:
+  version:
+  tables:
+  mml:
+
+- name: ""
+  fpi: "-//NLM//DTD JATS (Z39.96) Article Authoring DTD v1.1d2 20140930//EN"
+  filename: JATS-articleauthoring1.dtd
+  path: niso-jats/articleauthoring/1.1d2/mml3/dtd/JATS-articleauthoring1.dtd
+  nlm_niso: niso
+  flavor:
+  version:
+  tables:
+  mml:
+
+- name: ""
+  fpi: "-//NLM//DTD JATS (Z39.96) Journal Publishing DTD with OASIS Tables with MathML3 v1.1d2 20140930//EN"
+  filename: JATS-journalpublishing-oasis-article1-mathml3.dtd
+  path: niso-jats/articleauthoring/1.1d2/mml3/dtd/JATS-journalpublishing-oasis-article1-mathml3.dtd
+  nlm_niso: niso
+  flavor:
+  version:
+  tables:
+  mml:
+
+- name: ""
+  fpi: "-//NLM//DTD JATS (Z39.96) Journal Publishing DTD with OASIS Tables v1.1d2 20140930//EN"
+  filename: JATS-journalpublishing-oasis-article1.dtd
+  path: niso-jats/articleauthoring/1.1d2/mml3/dtd/JATS-journalpublishing-oasis-article1.dtd
+  nlm_niso: niso
+  flavor:
+  version:
+  tables:
+  mml:
+
+- name: ""
+  fpi: "-//NLM//DTD JATS (Z39.96) Journal Publishing DTD with MathML3 v1.1d2 20140930//EN"
+  filename: JATS-journalpublishing1-mathml3.dtd
+  path: niso-jats/articleauthoring/1.1d2/mml3/dtd/JATS-journalpublishing1-mathml3.dtd
+  nlm_niso: niso
+  flavor:
+  version:
+  tables:
+  mml:
+
+- name: ""
+  fpi: "-//NLM//DTD JATS (Z39.96) Journal Publishing DTD v1.1d2 20140930//EN"
+  filename: JATS-journalpublishing1.dtd
+  path: niso-jats/articleauthoring/1.1d2/mml3/dtd/JATS-journalpublishing1.dtd
+  nlm_niso: niso
+  flavor:
+  version:
+  tables:
+  mml:
+
+- name: ""
+  fpi: "-//NLM//DTD BITS Book Interchange DTD with OASIS and XHTML Tables v2.0 20150315//EN"
+  filename: BITS-book-oasis2.dtd
+  path: niso-jats/articleauthoring/1.1d3/mml3/dtd/BITS-book-oasis2.dtd
+  nlm_niso: niso
+  flavor:
+  version:
+  tables:
+  mml:
+
+- name: ""
+  fpi: "-//NLM//DTD BITS Book Interchange DTD v2.0 20150315//EN"
+  filename: BITS-book2.dtd
+  path: niso-jats/articleauthoring/1.1d3/mml3/dtd/BITS-book2.dtd
+  nlm_niso: niso
+  flavor:
+  version:
+  tables:
+  mml:
+
+- name: ""
+  fpi: "-//NLM//DTD JATS (Z39.96) Journal Archiving and Interchange DTD with OASIS Tables with MathML3 v1.1d3 20150301//EN"
+  filename: JATS-archive-oasis-article1-mathml3.dtd
+  path: niso-jats/articleauthoring/1.1d3/mml3/dtd/JATS-archive-oasis-article1-mathml3.dtd
+  nlm_niso: niso
+  flavor:
+  version:
+  tables:
+  mml:
+
+- name: ""
+  fpi: "-//NLM//DTD JATS (Z39.96) Journal Archiving and Interchange DTD with OASIS Tables v1.1d3 20150301//EN"
+  filename: JATS-archive-oasis-article1.dtd
+  path: niso-jats/articleauthoring/1.1d3/mml3/dtd/JATS-archive-oasis-article1.dtd
+  nlm_niso: niso
+  flavor:
+  version:
+  tables:
+  mml:
+
+- name: ""
+  fpi: "-//NLM//DTD JATS (Z39.96) Journal Archiving and Interchange DTD with MathML3 v1.1d3 20150301//EN"
+  filename: JATS-archivearticle1-mathml3.dtd
+  path: niso-jats/articleauthoring/1.1d3/mml3/dtd/JATS-archivearticle1-mathml3.dtd
+  nlm_niso: niso
+  flavor:
+  version:
+  tables:
+  mml:
+
+- name: ""
+  fpi: "-//NLM//DTD JATS (Z39.96) Journal Archiving and Interchange DTD v1.1d3 20150301//EN"
+  filename: JATS-archivearticle1.dtd
+  path: niso-jats/articleauthoring/1.1d3/mml3/dtd/JATS-archivearticle1.dtd
+  nlm_niso: niso
+  flavor:
+  version:
+  tables:
+  mml:
+
+- name: ""
+  fpi: "-//NLM//DTD JATS (Z39.96) Article Authoring DTD v1.1d3 20150301//EN"
+  filename: JATS-articleauthoring1.dtd
+  path: niso-jats/articleauthoring/1.1d3/mml3/dtd/JATS-articleauthoring1.dtd
+  nlm_niso: niso
+  flavor:
+  version:
+  tables:
+  mml:
+
+- name: ""
+  fpi: "-//NLM//DTD JATS (Z39.96) Journal Publishing DTD with OASIS Tables with MathML3 v1.1d3 20150301//EN"
+  filename: JATS-journalpublishing-oasis-article1-mathml3.dtd
+  path: niso-jats/articleauthoring/1.1d3/mml3/dtd/JATS-journalpublishing-oasis-article1-mathml3.dtd
+  nlm_niso: niso
+  flavor:
+  version:
+  tables:
+  mml:
+
+- name: ""
+  fpi: "-//NLM//DTD JATS (Z39.96) Journal Publishing DTD with OASIS Tables v1.1d3 20150301//EN"
+  filename: JATS-journalpublishing-oasis-article1.dtd
+  path: niso-jats/articleauthoring/1.1d3/mml3/dtd/JATS-journalpublishing-oasis-article1.dtd
+  nlm_niso: niso
+  flavor:
+  version:
+  tables:
+  mml:
+
+- name: ""
+  fpi: "-//NLM//DTD JATS (Z39.96) Journal Publishing DTD with MathML3 v1.1d3 20150301//EN"
+  filename: JATS-journalpublishing1-mathml3.dtd
+  path: niso-jats/articleauthoring/1.1d3/mml3/dtd/JATS-journalpublishing1-mathml3.dtd
+  nlm_niso: niso
+  flavor:
+  version:
+  tables:
+  mml:
+
+- name: ""
+  fpi: "-//NLM//DTD JATS (Z39.96) Journal Publishing DTD v1.1d3 20150301//EN"
+  filename: JATS-journalpublishing1.dtd
+  path: niso-jats/articleauthoring/1.1d3/mml3/dtd/JATS-journalpublishing1.dtd
+  nlm_niso: niso
+  flavor:
+  version:
+  tables:
+  mml:
+
+- name: ""
+  fpi: "-//W3C//DTD MathML 2.0//EN"
+  filename: mathml2.dtd
+  path: niso-jats/articleauthoring/1.1d3/mml3/dtd/mathml2.dtd
+  nlm_niso: niso
+  flavor:
+  version:
+  tables:
+  mml:
+
+- name: ""
+  fpi: "-//W3C//DTD MathML 3.0//EN"
+  filename: mathml3.dtd
+  path: niso-jats/articleauthoring/1.1d3/mml3/dtd/mathml3.dtd
+  nlm_niso: niso
+  flavor:
+  version:
+  tables:
+  mml:
+
+- name: ""
+  fpi: "-//W3C//ELEMENTS XHTML Tables 1.0//EN"
+  filename: xhtml-table-1.mod
+  path: niso-jats/articleauthoring/1.1d3/mml3/dtd/xhtml-table-1.mod
+  nlm_niso: niso
+  flavor:
+  version:
+  tables:
+  mml:
+
+- name: ""
+  fpi: "-//NLM//DTD Journal Archiving and Interchange DTD v2.3 20070202//EN"
+  filename: archivearticle.dtd
+  path: nlm-dtd/archiving/2.3/dtd/archivearticle.dtd
+  nlm_niso: nlm
+  flavor:
+  version:
+  tables:
+  mml:
+
+- name: ""
+  fpi: "-//NLM//DTD Article Authoring DTD v2.3 20070202//EN"
+  filename: articleauthoring.dtd
+  path: nlm-dtd/archiving/2.3/dtd/articleauthoring.dtd
+  nlm_niso: nlm
+  flavor:
+  version:
+  tables:
+  mml:
+
+- name: ""
+  fpi: "-//NLM//DTD Book DTD v2.3 20070202//EN"
+  filename: book.dtd
+  path: nlm-dtd/archiving/2.3/dtd/book.dtd
+  nlm_niso: nlm
+  flavor:
+  version:
+  tables:
+  mml:
+
+- name: ""
+  fpi: "-//NLM//DTD NCBI Book Collection DTD v2.3 20070202//EN"
+  filename: bookcollection.dtd
+  path: nlm-dtd/archiving/2.3/dtd/bookcollection.dtd
+  nlm_niso: nlm
+  flavor:
+  version:
+  tables:
+  mml:
+
+- name: ""
+  fpi: "-//NLM//DTD NCBI Historical Book DTD v2.3 20070202//EN"
+  filename: historical.dtd
+  path: nlm-dtd/archiving/2.3/dtd/historical.dtd
+  nlm_niso: nlm
+  flavor:
+  version:
+  tables:
+  mml:
+
+- name: ""
+  fpi: "-//NLM//DTD Journal Publishing DTD v2.3 20070202//EN"
+  filename: journalpublishing.dtd
+  path: nlm-dtd/archiving/2.3/dtd/journalpublishing.dtd
+  nlm_niso: nlm
+  flavor:
+  version:
+  tables:
+  mml:
+
+- name: ""
+  fpi: "-//NLM//DTD Journal Archiving with OASIS Tables v3.0 20080202//EN"
+  filename: archive-oasis-article3.dtd
+  path: nlm-dtd/archiving/3.0/dtd/archive-oasis-article3.dtd
+  nlm_niso: nlm
+  flavor:
+  version:
+  tables:
+  mml:
+
+- name: ""
+  fpi: "-//NLM//DTD Journal Archiving and Interchange DTD v3.0 20080202//EN"
+  filename: archivearticle3.dtd
+  path: nlm-dtd/archiving/3.0/dtd/archivearticle3.dtd
+  nlm_niso: nlm
+  flavor:
+  version:
+  tables:
+  mml:
+
+- name: ""
+  fpi: "-//NLM//DTD Article Authoring DTD v3.0 20080202//EN"
+  filename: articleauthoring3.dtd
+  path: nlm-dtd/archiving/3.0/dtd/articleauthoring3.dtd
+  nlm_niso: nlm
+  flavor:
+  version:
+  tables:
+  mml:
+
+- name: ""
+  fpi: "-//NLM//DTD Book DTD v3.0 20080202//EN"
+  filename: book3.dtd
+  path: nlm-dtd/archiving/3.0/dtd/book3.dtd
+  nlm_niso: nlm
+  flavor:
+  version:
+  tables:
+  mml:
+
+- name: ""
+  fpi: "-//NLM//DTD NCBI Book Collection DTD v3.0 20080202//EN"
+  filename: bookcollection3.dtd
+  path: nlm-dtd/archiving/3.0/dtd/bookcollection3.dtd
+  nlm_niso: nlm
+  flavor:
+  version:
+  tables:
+  mml:
+
+- name: ""
+  fpi: "-//NLM//DTD Journal Publishing with OASIS Tables v3.0 20080202//EN"
+  filename: journalpub-oasis3.dtd
+  path: nlm-dtd/archiving/3.0/dtd/journalpub-oasis3.dtd
+  nlm_niso: nlm
+  flavor:
+  version:
+  tables:
+  mml:
+
+- name: ""
+  fpi: "-//NLM//DTD Journal Publishing DTD v3.0 20080202//EN"
+  filename: journalpublishing3.dtd
+  path: nlm-dtd/archiving/3.0/dtd/journalpublishing3.dtd
+  nlm_niso: nlm
+  flavor:
+  version:
+  tables:
+  mml:
+
+- name: ""
+  fpi: "-//NLM//DTD Journal Archiving and Interchange DTD v2.1 20050630//EN"
+  filename: archivearticle.dtd
+  path: nlm-dtd/article_authoring/2.1/dtd/archivearticle.dtd
+  nlm_niso: nlm
+  flavor:
+  version:
+  tables:
+  mml:
+
+- name: ""
+  fpi: "-//NLM//DTD Article Authoring DTD v2.1 20050630//EN"
+  filename: articleauthoring.dtd
+  path: nlm-dtd/article_authoring/2.1/dtd/articleauthoring.dtd
+  nlm_niso: nlm
+  flavor:
+  version:
+  tables:
+  mml:
+
+- name: ""
+  fpi: "-//NLM//DTD Journal Publishing DTD v2.1 20050630//EN"
+  filename: journalpublishing.dtd
+  path: nlm-dtd/article_authoring/2.1/dtd/journalpublishing.dtd
+  nlm_niso: nlm
+  flavor:
+  version:
+  tables:
+  mml:
+
+- name: ""
+  fpi: "-//NLM//DTD Journal Archiving and Interchange DTD v2.2 20060430//EN"
+  filename: archivearticle.dtd
+  path: nlm-dtd/article_authoring/2.2/dtd/archivearticle.dtd
+  nlm_niso: nlm
+  flavor:
+  version:
+  tables:
+  mml:
+
+- name: ""
+  fpi: "-//NLM//DTD Article Authoring DTD v2.2 20060430//EN"
+  filename: articleauthoring.dtd
+  path: nlm-dtd/article_authoring/2.2/dtd/articleauthoring.dtd
+  nlm_niso: nlm
+  flavor:
+  version:
+  tables:
+  mml:
+
+- name: ""
+  fpi: "-//NLM//DTD Book DTD v2.1 20050630//EN"
+  filename: book.dtd
+  path: nlm-dtd/article_authoring/2.2/dtd/book.dtd
+  nlm_niso: nlm
+  flavor:
+  version:
+  tables:
+  mml:
+
+- name: ""
+  fpi: "-//NLM//DTD NCBI Book Collection DTD v2.1 20050630//EN"
+  filename: bookcollection.dtd
+  path: nlm-dtd/article_authoring/2.2/dtd/bookcollection.dtd
+  nlm_niso: nlm
+  flavor:
+  version:
+  tables:
+  mml:
+
+- name: ""
+  fpi: "-//NLM//DTD NCBI Historical Book DTD v2.1 20050630//EN"
+  filename: historical.dtd
+  path: nlm-dtd/article_authoring/2.2/dtd/historical.dtd
+  nlm_niso: nlm
+  flavor:
+  version:
+  tables:
+  mml:
+
+- name: ""
+  fpi: "-//NLM//DTD Journal Publishing DTD v2.2 20060430//EN"
+  filename: journalpublishing.dtd
+  path: nlm-dtd/article_authoring/2.2/dtd/journalpublishing.dtd
+  nlm_niso: nlm
+  flavor:
+  version:
+  tables:
+  mml:
+
