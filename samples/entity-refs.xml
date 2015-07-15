@@ -20,5 +20,9 @@
     </article-meta>
   </front>
   <body>
+    <p>Some entity references. These will cause problems unless the parser reads the DTD.
+      Acirc: &Acirc;
+      Afr (in plane1D): &Afr;
+    </p>
   </body>
 </article>

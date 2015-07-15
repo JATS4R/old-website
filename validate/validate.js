@@ -16,6 +16,23 @@ var onSaxonLoad = function() {
     var revalidate = document.getElementById('revalidate');
     var results = document.getElementById('results');
 
+    function displayError(head, msg) {
+        var msg_div;
+        if (msg instanceof Element) {
+          msg_div = msg;
+        }
+        else {
+          msg_div = document.createElement("div");
+          msg_div.textContent = msg;
+        }
+        if (msg)
+        results.insertBefore(msg_div, null);
+        var h = document.createElement("h2");
+        h.textContent = head;
+        results.insertBefore(h, msg_div);
+
+    }
+
     function validateFile() {
         // clear any previous results
         results.textContent = '';
@@ -101,11 +118,16 @@ var onSaxonLoad = function() {
                 'xmlchars/isogrk4.ent'
             ]
 
+            // This produces an array of strings, each of which is the contents of
+            // one of the schema files above.
             Promise.all(schemaFiles.map(function(schemaFile) {
                 return fetch('../dtd/1.0/' + schemaFile).then(function(response) {
                     return response.text();
                 });
-            })).then(function(schemas) {
+            }))
+
+            // After all of the schema files have loaded:
+            .then(function(schemas) {
                 statusNode.textContent = 'Validating…';
 
                 var filename = input.files[0].name;
@@ -121,9 +143,14 @@ var onSaxonLoad = function() {
                 //console.log(result);
 
                 if (result.stderr.length) {
-                    statusNode.textContent = 'Failed validation';
-                    document.getElementById('lint').textContent = result.stderr;
-                } else {
+                    //statusNode.textContent = 'Failed validation';
+                    //document.getElementById('lint').textContent = result.stderr;
+                    var msg_div = document.createElement("pre");
+                    msg_div.textContent = result.stderr;
+                    displayError("Failed DTD validation", msg_div);
+                    statusNode.textContent = 'Finished';
+                } 
+                else {
                     statusNode.textContent = 'Validated';
 
                     try {
@@ -136,18 +163,16 @@ var onSaxonLoad = function() {
                     if (!parse_error) {
                         pe = doc.querySelector("parsererror");
                     }
-                	if (parse_error || pe) {
-                        if (!pe) {
-                            pe = document.createElement("div");
-                            pe.textContent = "Unable to parse the input XML file.";
-                        }
-                		results.insertBefore(pe, null);
-                		var h = document.createElement("h2");
-                		h.textContent = "Error parsing input file";
-                		results.insertBefore(h, pe);
+                    if (parse_error || pe) {
+                        if (!pe) { pe = "Unable to parse the input XML file."; }
+                        displayError("Error parsing input file", pe);
+                        //results.insertBefore(pe, null);
+                        //var h = document.createElement("h2");
+                        //h.textContent = "Error parsing input file";
+                        //results.insertBefore(h, pe);
                         statusNode.textContent = 'Finished';
-                		return;
-                	}
+                        return;
+                	  }
 
                     // run the Schematron tests
                     // FIXME:  need to parameterize the version number

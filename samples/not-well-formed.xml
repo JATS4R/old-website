@@ -3,7 +3,10 @@
   PUBLIC "-//NLM//DTD JATS (Z39.96) Journal Publishing DTD v1.0 20120330//EN"
   "JATS-journalpublishing1.dtd">
   
-<article dtd-version="1.0" >
+
+<!-- Sample file that is not well-formed. Used for testing the validator. -->
+
+<article dtd-version="1.0"
   <front>
     <journal-meta>
       <journal-id></journal-id>
