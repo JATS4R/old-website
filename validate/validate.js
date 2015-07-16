@@ -1,22 +1,36 @@
-// SAXON API: http://www.saxonica.com/ce/user-doc/1.1/html/api/
 
+
+// SAXON API: http://www.saxonica.com/ce/user-doc/1.1/html/api/
 // onSaxonLoad is called when Saxon has finished loading
 var onSaxonLoad = function() {
-    var xslt = {
+
+  // First fetch the YAML file that describes all of the DTDs
+  var dtds;
+  fetch("dtds.yaml")
+    .then(function(response) {
+      return response.text();
+    })
+    .then(function(yaml_str) {
+      console.log(yaml_str);
+      var dtds = jsyaml.load(yaml_str);
+
+
+
+      var xslt = {
         errors:   'jats4r-level-errors.xsl',
         warnings: 'jats4r-level-warnings.xsl',
         info:     'jats4r-level-info.xsl'
-    };
+      };
 
-    var statusNode = document.getElementById('status');
-    statusNode.textContent = 'Choose a JATS XML file to validate.';
+      var statusNode = document.getElementById('status');
+      statusNode.textContent = 'Choose a JATS XML file to validate.';
 
-    var input = document.getElementById('input');
-    var phaseNode = document.getElementById('phase');
-    var revalidate = document.getElementById('revalidate');
-    var results = document.getElementById('results');
+      var input = document.getElementById('input');
+      var phaseNode = document.getElementById('phase');
+      var revalidate = document.getElementById('revalidate');
+      var results = document.getElementById('results');
 
-    function displayError(head, msg) {
+      function displayError(head, msg) {
         var msg_div;
         if (msg instanceof Element) {
           msg_div = msg;
@@ -30,182 +44,121 @@ var onSaxonLoad = function() {
         var h = document.createElement("h2");
         h.textContent = head;
         results.insertBefore(h, msg_div);
+      }
 
-    }
-
-    function validateFile() {
-        // clear any previous results
-        results.textContent = '';
-        if (!input.files.length) {
+      function validateFile() {
+          // clear any previous results
+          results.textContent = '';
+          if (!input.files.length) {
             statusNode.textContent = "Please select a file first!";
             return;
-        }
-        statusNode.textContent = 'Processing…';
+          }
+          statusNode.textContent = 'Processing…';
 
-        var reader = new FileReader();
-        var phase = phaseNode.value;
+          var reader = new FileReader();
+          var phase = phaseNode.value;
 
-        reader.onload = function() {
-        	// Parse the input file
-            var doc, pe, parse_error = false;
-            var xml = this.result;
+          reader.onload = function() {
+              // Parse the input file
+              var doc, pe, parse_error = false;
+              var xml = this.result;
 
-            var schemaFiles = [
-                'iso8879/isobox.ent',
-                'iso8879/isocyr1.ent',
-                'iso8879/isocyr2.ent',
-                'iso8879/isodia.ent',
-                'iso8879/isolat1.ent',
-                'iso8879/isolat2.ent',
-                'iso8879/isonum.ent',
-                'iso8879/isopub.ent',
-                'iso9573-13/isoamsa.ent',
-                'iso9573-13/isoamsb.ent',
-                'iso9573-13/isoamsc.ent',
-                'iso9573-13/isoamsn.ent',
-                'iso9573-13/isoamso.ent',
-                'iso9573-13/isoamsr.ent',
-                'iso9573-13/isogrk3.ent',
-                'iso9573-13/isomfrk.ent',
-                'iso9573-13/isomopf.ent',
-                'iso9573-13/isomscr.ent',
-                'iso9573-13/isotech.ent',
-                'JATS-articlemeta1.ent',
-                'JATS-backmatter1.ent',
-                'JATS-base-test1.dtd',
-                'JATS-chars1.ent',
-                'JATS-common1.ent',
-                'JATS-default-classes1.ent',
-                'JATS-default-mixes1.ent',
-                'JATS-display1.ent',
-                'JATS-format1.ent',
-                'JATS-funding1.ent',
-                'JATS-journalmeta1.ent',
-                'JATS-journalpub-oasis-custom-classes1.ent',
-                'JATS-journalpub-oasis-custom-modules1.ent',
-                'JATS-journalpubcustom-classes1.ent',
-                'JATS-journalpubcustom-mixes1.ent',
-                'JATS-journalpubcustom-models1.ent',
-                'JATS-journalpubcustom-modules1.ent',
-                'JATS-journalpublishing-oasis-article1.dtd',
-                'JATS-journalpublishing1.dtd',
-                'JATS-link1.ent',
-                'JATS-list1.ent',
-                'JATS-math1.ent',
-                'JATS-mathmlsetup1.ent',
-                'JATS-modules1.ent',
-                'JATS-nlmcitation1.ent',
-                'JATS-notat1.ent',
-                'JATS-oasis-namespace1.ent',
-                'JATS-oasis-namespace1a.ent',
-                'JATS-oasis-tablesetup1.ent',
-                'JATS-para1.ent',
-                'JATS-phrase1.ent',
-                'JATS-references1.ent',
-                'JATS-related-object1.ent',
-                'JATS-section1.ent',
-                'JATS-XHTMLtablesetup1.ent',
-                'JATS-xmlspecchars1.ent',
-                'mathml/mmlalias.ent',
-                'mathml/mmlextra.ent',
-                'mathml2-qname-1.mod',
-                'mathml2.dtd',
-                'oasis-exchange.ent',
-                'xhtml-inlstyle-1.mod',
-                'xhtml-table-1.mod',
-                'xmlchars/isogrk1.ent',
-                'xmlchars/isogrk2.ent',
-                'xmlchars/isogrk4.ent'
-            ]
+              var schemaFiles = [
+                'JATS-journalpublishing1.dtd'
+              ];
 
-            // This produces an array of strings, each of which is the contents of
-            // one of the schema files above.
-            Promise.all(schemaFiles.map(function(schemaFile) {
-                return fetch('../dtd/1.0/' + schemaFile).then(function(response) {
-                    return response.text();
+              // This produces an array of strings, each of which is the contents of
+              // one of the schema files above.
+              Promise.all(schemaFiles.map(function(schemaFile) {
+                return fetch('../dtd/flat/' + schemaFile).then(function(response) {
+                  return response.text();
                 });
-            }))
+              }))
 
-            // After all of the schema files have loaded:
-            .then(function(schemas) {
+              // After all of the schema files have loaded:
+              .then(function(schemas) {
                 statusNode.textContent = 'Validating…';
 
                 var filename = input.files[0].name;
 
                 var result = xmllint.validateXML({
                 	xml: [filename, xml],
-                    arguments: ['--noent', '--dtdvalid', 'JATS-journalpublishing1.dtd', filename],
+                    arguments: ['--noent', '--loaddtd', '--dtdvalid', 'JATS-journalpublishing1.dtd', filename],
                     schemaFiles: schemas.map(function(schema, i) {
-                        return [schemaFiles[i], schema];
+                      return [schemaFiles[i], schema];
                     }),
                 });
 
                 //console.log(result);
 
                 if (result.stderr.length) {
-                    //statusNode.textContent = 'Failed validation';
-                    //document.getElementById('lint').textContent = result.stderr;
-                    var msg_div = document.createElement("pre");
-                    msg_div.textContent = result.stderr;
-                    displayError("Failed DTD validation", msg_div);
-                    statusNode.textContent = 'Finished';
+                  //statusNode.textContent = 'Failed validation';
+                  //document.getElementById('lint').textContent = result.stderr;
+                  var msg_div = document.createElement("pre");
+                  msg_div.textContent = result.stderr;
+                  displayError("Failed DTD validation", msg_div);
+                  statusNode.textContent = 'Finished';
                 } 
                 else {
-                    statusNode.textContent = 'Validated';
+                  statusNode.textContent = 'Validated';
 
-                    try {
-                        doc = Saxon.parseXML(result.stdout);
-                    }
-                    catch (e) {
-                        parse_error = true;
-                    }
-                    if (!doc) { parse_error = true; }
-                    if (!parse_error) {
-                        pe = doc.querySelector("parsererror");
-                    }
-                    if (parse_error || pe) {
-                        if (!pe) { pe = "Unable to parse the input XML file."; }
-                        displayError("Error parsing input file", pe);
-                        //results.insertBefore(pe, null);
-                        //var h = document.createElement("h2");
-                        //h.textContent = "Error parsing input file";
-                        //results.insertBefore(h, pe);
+                  try {
+                    doc = Saxon.parseXML(result.stdout);
+                  }
+                  catch (e) {
+                    parse_error = true;
+                  }
+                  if (!doc) { parse_error = true; }
+                  if (!parse_error) {
+                    pe = doc.querySelector("parsererror");
+                  }
+                  if (parse_error || pe) {
+                    if (!pe) { pe = "Unable to parse the input XML file."; }
+                    displayError("Error parsing input file", pe);
+                    //results.insertBefore(pe, null);
+                    //var h = document.createElement("h2");
+                    //h.textContent = "Error parsing input file";
+                    //results.insertBefore(h, pe);
+                    statusNode.textContent = 'Finished';
+                    return;
+              	  }
+
+                  // run the Schematron tests
+                  // FIXME:  need to parameterize the version number
+                  Saxon.run({
+                    stylesheet: '../generated-xsl/0.1/' + xslt[phase],
+                    source: doc,
+                    method: 'transformToDocument',
+                    success: function(processor) {
+                        statusNode.textContent = 'Converting…';
+
+                        // Convert the output XML to HTML. When done, this calls updateHTMLDocument,
+                        // which uses the @href attribute in the <xsl:result-document> element in the
+                        // stylesheet to update the #result element in the HTML page.
+
+                        Saxon.run({
+                            stylesheet: 'svrl-to-html.xsl',
+                            source: processor.getResultDocument(),
+                            method: 'updateHTMLDocument'
+                        });
+
                         statusNode.textContent = 'Finished';
-                        return;
-                	  }
-
-                    // run the Schematron tests
-                    // FIXME:  need to parameterize the version number
-                    Saxon.run({
-                        stylesheet: '../generated-xsl/0.1/' + xslt[phase],
-                        source: doc,
-                        method: 'transformToDocument',
-                        success: function(processor) {
-                            statusNode.textContent = 'Converting…';
-
-                            // Convert the output XML to HTML. When done, this calls updateHTMLDocument,
-                            // which uses the @href attribute in the <xsl:result-document> element in the
-                            // stylesheet to update the #result element in the HTML page.
-
-                            Saxon.run({
-                                stylesheet: 'svrl-to-html.xsl',
-                                source: processor.getResultDocument(),
-                                method: 'updateHTMLDocument'
-                            });
-
-                            statusNode.textContent = 'Finished';
-                        }
-                    });
+                    }
+                  });
                 }
-            }, function(err) {
+              }, 
+              function(err) {
                 console.error(err);
-            });
-        }
+              });
+          }
 
-        reader.readAsText(input.files[0]);
-    }
+          reader.readAsText(input.files[0]);
+      }
 
-    // listen for file selection, or for a press on the "revalidate" button
-    input.addEventListener('change', validateFile);
-    revalidate.addEventListener('click', validateFile);
+      // listen for file selection, or for a press on the "revalidate" button
+      input.addEventListener('change', validateFile);
+      revalidate.addEventListener('click', validateFile);
+
+
+    });
 }
