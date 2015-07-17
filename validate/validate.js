@@ -181,6 +181,10 @@ var onSaxonLoad = function() {
             "A doctype declaration was found that only contains a SYSTEM identifer; " +
             "and no PUBLIC identifer.");
         }
+        else {
+          displayError("No doctype declaration found",
+            "No doctype declaration was found, so DTD validation was skipped");
+        }
 
       //  displayError("No doctype declaration found",
       //    "Valid JATS documents must have a doctype declaration");
