@@ -1,4 +1,14 @@
-#/usr/bin/env python3
+#!/usr/bin/env python3
+
+# Run this with, for example,
+#     JATS_DTD_BASE=~/github/ncbi python3 flatten.py
+# Flattened versions of the DTDs will be written to the `dtds` subdirectory.
+#
+# Depends on:
+# - Python3
+# - Python package pyyaml
+# - Java
+# - DtdAnalyzer
 
 import sys
 import os
@@ -11,7 +21,7 @@ import subprocess
 jats_dtd_base = os.environ.get('JATS_DTD_BASE') or "."
 
 # Where to put our flattened DTDs
-flat_base = 'flat_dtds'
+flat_base = 'dtds'
 
 # Read the YAML database
 with open("dtds.yaml", "r") as stream:
