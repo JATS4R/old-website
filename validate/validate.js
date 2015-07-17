@@ -187,7 +187,7 @@ var onSaxonLoad = function() {
             }
 
             var dtd_filename = dtd.filename;
-            var dtd_path = "flat-dtds/" + dtd.path;
+            var dtd_path = "dtds/" + dtd.path;
 
             // Fetch the flattened DTD
             fetch(dtd_path).then(function(response) {
