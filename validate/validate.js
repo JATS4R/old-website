@@ -39,16 +39,24 @@ var onSaxonLoad = function() {
     self.dtd_by_fpi = dtd_by_fpi;
   }
 
-  function displayError(head, msg) {
+  // Display an error message; with a header and a main message.
+  // `pre` is optional; if true, then the message is wrapped in a <pre> element
+  // for readability (used to display the output of xmllint, for example).
+  function displayError(head, msg, pre) {
     var msg_div;
     if (msg instanceof Element) {
       msg_div = msg;
     }
     else {
-      msg_div = document.createElement("div");
+      if (typeof(pre) !== "undefined" && pre) {
+        msg_div = document.createElement("pre");
+      }
+      else {
+        msg_div = document.createElement("div");
+      }
       msg_div.textContent = msg;
     }
-    if (msg)
+
     results.insertBefore(msg_div, null);
     var h = document.createElement("h2");
     h.textContent = head;
@@ -59,36 +67,45 @@ var onSaxonLoad = function() {
 
 
 
-  // This function gets called when we've finished reading the DTD, or, if there is no DTD,
-  // immediately when the validation begins.
-  // If there is no DTD, this will be called with only one argument.
+  // This function gets called when we've finished reading the DTD, or, if 
+  // there is no DTD, immediately when the validation begins. If there is 
+  // no DTD, this will be called with only one argument.
   function do_validate(contents, dtd_filename, dtd_contents) {
     statusNode.textContent = 'Validating…';
 
     var filename = input.files[0].name;
+    var result;
+    if (typeof(dtd_filename) !== "undefined") {
 
-    var result = xmllint.validateXML({
-      xml: [filename, contents],
-      arguments: ['--noent', '--loaddtd', '--valid', filename],
-      schemaFiles: [[dtd_filename, dtd_contents]]
-    });
-  /*
-    var result = xmllint.validateXML({
-      xml: [filename, contents],
-      arguments: ['--noent', filename]
-    });
-  */
+      // If there is a DTD, invoke xmllint with:
+      // --loaddtd - this causes the DTD specified in the doctype declaration 
+      //     to be loaded when parsing. This is necessary to resolve entity references.
+      //     But note that this is redundant, because --valid causes the DTD to be loaded,
+      //     too.
+      // --valid - cause xmllint to validate against the DTD that it finds from the doctype
+      //     declaration.
+      // --noent - tells xmlint to resolve all entity references
 
-    //console.log(result);
-
-    if (result.stderr.length) {
-      //statusNode.textContent = 'Failed validation';
-      //document.getElementById('lint').textContent = result.stderr;
-      var msg_div = document.createElement("pre");
-      msg_div.textContent = result.stderr;
-      displayError("Failed DTD validation", msg_div);
-      return;
-    } 
+      result = xmllint.validateXML({
+        xml: [filename, contents],
+        arguments: ['--loaddtd', '--valid', '--noent', filename],
+        schemaFiles: [[dtd_filename, dtd_contents]]
+      });
+      //console.log(result);
+      if (result.stderr.length) {
+        displayError("Failed DTD validation", result.stderr, true);
+        return;
+      } 
+    }
+    else {
+      // If no DTD:
+      console.log('filename = ' + filename + "\ncontents = '" + contents + "'");
+      result = xmllint.validateXML({
+        xml: [filename, contents],
+        arguments: [filename],
+        schemaFiles: [["dummy", ""]]
+      });
+    }
 
     statusNode.textContent = 'Validated';
 
@@ -118,100 +135,104 @@ var onSaxonLoad = function() {
       source: doc,
       method: 'transformToDocument',
       success: function(processor) {
-          statusNode.textContent = 'Converting…';
+        statusNode.textContent = 'Converting…';
 
-          // Convert the output XML to HTML. When done, this calls updateHTMLDocument,
-          // which uses the @href attribute in the <xsl:result-document> element in the
-          // stylesheet to update the #result element in the HTML page.
-
-          Saxon.run({
-              stylesheet: 'svrl-to-html.xsl',
-              source: processor.getResultDocument(),
-              method: 'updateHTMLDocument'
-          });
-
-          statusNode.textContent = 'Finished';
+        // Convert the output SVRL to HTML. When done, this calls updateHTMLDocument,
+        // which uses the @href attribute in the <xsl:result-document> element in the
+        // stylesheet to update the #result element in the HTML page.
+        Saxon.run({
+          stylesheet: 'svrl-to-html.xsl',
+          source: processor.getResultDocument(),
+          method: 'updateHTMLDocument'
+        });
+        statusNode.textContent = 'Finished';
       }
     });
   }
 
 
+  // This gets called in response to the user choosing a file, or pressing the
+  // "Revalidate" button.
 
-  // First fetch the YAML file that describes all of the DTDs
+  function validate_file(dtds) {
+    // clear any previous results
+    results.textContent = '';
+    if (!input.files.length) {
+      statusNode.textContent = "Please select a file first!";
+      return;
+    }
+    statusNode.textContent = 'Processing…';
+
+    var reader = new FileReader();
+    reader.onload = function() {
+      // Get the contents of the xml file
+      var contents = this.result;
+
+      // Look for a doctype declaration
+      var doctype_pub_re = /<!DOCTYPE\s+\S+\s+PUBLIC\s+\"(.*?)\"\s+\"(.*?)\"\s*>/;
+      if (m = contents.match(doctype_pub_re)) {
+        var fpi = m[1];
+        var sysid = m[2];
+      }
+      else {
+        var doctype_sys_re = /<!DOCTYPE\s+\S+\s+SYSTEM\s+\"(.*?)\"\s*>/;
+        if (m = contents.match(doctype_sys_re)) {
+          displayError("No public identifier in doctype declaration",
+            "A doctype declaration was found that only contains a SYSTEM identifer; " +
+            "and no PUBLIC identifer.");
+        }
+
+      //  displayError("No doctype declaration found",
+      //    "Valid JATS documents must have a doctype declaration");
+      //  return;
+        do_validate(contents);
+        return;
+      }
+
+      var dtd = dtds.dtd_by_fpi[fpi] || null;
+      if (!dtd) {
+        displayError("Bad doctype declaration",
+          "Unrecognized public identifier: '" + fpi + "'");
+        return;
+      }
+
+      // Fetch the flattened DTD
+      fetch("dtds/" + dtd.path).then(function(response) {
+        return response.text();
+      })
+        .then(
+          function(dtd_contents) {
+            // We use the public identifier from the doctype declaration to find the DTD,
+            // but xmllint fetches it by system identifier. So, we store whatever the system
+            // identifier is, for use by that call.
+            do_validate(contents, sysid, dtd_contents);
+          },
+          function(err) {
+            console.error(err);
+          }
+        );
+    }
+
+    // Read the file. This results in the onload function above being called
+    reader.readAsText(input.files[0]);
+  }
+
+
+  // First fetch the DTDs database, then add event listeners to do the validation
   fetch("dtds.yaml")
     .then(function(response) {
       return response.text();
     })
     .then(function(yaml_str) {
-      console.log(yaml_str);
       var dtds = new DtdDatabase(jsyaml.load(yaml_str));
-
-      console.log("db = %o", dtds.db);
-
-
-
 
       statusNode.textContent = 'Choose a JATS XML file to validate.';
 
-
-      function validateFile() {
-          // clear any previous results
-          results.textContent = '';
-          if (!input.files.length) {
-            statusNode.textContent = "Please select a file first!";
-            return;
-          }
-          statusNode.textContent = 'Processing…';
-
-          var reader = new FileReader();
-
-          reader.onload = function() {
-            // Get the contents of the xml file
-            var contents = this.result;
-
-            // Look for a doctype declaration
-            if (m = contents.match("<!DOCTYPE\\s+\\S+\\s+PUBLIC\\s+\\\"(.*?)\\\"\\s+\\\"(.*?)\\\"\\s*>")) {
-              var fpi = m[1];
-              var sysid = m[2];
-            }
-            else {
-              displayError("No doctype declaration found",
-                "Valid JATS documents must have a doctype declaration");
-              return;
-            }
-            var dtd = dtds.dtd_by_fpi[fpi] || null;
-            if (!dtd) {
-              displayError("Bad doctype declaration",
-                "Unrecognized public identifier: '" + fpi + "'");
-              return;
-            }
-
-            var dtd_filename = dtd.filename;
-            var dtd_path = "flat-dtds/" + dtd.path;
-
-            // Fetch the flattened DTD
-            fetch(dtd_path).then(function(response) {
-              return response.text();
-            })
-
-            // After the schema file has loaded:
-            .then(
-              function(dtd_contents) {
-                do_validate(contents, dtd_filename, dtd_contents);
-              },
-              function(err) {
-                console.error(err);
-              }
-            );
-          }
-
-          reader.readAsText(input.files[0]);
-      }
-
       // listen for file selection, or for a press on the "revalidate" button
-      input.addEventListener('change', validateFile);
-      revalidate.addEventListener('click', validateFile);
-
-
+      function validate() {
+        validate_file(dtds);
+      }
+      input.addEventListener('change', validate);
+      revalidate.addEventListener('click', validate);
     });
 }
