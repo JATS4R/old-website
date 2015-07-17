@@ -173,6 +173,13 @@ var onSaxonLoad = function() {
       if (m = contents.match(doctype_pub_re)) {
         var fpi = m[1];
         var sysid = m[2];
+
+        var dtd = dtds.dtd_by_fpi[fpi] || null;
+        if (!dtd) {
+          displayError("Bad doctype declaration",
+            "Unrecognized public identifier: '" + fpi + "'");
+        }
+
       }
       else {
         var doctype_sys_re = /<!DOCTYPE\s+\S+\s+SYSTEM\s+\"(.*?)\"\s*>/;
@@ -185,21 +192,13 @@ var onSaxonLoad = function() {
           displayError("No doctype declaration found",
             "No doctype declaration was found, so DTD validation was skipped");
         }
+      }
 
-      //  displayError("No doctype declaration found",
-      //    "Valid JATS documents must have a doctype declaration");
-      //  return;
+      if (!dtd) {
         do_validate(contents);
         return;
       }
-
-      var dtd = dtds.dtd_by_fpi[fpi] || null;
-      if (!dtd) {
-        displayError("Bad doctype declaration",
-          "Unrecognized public identifier: '" + fpi + "'");
-        return;
-      }
-
+  
       // Fetch the flattened DTD
       fetch("dtds/" + dtd.path).then(function(response) {
         return response.text();
