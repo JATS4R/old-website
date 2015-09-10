@@ -2,14 +2,11 @@
 <html>
   <head>
     {% include header.html %}
+    <script src='{{ "/static/js/skeleton.js" | prepend: site.baseurl }}'></script>
   </head>
   <body>
     {% include banner.html %}
     <div class="wrap content">
-      <aside>
-        <p class="intro"><em>Increase the reusability of the online literature by 
-          standardising the use of the Journal Article Tag Suite (JATS) for XML tagging.</p>
-      </aside>
 
       <section class="main-content" role="main">
         {{ content }}

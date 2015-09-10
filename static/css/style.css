@@ -21,47 +21,33 @@ span.fa {
     color: #0072ce;
     text-decoration: none;
 }
-#topic-table a {
+.topic-table a {
     border-bottom: none !important;
 }
-#topic-table th, #topic-table td {
+.topic-table th, .topic-table td {
     padding: .3em .5em;
     border-left: 1px solid #BBB;
 }
 
-
-
-/*
-@font-face
-==================================
-*/
-
-@font-face{
-    font-family: "Avenir Next";
-    src: url("http://www.consumerfinance.gov/wp-content/themes/cfpb_nemo/fonts/e9167238-3b3f-4813-a04a-a384394eed42.eot");
-    src: url("http://www.consumerfinance.gov/wp-content/themes/cfpb_nemo/fonts/e9167238-3b3f-4813-a04a-a384394eed42.eot?#iefix") format("embedded-opentype"),
-         url("http://www.consumerfinance.gov/wp-content/themes/cfpb_nemo/fonts/1e9892c0-6927-4412-9874-1b82801ba47a.woff") format("woff");
-    font-weight: 400;
-    font-style: normal;
+tr.archiving.row0 {
+    background-color: #CCD9CC;
+}
+tr.archiving.row1 {
+    background-color: #DDEADD;
+}
+tr.publishing.row0 {
+    background-color: #D2D2DD
+}
+tr.publishing.row1 {
+    background-color: #E3E3EE
+}
+tr.articleauthoring.row0 {
+    background-color: #DDD3CC
+}
+tr.articleauthoring.row1 {
+    background-color: #EEE4DD
 }
 
-@font-face{
-    font-family: "Avenir Next Italic";
-    src: url("http://www.consumerfinance.gov/wp-content/themes/cfpb_nemo/fonts/d1fddef1-d940-4904-8f6c-17e809462301.eot");
-    src: url("http://www.consumerfinance.gov/wp-content/themes/cfpb_nemo/fonts/d1fddef1-d940-4904-8f6c-17e809462301.eot?#iefix") format("embedded-opentype"),
-         url("http://www.consumerfinance.gov/wp-content/themes/cfpb_nemo/fonts/92b66dbd-4201-4ac2-a605-4d4ffc8705cc.woff") format("woff");
-    font-weight: 400;
-    font-style: italic;
-}
-
-@font-face{
-    font-family: "Avenir Next Demi";
-    src: url("http://www.consumerfinance.gov/wp-content/themes/cfpb_nemo/fonts/12d643f2-3899-49d5-a85b-ff430f5fad15.eot");
-    src: url("http://www.consumerfinance.gov/wp-content/themes/cfpb_nemo/fonts/12d643f2-3899-49d5-a85b-ff430f5fad15.eot?#iefix") format("embedded-opentype"),
-         url("http://www.consumerfinance.gov/wp-content/themes/cfpb_nemo/fonts/91b50bbb-9aa1-4d54-9159-ec6f19d14a7c.woff") format("woff");
-    font-weight: 600;
-    font-style: normal;
-}
 
 /*
 Normalize the box model

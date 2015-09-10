@@ -18,7 +18,7 @@ $(function() {
       });
 
 
-      var tbody = $('#topic-table tbody');
+      var tbody = $('.topic-table tbody');
       $.each(topic_names, function(i, tname) {
         var t = topics[tname];
         var issue_href = "https://github.com/JATS4R/elements/labels/" + tname;
