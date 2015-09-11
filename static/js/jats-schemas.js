@@ -1,7 +1,7 @@
 $(document).ready(function() {
    
   // FIXME: set this to the production URL:
-  fetch("http://localhost:8080/git/jats4r/validator/dtds.yaml")
+  fetch("http://jats4r.org/validator/dtds.yaml")
     .then(function(response) {
       return response.text();
     })
