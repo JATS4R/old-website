@@ -1,4 +1,5 @@
-$(function() {
+function set_scrollto_handlers() {
+  // scroll-to animation
   $('a[href*=#]:not([href=#])').click(function() {
     if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') || 
         location.hostname == this.hostname) {
@@ -12,5 +13,9 @@ $(function() {
         return false;
       }
     }
-  });
-});
+  });    
+}
+
+$(document).ready(set_scrollto_handlers);
+
+

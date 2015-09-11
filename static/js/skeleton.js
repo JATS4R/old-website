@@ -1,5 +1,6 @@
 $(document).ready(function() {
    
+  // FIXME: set this to the production URL:
   fetch("http://localhost:8080/git/jats4r/validator/dtds.yaml")
     .then(function(response) {
       return response.text();
@@ -53,10 +54,7 @@ $(document).ready(function() {
         return -c;
       }
 
-
-      //table.append(tbody);
-      dtds
-          .sort(function(a, b) {
+      dtds.sort(function(a, b) {
             return compare_per_list(a.nlm_niso, b.nlm_niso, ['NISO', 'NLM']) ||
                    compare_version(a.version, b.version) ||
                    compare_per_list(a.flavor, b.flavor, 
@@ -74,8 +72,10 @@ $(document).ready(function() {
                 var tdef = table_defs[tf];
                 var cell = tdef && tdef.cell ? tdef.cell(dtd[tf]) : dtd[tf];
                 tr.append( $('<td>').text(cell) )
-              });
+
+            });
           })
+      ;
 
     })
   ;

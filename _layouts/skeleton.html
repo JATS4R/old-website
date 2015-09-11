@@ -2,15 +2,44 @@
 <html>
   <head>
     {% include header.html %}
-    <script src='{{ "/static/js/skeleton.js" | prepend: site.baseurl }}'></script>
+    <script src='{{ "/static/js/skeleton.js" | prepend: site.baseurl }}'>
+    </script>
+    <link rel="stylesheet" 
+      href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css" />
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
   </head>
   <body>
     {% include banner.html %}
     <div class="wrap content">
 
       <section class="main-content" role="main">
-        {{ content }}
+        <p>
+          Here is a list of the known versions of NLM/NISO JATS DTDs.
+          Click on any of them to see the skeleton XML file.
+        </p>
+        <p>
+          The list is sorted from newest to oldest.
+        </p>
+        <div>
+          <table class='topic-table'>
+            <thead>
+              <tr>
+                <th>NLM/NISO</th>
+                <th>Version</th>
+                <th>Flavor</th>
+                <th>Table model</th>
+                <th>MML</th>
+                <th>Links</th>
+              </tr>
+            </thead>
+            <tbody>
+            </tbody>
+          </table>
+        </div>
       </section>
+
+      <div id="dialog" title="Scaffold XML file">
+      </div>
 
     {% include footer.html %}
     {% include google-analytics.html %}
