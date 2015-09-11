@@ -65,17 +65,33 @@ $(document).ready(function() {
           })
           .forEach(function(dtd, i) {
             var cls = 'row' + i%2 + ' ' + dtd.flavor;
-            var tr = $('<tr class="' + cls + '">');
-            tbody.append(tr);
+            var tr = $('<tr class="' + cls + '">').appendTo(tbody)
+              .data(dtd);
 
             table_fields.forEach(function(tf) {
                 var tdef = table_defs[tf];
                 var cell = tdef && tdef.cell ? tdef.cell(dtd[tf]) : dtd[tf];
                 tr.append( $('<td>').text(cell) )
-
             });
+            tr.append($('<td><a class="preamble-link" href="#">Preamble</a></td>'));
           })
       ;
+
+      $('.preamble-link').on('click', function(e) {
+        var dtd = $(e.target).closest('tr').data();
+        var preamble = 
+          '<?xml version="1.0" encoding="utf-8"?>\n' +
+          '<!DOCTYPE article\n' +
+          '  PUBLIC "' + dtd.fpi + '"\n' +
+          '  "' + dtd.system_id + '">\n\n';
+
+        $( "#xml_preamble" )
+          .html("<pre>").find("pre").text(preamble)
+          .end().dialog({
+            width: 1000,
+          });
+        return false;
+      });
 
     })
   ;
