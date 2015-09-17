@@ -31,6 +31,17 @@ you're just working on the home page) you can serve
 your local clone of that repo from a plain HTTP server, and access it through that.
 
 
+Conventions
+-----------
+
+Here are a few conventions we've established for our content pages.
+
+* British spelling everywhere.
+* Try to avoid using "DTD" to refer to a particular version of JATS. Use
+  "schema" instead.
+* When you need to distinguish between one of the tag sets; i.e. Publishing
+  vs. Archiving, if needed, don't say "flavour" or "colour". Instead, try to
+  refer to the name, or to the color explicitly.
 
 
 Credits
