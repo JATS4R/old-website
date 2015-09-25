@@ -1,151 +1,127 @@
-abstract:
-  description: "Abstracts (different types, etc)"
-  priority: 12
-  status: draft
+- name: permissions
+  description: "Copyright and license statements (including instructions for how to attribute)."
+  recs:
+    - version: "0.1"
+    - version: draft
+      url: https://drive.google.com/open?id=169KKVuhrCcJ-jqbn6L65zwhizwFXUTYwjMV9Sn-NMyQ
 
-affiliations:
-  description: "Affiliations"
-  priority: 
-  status: draft
+- name: math
+  description: "Math issues."
+  recs: 
+    - version: "0.1"
 
-appendices:
-  description: "Appendices"
-  priority: 
-  status: draft
-
-article-type:
-  description: "Using NLM defined article types in article-type attribute and expanding the list"
-  priority: 8
-  status: draft
-
-author-metadata:
-  description: "Author metadata e.g present addresses, on behalf of, group authorship, equal"
-  priority: 
-  status: draft
-
-boxes:
-  description: "Boxes"
-  priority: 
-  status: draft
-  see-also: [ caption-label-title ]
-
-caption-label-title:
-  description: "Captions, labels, and titles for tables, figures, and boxes."
-  status: draft
-  see-also: [ tables, figures, boxes ]
-
-clinical-trials:
-  description: "Clinical trials"
-  priority: 13
-  status: draft
-
-contributions:
-  description: "Contributions: roles; define list of contrib-types; other use cases of <contrib> (co-first author, etc.)"
-  priority: 15
-  status: draft
-
-custom-metadata:
-  description: "How to tag <custom-meta>"
-  priority: 
-  status: draft
-
-dates:
-  description: "Publication dates/article history dates"
-  priority: 4
-  status: draft
-
-dois:
-  description: "DOIs (sub-article, different versions)"
-  priority: 7
-  status: draft
-
-figures:
-  description: "Marking up figures, including metadata of images - in binary of the image file (or elsewhere)"
-  priority: 
-  status: draft
-  see-also: [ caption-label-title ]
-
-footnotes:
-  description: "Footnotes"
-  priority: 
-  status: draft
-
-funding:
-  description: "Funding (linking to individual authors, FundRef etc)"
-  priority: 2
-  status: draft
-
-general-recommendations:
+- name: general-recommendations
   description:
     > 
       General recommendations; including things like doctype declarations in XML files;
       documents self-identifying that they conform to JATS4R; file naming and packaging.
-  priority: 5
-  status: draft
+  recs: 
+    - version: draft
+      url: https://drive.google.com/open?id=1rZkWgcIUbfYliC8Ql0f4Wr4jSUkp6Ssw2KoBD0UQezY
 
-journal-metadata:
-  description: "Using journals' own IDs; ensure consistent abbreviation/capitalisation; consistent use of <journal-title-group>"
-  priority: 
-  status: draft
+- name: references-citations
+  description: "References (citation of software/data/versions/law cases)."
+  recs: 
+    - version: draft
+      url: https://drive.google.com/open?id=1A2nRtpUxijUbYK-Aba6a4Dy0YNLeLz1UhA3GyDI1PHk
+  see-also: [ data-citations ]
 
-keywords:
-  description: "Keywords/MESH terms versus subject-group(s); also keywords for sub article items eg figures, tables, videos"
-  priority: 
-  status: draft
+- name: data-citations
+  description: "Data citations."
+  recs: 
+    - version: draft
+      url: https://drive.google.com/open?id=13uGZ4UqplHkT9VvaXnuboLZ2IRCx3SH7PTQJk24CiRk
+  see-also: [ references-citations ]
 
-math:
-  description: "Math issues"
-  priority: 11
-  status: final
+- name: funding
+  description: "Funding (linking to individual authors, FundRef etc)."
 
-media-types:
-  description: "Issues related to media types (also known as MIME types)"
-  priority: 
-  status: draft
+- name: versions-corrections
+  description: "Versioning + corrections."
 
-permissions:
-  description: "Copyright and license statements (including instructions for how to attribute)"
-  priority: 10
-  status: final
+- name: dates
+  description: "Publication dates/article history dates."
 
-references-citations:
-  description: "References (citation of software/data/versions/law cases)"
-  priority: 1
-  status: draft
+- name: suppl-material
+  description: "Supplementary material."
 
-related-articles:
-  description: "Related article tagging (within journal, without, example JATS list of types?)"
-  priority: 14
-  status: draft
+- name: dois
+  description: "DOIs (sub-article, different versions)."
 
-sections:
-  description: "Sections"
-  priority: 
-  status: draft
+- name: article-type
+  description: "Using NLM defined article types in article-type attribute and expanding the list."
 
-subarticles:
-  description: "Peer review (subarticles?)"
-  priority: 
-  status: draft
+- name: taxonomy
+  description: "Taxonomy (ecology, palaeontology, etc)."
 
-suppl-material:
-  description: "Supplementary material"
-  priority: 6
-  status: draft
+- name: abstract
+  description: "Abstracts (different types, etc)."
 
-tables:
-  description: "Tables"
-  priority: 
-  status: draft
+- name: clinical-trials
+  description: "Clinical trials."
+
+- name: related-articles
+  description: "Related article tagging (within journal, without, example JATS list of types?)."
+
+- name: contributions
+  description: 
+    > 
+      Roles; define list of contrib-types; other use cases of &lt;contrib> (co-first author, 
+      etc.).
+
+- name: affiliations
+  description: "Affiliations."
+
+- name: appendices
+  description: "Appendices."
+
+- name: author-metadata
+  description: "Author metadata e.g present addresses, on behalf of, group authorship, equal."
+
+- name: boxes
+  description: "Boxes."
   see-also: [ caption-label-title ]
 
-taxonomy:
-  description: "Taxonomy (ecology, palaeontology, etc)"
-  priority: 9
-  status: draft
+- name: caption-label-title
+  description: "Captions, labels, and titles for tables, figures, and boxes."
+  see-also: [ tables, figures, boxes ]
 
-versions-corrections:
-  description: "Versioning + corrections"
-  priority: 3
-  status: draft
+- name: custom-metadata
+  description: "How to tag &lt;custom-meta>."
+
+- name: figures
+  description:
+    >
+      Marking up figures, including metadata of images - in binary of the image file 
+      (or elsewhere).
+  see-also: [ caption-label-title ]
+
+- name: footnotes
+  description: "Footnotes"
+
+- name: journal-metadata
+  description: 
+    > 
+      Using journalsʼ own IDs; ensure consistent abbreviation/capitalisation; 
+      consistent use of &lt;journal-title-group>.
+
+- name: keywords
+  description:
+    >
+      Keywords/MESH terms versus subject-group(s); also keywords for sub article
+      items eg figures, tables, videos.
+
+- name: media-types
+  description: "Issues related to media types (also known as MIME types)."
+
+- name: sections
+  description: "Sections."
+
+- name: subarticles
+  description: "Peer review (subarticles?)."
+
+- name: tables
+  description: "Tables."
+  see-also: [ caption-label-title ]
+
 

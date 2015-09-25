@@ -1,61 +1,87 @@
 $(function() {
-  var tyml = $.ajax("static/topics.yaml")
-    .done(function(content) {
-      var topics = jsyaml.load(content);
-      // Sort first by priority, then alphabetical
-      var topic_names = Object.keys(topics);
-      topic_names.sort(function(a, b) {
-        var a_p = topics[a].priority != null ? topics[a].priority : 100;
-        var b_p = topics[b].priority != null ? topics[b].priority : 100;
-        if (a_p != b_p) return a_p - b_p;
-        return a > b ? 1 : a < b ? -1 : 0;
-      });
-      console.log("%o", topic_names);
 
-      // Assign a priority even for those that don't have one
-      $.each(topic_names, function(i, tn) { 
-        topics[tn].priority = i + 1;
-      });
+  
+  // FIXME: fetch these two yaml files concurrently, using Promises
+  $.ajax("../validator/schema/versions.yaml")
+    .done(function(versions_yaml) {
+      var versions = jsyaml.load(versions_yaml);
+
+      // FIXME: sort the version numbers first
+      var latest_version = versions[versions.length - 1];
 
 
-      var tbody = $('.topic-table tbody');
-      $.each(topic_names, function(i, tname) {
-        var t = topics[tname];
-        var issue_href = "https://github.com/JATS4R/elements/labels/" + tname;
-        var example_href = "https://github.com/JATS4R/elements/blob/master/" + tname + ".md";
-        var see_also = t["see-also"] 
-          ? t["see-also"].map(function(a){
-                            return "<span style='white-space: nowrap'>" + a + "</span>";
-                         })
-                         .join(", ")
-          : '&nbsp;';
-        var status_href = 
-          t.status == 'final' ? 'http://jats4r.org/recommendations/' + tname + '.html'
-                              : 'https://github.com/JATS4R/elements/wiki/' + tname;
-        var status_label = t.status == 'final' ? "✓ " + t.status : t.status 
-        
-        var tr = $('<tr class="row' + i % 2 + '">').append(
-          $('<td class="center">').html(t.priority != null ? t.priority : ''),
-          $('<td>').html("<strong><span style='white-space: nowrap'>" + tname + 
-            "</span></strong>"),
-          $('<td>').html(t.description),
-          $('<td class="center links">').html(
-            '<a href="' + issue_href + 
-              '"><span class="fa fa-exclamation-circle"></span></a> ' +
-            '<a href="' + example_href + 
-              '"><span class="fa fa-code"></span></a>'
-          ),
-          $('<td class="center">').html(
-            '<a href="' + status_href + '">' + status_label + '</a>'),
-          $('<td>').html(see_also)
-        );
-        tbody.append(tr);
-      });
-    })
-    .fail(function() {
-      alert("Failed to load topics. Please try again. If the problem persists, " +
-            "please send and email to jats4r@googlegroups.com.");
+      $.ajax("static/topics.yaml")
+        .done(function(content) {
+          var topics = jsyaml.load(content);
+
+          // Create a hash indexed by name
+
+          // Sort first by priority, then alphabetical
+          var topic_names = topics.map(function(t) { return t.name; });
+
+          // Assign a priority to each
+          $.each(topics, function(i, t) { 
+            t.priority = i + 1;
+          });
+
+
+          var tbody = $('.topic-table tbody');
+          $.each(topics, function(i, t) {
+            var tname= t.name;
+            var issue_href = "https://github.com/JATS4R/JATS4R-Participant-Hub/labels/" + tname;
+            var example_href = 
+              "https://github.com/JATS4R/JATS4R-Participant-Hub/blob/master/examples/" + 
+              tname + ".md";
+            var see_also = t["see-also"] 
+              ? ' See also: ' + 
+                t["see-also"].map(function(a){
+                    return "<span style='white-space: nowrap'>" + a + "</span>";
+                  })
+                  .join(", ")
+              : '';
+
+
+            var recs = '&nbsp;';
+            if (t.recs) {
+              var rec_base_url = "http://jats4r.org/recommendations/";
+
+              // Construct an array of hyperlinks to each recommendation
+              var rec_hyperlinks =
+                t.recs.map(function(r) {
+                  // The URL to the recommendation depends on version
+                  var rec_url = 
+                    (r.version && r.version.match(/^\d/)) 
+                      ? rec_base_url + 
+                        ( r.version == latest_version ? '' : r.version + "/") +
+                        tname + ".html"
+                      : r.url;
+                  return "<a href='" + rec_url + "'>" + r.version + "</a>";
+                });
+              recs = "<span style='white-space: nowrap'>" + 
+                rec_hyperlinks.join(", ") + "</span>";
+            }
+
+            var tr = $('<tr class="row' + i % 2 + '">').append(
+              $('<th>').html("<span style='white-space: nowrap'>" + tname + 
+                "</span>"),
+              $('<td>').html(t.description + see_also),
+              $('<td class="center links">').html(
+                '<a href="' + issue_href + 
+                  '"><span class="fa fa-exclamation-circle"></span></a> ' +
+                '<a href="' + example_href + 
+                  '"><span class="fa fa-code"></span></a>'
+              ),
+              $('<td class="center">').html(recs)
+            );
+            tbody.append(tr);
+          });
+        })
+        .fail(function() {
+          alert("Failed to load topics. Please try again. If the problem persists, " +
+                "please send and email to jats4r@googlegroups.com.");
+        });
+
+
     });
-
 
 });
