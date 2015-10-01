@@ -10,10 +10,4 @@ echo "==> Deploying to $DOCROOT"
 echo "==> Building the static site with jekyll"
 jekyll build --destination=$DOCROOT
 
-echo "==> Copying the validator"
-rsync --archive --quiet --exclude='.git' ../validator $DOCROOT
-
-echo "==> Copying the schema files"
-rsync --archive --quiet ../validator/schema $DOCROOT
-
 echo "==> Done"
