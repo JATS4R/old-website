@@ -15,20 +15,36 @@ Our web site is served from [jats4r.org](http://jats4r.org).
 The site also includes the validator, which is hosted in its [own
 repository](http://github.com/jats4r/validator).
 
-To work on the website, and see your results before it is deployed, use 
-[Jekyll](http://jekyllrb.com/) and bundler. See the GitHub help page,
-[Using Jekyll with Pages](https://help.github.com/articles/using-jekyll-with-pages/), for
-more information about how to set this up.
+To work on the website, make sure you clone this repository with `--recursive`.
+For example:
 
-Assuming you have everything installed, start a local server with
+    git clone --recursive https://github.com/JATS4R/website.git
+
+This website uses [Jekyll](http://jekyllrb.com/) and bundler. See the GitHub help page,
+[Using Jekyll with Pages](https://help.github.com/articles/using-jekyll-with-pages/), for
+more information about how to set this up on your machine.
+
+Next you need to set up the validator. 
+Follow the [setup instructions](https://github.com/jats4r/validator#quick-start)
+(but note that you can skip the step about cloning the validator repository
+itself).
+
+When you have all the prerequisites done, from the *website* directory,
+start a local server with:
 
     bundle exec jekyll serve
 
 and then access it from [http://localhost:4000](http://localhost:4000).
 
-Alternatively, if you don't need the Markdown preprocessing, and other features (for example, if 
-you're just working on the home page) you can serve 
-your local clone of that repo from a plain HTTP server, and access it through that.
+To deploy the site to another location, which could then be served
+by Apache or some other static site server, set your JATS4R_DOCROOT environment
+variable to the parent of the destination directory, and run
+
+    ./deploy.sh
+
+The site will be deployed to $JATS4R_DOCROOT/website.
+
+
 
 
 Conventions
