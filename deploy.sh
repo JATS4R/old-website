@@ -7,10 +7,7 @@
 DOCROOT=${JATS4R_DOCROOT:-./_site}
 echo "==> Deploying to $DOCROOT"
 
-./pull-validator.sh
-
 echo "==> Building the static site with jekyll"
 jekyll build --destination=$DOCROOT
-
 
 echo "==> Done"

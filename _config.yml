@@ -6,6 +6,16 @@ markdown: kramdown
 kramdown:
   input: GFM
 
+exclude:
+  - validator/venv
+  - validator/.git
+  - validator/jats/src
+  - validator/lib/DtdAnalyzer-0.5
+  - validator/lib/iso-schematron-xslt2
+  - validator/lib/jing-20081028
+  - validator/lib/xml-commons-resolver-1.2
+
+
 # I couldn't get any server-side syntax highlighter to work
 #syntax_highlighter: rouge
 
