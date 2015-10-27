@@ -2,7 +2,7 @@ $(function() {
 
   
   // FIXME: fetch these two yaml files concurrently, using Promises
-  $.ajax("../validator/schema/versions.yaml")
+  $.ajax("validator/schema/versions.yaml")
     .done(function(versions_yaml) {
       var versions = jsyaml.load(versions_yaml);
 

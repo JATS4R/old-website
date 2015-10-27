@@ -1,13 +1,28 @@
 $(document).ready(function() {
    
-  // FIXME: set this to the production URL:
-  fetch("http://jats4r.org/validator/dtds.yaml")
+  fetch("validator/jats/jats.yaml")
     .then(function(response) {
       return response.text();
     })
     .then(function(yaml_str) {
-      var dtds = jsyaml.load(yaml_str).dtds;
+      var jats = jsyaml.load(yaml_str);
+      var dtds = [];
 
+      jats.forEach(function(repo) {
+        repo.schemas.forEach(function(schema) {
+          var sysid_segs = schema.sysid_rel.split("/");
+          dtds.push({
+            nlm_niso: repo == "https://github.com/ncbi/nlm-dtd" ? "NLM" : "NISO",
+            version: sysid_segs[1],
+            flavor: sysid_segs[0],
+            table_model: schema.sysid_rel.match(/oasis/i) != null ? "OASIS" : "HTML",
+            // FIXME: earlier DTDs don't use MML at all, right?
+            mml_version: schema.sysid_rel.match(/mml3/i) != null ? "3" : "2",
+          });
+        });
+      });
+
+    /*
       dtds.forEach(function(dtd) {
         // Compute nlm_niso, version, flavor, table model, mml version
         var path = dtd.path;
@@ -20,24 +35,25 @@ $(document).ready(function() {
         // FIXME: earlier DTDs don't use MML at all, right?
         dtd.mml_version = path.match(/mml3/i) != null ? "3" : "2";
       });
+    */
 
       var table_fields = [ 'nlm_niso', 'version', 'flavor', 'table_model', 'mml_version' ];
       var table_defs = {
         flavor: {
-            cell: function(d) {
-              return d == "articleauthoring" ? "Authoring" :
-                d.charAt(0).toUpperCase() + d.slice(1);
-            }
+          cell: function(d) {
+            return d == "articleauthoring" ? "Authoring" :
+              d.charAt(0).toUpperCase() + d.slice(1);
+          }
         },
         table_model: {
-            cell: function(d) {
-              return d + " tables";
-            }
+          cell: function(d) {
+            return d + " tables";
+          }
         },
         mml_version: {
-            cell: function(d) {
-              return "MML " + d;
-            }
+          cell: function(d) {
+            return "MML " + d;
+          }
         }
       }
 

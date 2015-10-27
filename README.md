@@ -57,7 +57,7 @@ Here are a few conventions we've established for our content pages.
   "schema" instead.
 * When you need to distinguish between one of the tag sets; i.e. Publishing
   vs. Archiving, if needed, don't say "flavour" or "colour". Instead, try to
-  refer to the name, or to the color explicitly.
+  refer to the name, or to the colour explicitly.
 
 
 Credits
