@@ -1,5 +1,5 @@
 $(document).ready(function() {
-   
+
   fetch("validator/jats/jats.yaml")
     .then(function(response) {
       return response.text();
