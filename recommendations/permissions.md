@@ -28,23 +28,23 @@ These recommendations contain best practices for indicating the permissions (cop
 
 ## Recommendations
 
-1. **\<permissions> (permissions on the whole article).** This element must be present within \<article-meta>. *Validator result: Error*{:.validator-result}
+1. <a name='rec1' id='rec1'></a> **\<permissions> (permissions on the whole article).** This element must be present within \<article-meta>. *Validator result: Error*{:.validator-result}
 
-2. **\<permissions> (permissions on objects within an article).** If any object within the article (for example, a figure or a table) has different permissions from the article as a whole, \<permissions> must be included in that element to ensure the object does not inherit the permissions that apply to the document as a whole. (See [the complete list of article objects to which \<permissions> can apply](#where-permissions-may-be-applied-in-a-document)). *Validator result: Info*{:.validator-result}
+2. <a name='rec2' id='rec2'></a> **\<permissions> (permissions on objects within an article).** If any object within the article (for example, a figure or a table) has different permissions from the article as a whole, \<permissions> must be included in that element to ensure the object does not inherit the permissions that apply to the document as a whole. (See [the complete list of article objects to which \<permissions> can apply](#where-permissions-may-be-applied-in-a-document)). *Validator result: Info*{:.validator-result}
 
-3. **\<copyright-year>.** When a work is protected by copyright (i.e., the work is not in the public domain), this element should be used and should contain a full four-digit year with no whitespace. *Validator result: Error*{:.validator-result}
+3. <a name='rec3' id='rec3'></a> **\<copyright-year>.** When a work is protected by copyright (i.e., the work is not in the public domain), this element should be used and should contain a full four-digit year with no whitespace. *Validator result: Error*{:.validator-result}
 
-4. **\<copyright-holder>.** When a work is protected by copyright, this element should be used and should identify the person or institution that holds the copyright. *Validator result: Error*{:.validator-result}
+4. <a name='rec4' id='rec4'></a> **\<copyright-holder>.** When a work is protected by copyright, this element should be used and should identify the person or institution that holds the copyright. *Validator result: Error*{:.validator-result}
 
-5. **@xlink:href on \<license> or \<ali:license_ref> (depending on the DTD version).** If a license is defined by a URI (for example, any of the Creative Commons licenses), this should be the sole place that a machine (or anyone) should need to look for the license URI.
+5. <a name='rec5' id='rec5'></a> **@xlink:href on \<license> or \<ali:license_ref> (depending on the DTD version).** If a license is defined by a URI (for example, any of the Creative Commons licenses), this should be the sole place that a machine (or anyone) should need to look for the license URI.
     1. {:.lettered-list} For JATS version 1.1d3 and forward, the license URI should be contained within **\<ali:license_ref>**. *Validator result: Warning when \<ali:license_ref> does not contain the URL for the license*{:.validator-result}
     2. {:.lettered-list} For JATS version 1.1d2 and backward,  use the URI as the value of @xlink:href on \<license>. *Validator result: Warning when \<license> doesn’t have @xlink:href*{:.validator-result}
 
-6. **@start_date attribute on \<ali:license_ref>.** This attribute is only required if it differs from the publication date.
+6. <a name='rec6' id='rec6'></a> **@start_date attribute on \<ali:license_ref>.** This attribute is only required if it differs from the publication date.
 
-7. **\<license-p>.** This element is not required, but is intended for human readable consumption so there are no guidelines for the content used within the tag. Not to be used for the machine-readable, canonical URI for the license. *Validator result: Info whenever \<license-p> or \<p> occurs inside \<license>*{:.validator-result}
+7. <a name='rec7' id='rec7'></a> **\<license-p>.** This element is not required, but is intended for human readable consumption so there are no guidelines for the content used within the tag. Not to be used for the machine-readable, canonical URI for the license. *Validator result: Info whenever \<license-p> or \<p> occurs inside \<license>*{:.validator-result}
 
-8. **\<ali:free_to_read>.** Content that is not behind access barriers, irrespective of any license specifications, should also contain this tag. It is used to indicate the content can be accessed by any user without payment or authentication.  If the content is only available for a certain period, then @start_date and @end_date attributes can be used to indicate this. *Validator result: Info*{:.validator-result}
+8. <a name='rec8' id='rec8'></a> **\<ali:free_to_read>.** Content that is not behind access barriers, irrespective of any license specifications, should also contain this tag. It is used to indicate the content can be accessed by any user without payment or authentication.  If the content is only available for a certain period, then @start_date and @end_date attributes can be used to indicate this. *Validator result: Info*{:.validator-result}
 
 
 ## Example 1: Permissions that apply to an entire journal article
