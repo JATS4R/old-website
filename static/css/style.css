@@ -276,6 +276,20 @@ li h4 {
     font-style: normal;
 }
 
+
+.validator-result {
+    color: red;
+}
+.validator-result:before {
+    content: "[";
+}
+.validator-result:after {
+    content: "]";
+}
+
+.lettered-list {
+    list-style-type: lower-alpha;
+}
 /*
 Repo list
 ----------------------------------
