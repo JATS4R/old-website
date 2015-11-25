@@ -6,7 +6,6 @@ title: Permissions recommendations
 
 ## Status: Final
 
-
 ## Context 
 
 \<permissions> and child elements \<copyright-statement>, \<copyright-year>, \<copyright-holder>, \<license>, \<license-p>, \<ali:free_to_read>, and \<ali:license_ref>
@@ -19,11 +18,11 @@ These recommendations contain best practices for indicating the permissions (cop
 
 ## Remarks
 
-1. Per the JATS documentation, \<copyright-statement> and \<license-p> are intended for display purposes only, and are therefore not addressed by these recommendations because they are not intended to be mined for data. The \<license-p> element is the domain for editorial information and context. Links to licenses might appear within these human-readable sections, but those links should not assumed to be machine readable, and should be ignored by automated processes. *Validator result: info*{:.validator-result}
+1. <a id='rem1'></a> Per the JATS documentation, \<copyright-statement> and \<license-p> are intended for display purposes only, and are therefore not addressed by these recommendations because they are not intended to be mined for data. The \<license-p> element is the domain for editorial information and context. Links to licenses might appear within these human-readable sections, but those links should not assumed to be machine readable, and should be ignored by automated processes. *Validator result: info*{:.validator-result}
 
-2. In some cases, an article may contain document objects (such as figures or tables) that have licenses which are different from the license that applies to the article as a whole. For example, a CC-BY journal article might contain a figure reproduced from an article published under a non-CC-BY licence. That figure must then contain a separate \<permissions> element; every other article object will be considered to inherit the permissions as set out in \<article-meta>, which applies to the journal article as a whole. Multiple components of an article can have their own \<permissions> element and, if tagged as such, each of these components would not inherit the permission set in the \<article-meta>. The separate \<permissions> provided for the component must be complete, containing \<copyright-statement>, \<copyright-year>, \<copyright-holder>, and \<license>.
+2. <a name='rem2' id='rem2'></a> In some cases, an article may contain document objects (such as figures or tables) that have licenses which are different from the license that applies to the article as a whole. For example, a CC-BY journal article might contain a figure reproduced from an article published under a non-CC-BY licence. That figure must then contain a separate \<permissions> element; every other article object will be considered to inherit the permissions as set out in \<article-meta>, which applies to the journal article as a whole. Multiple components of an article can have their own \<permissions> element and, if tagged as such, each of these components would not inherit the permission set in the \<article-meta>. The separate \<permissions> provided for the component must be complete, containing \<copyright-statement>, \<copyright-year>, \<copyright-holder>, and \<license>.
 
-3. Concerning @license-type on \<license> element: This attribute can be useful inside a closed system. However, in terms of reusing content, the values of this attribute have not been standardized (i.e., its values are not controlled and are therefore not usable by automated systems), so  it can’t be used to provide reliably useful information, and therefore a formal recommendation has not been made for this attribute here.  *Validator result: info*{:.validator-result}
+3. <a name='rem3' id='rem3'></a> Concerning @license-type on \<license> element: This attribute can be useful inside a closed system. However, in terms of reusing content, the values of this attribute have not been standardized (i.e., its values are not controlled and are therefore not usable by automated systems), so  it can’t be used to provide reliably useful information, and therefore a formal recommendation has not been made for this attribute here.  *Validator result: info*{:.validator-result}
 
 
 ## Recommendations
