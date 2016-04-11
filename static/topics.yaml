@@ -1,16 +1,12 @@
 - name: permissions
   description: "Copyright and license statements (including instructions for how to attribute)."
   recs:
-    - version: "0.1"
-    - version: draft
-      url: https://drive.google.com/open?id=169KKVuhrCcJ-jqbn6L65zwhizwFXUTYwjMV9Sn-NMyQ
-
-test
-
+    - status: published
+    
 - name: math
   description: "Math issues."
   recs: 
-    - version: "0.1"
+     - status: published
 
 - name: general-recommendations
   description:
@@ -18,21 +14,19 @@ test
       General recommendations; including things like doctype declarations in XML files;
       documents self-identifying that they conform to JATS4R; file naming and packaging.
   recs: 
-    - version: draft
-      url: https://drive.google.com/open?id=1rZkWgcIUbfYliC8Ql0f4Wr4jSUkp6Ssw2KoBD0UQezY
-
+    -status: published
+    
 - name: references-citations
   description: "References (citation of software/data/versions/law cases)."
   recs: 
-    - version: draft
+    - status: draft
       url: https://drive.google.com/open?id=1A2nRtpUxijUbYK-Aba6a4Dy0YNLeLz1UhA3GyDI1PHk
   see-also: [ data-citations ]
 
 - name: data-citations
   description: "Data citations."
   recs: 
-    - version: draft
-      url: https://drive.google.com/open?id=13uGZ4UqplHkT9VvaXnuboLZ2IRCx3SH7PTQJk24CiRk
+    - status: published
   see-also: [ references-citations ]
 
 - name: funding
