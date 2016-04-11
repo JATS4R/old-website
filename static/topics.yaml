@@ -1,4 +1,4 @@
-- nme: permissions
+- name: permissions
   description: "Copyright and license statements (including instructions for how to attribute)."
   status: final
   recs:
